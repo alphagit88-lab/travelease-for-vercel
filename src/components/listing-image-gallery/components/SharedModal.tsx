@@ -78,7 +78,7 @@ export default function SharedModal({
               <motion.div
                 key={index}
                 custom={direction}
-                variants={variants()}
+                variants={variants(navigation ? 1280 : 1920, images.length)}
                 initial="enter"
                 animate="center"
                 exit="exit"
