@@ -4,6 +4,7 @@ import { TaxonomyType } from "@/data/types";
 import { Route } from "@/routers/types";
 import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
 import SectionOurFeatures from "@/components/SectionOurFeatures";
+import SectionMoodboardContent from "@/components/SectionMoodboardContent";
 import BackgroundSection from "@/components/BackgroundSection";
 import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
 import SectionHowItWork from "@/components/SectionHowItWork";
@@ -153,12 +154,12 @@ function PageHome() {
     <main className="nc-PageHome relative overflow-hidden">
       {/* ── FULL-WIDTH HERO (outside container) ── */}
       <SectionHero />
+      <SectionOurFeatures />
+      <SectionMoodboardContent />
 
       {/* ── REST OF PAGE (inside container) ─────── */}
       <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28 mt-24">
         <SectionSliderNewCategories categories={DEMO_CATS} />
-
-        <SectionOurFeatures />
 
         <SectionGridFeaturePlaces cardType="card2" />
 

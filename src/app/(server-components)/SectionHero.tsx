@@ -16,7 +16,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
     <div
       className={`nc-SectionHero relative w-full flex flex-col overflow-hidden ${className}`}
       style={{
-        aspectRatio: "1024 / 576",
+        aspectRatio: "1371 / 736",
         backgroundImage: "url('/hero-bg.png')",
         backgroundSize: "100% auto",
         backgroundPosition: "center top",
