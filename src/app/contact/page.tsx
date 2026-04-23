@@ -1,37 +1,31 @@
 import {
-  ClockIcon,
+  ChatBubbleLeftRightIcon,
   EnvelopeIcon,
-  MapPinIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 import Input from "@/shared/Input";
 import Textarea from "@/shared/Textarea";
 
+const HOME_ACCENT = "#D5912C";
+
 const contactDetails = [
   {
-    title: "Address",
-    value: "TravelEase office address goes here, Colombo, Sri Lanka",
-    icon: MapPinIcon,
-  },
-  {
-    title: "Phone",
-    value: "+94 00 000 0000",
-    icon: PhoneIcon,
-  },
-  {
-    title: "Emergency Contact",
-    value: "+94 00 000 0000",
-    icon: PhoneIcon,
-  },
-  {
     title: "Email",
-    value: "hello@travelease.com",
+    value: "info@traveleaseholidays.com",
+    href: "mailto:info@traveleaseholidays.com",
     icon: EnvelopeIcon,
   },
   {
-    title: "Working Hours",
-    value: "Monday to Saturday, 8:30 AM - 6:00 PM",
-    icon: ClockIcon,
+    title: "Contact",
+    value: "+94 11 2695454",
+    href: "tel:+94112695454",
+    icon: PhoneIcon,
+  },
+  {
+    title: "WhatsApp",
+    value: "+94 777347542",
+    href: "https://wa.me/94777347542",
+    icon: ChatBubbleLeftRightIcon,
   },
 ];
 
@@ -50,7 +44,7 @@ export default function PageContact() {
             className="text-4xl font-semibold sm:text-5xl lg:text-6xl"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Contact <span className="text-[#68c6ea]">Us</span>
+            Contact <span className="text-[#D5912C]">Us</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
             Reach out for trip enquiries, custom itineraries, booking support, or any question about your next travel
@@ -62,7 +56,7 @@ export default function PageContact() {
       <section className="container relative z-10 -mt-10 pb-20 lg:-mt-16 lg:pb-24">
         <div className="grid gap-8 rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.12)] sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
           <div className="lg:pr-8">
-            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#1581a7]">
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#D5912C]">
               Contact details
             </span>
             <h2
@@ -72,8 +66,8 @@ export default function PageContact() {
               Didn&apos;t find what you are looking for?
             </h2>
             <p className="mt-6 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
-              Get in touch with us for personalized travel assistance and expert advice. The layout is ready and the
-              details below can be replaced with your final company contact information at any time.
+              Reach us for personalized travel assistance, custom itineraries, booking support, or quick answers about
+              your next Sri Lanka journey. Email, call, or message us on WhatsApp and our team will get back to you.
             </p>
 
             <div className="mt-8 grid gap-5">
@@ -81,27 +75,33 @@ export default function PageContact() {
                 const Icon = item.icon;
 
                 return (
-                  <div
+                  <a
                     key={item.title}
+                    href={item.href}
                     className="flex items-start gap-4 rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4"
                   >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#1581a7]/10 text-[#1581a7]">
+                    <div
+                      className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full"
+                      style={{ backgroundColor: "rgba(213, 145, 44, 0.12)", color: HOME_ACCENT }}
+                    >
                       <Icon className="h-6 w-6" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D5912C]">
                         {item.title}
                       </h3>
-                      <p className="mt-2 text-base font-medium text-slate-900">{item.value}</p>
+                      <p className="mt-2 text-base font-medium text-slate-900 transition-colors hover:text-[#D5912C]">
+                        {item.value}
+                      </p>
                     </div>
-                  </div>
+                  </a>
                 );
               })}
             </div>
           </div>
 
           <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-[#f3f6f9] shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
-            <div className="bg-[#0f5d86] px-6 py-5 text-center text-lg font-semibold text-white sm:px-8">
+            <div className="bg-[#072437] px-6 py-5 text-center text-lg font-semibold text-[#D5912C] sm:px-8">
               Get in touch
             </div>
 
@@ -112,7 +112,7 @@ export default function PageContact() {
                 placeholder="Your name"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
               />
               <Input
                 name="email"
@@ -120,7 +120,7 @@ export default function PageContact() {
                 placeholder="Your email"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
               />
               <Input
                 name="phone"
@@ -128,7 +128,7 @@ export default function PageContact() {
                 placeholder="Your number"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
               />
               <Input
                 name="subject"
@@ -136,18 +136,18 @@ export default function PageContact() {
                 placeholder="Subject"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
               />
               <Textarea
                 name="message"
                 placeholder="Message"
                 rows={6}
-                className="rounded-xl border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400"
+                className="rounded-xl border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
               />
 
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#0f5d86] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#0d4f72]"
+                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#D5912C] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#bf8126]"
               >
                 Send Message
               </button>
