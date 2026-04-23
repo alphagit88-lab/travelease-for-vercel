@@ -29,7 +29,7 @@ const Logo: React.FC<LogoProps> = ({
       {/* PLEASE UN COMMENT BELLOW CODE AND USE IT */}
       {img ? (
         <img
-          className={`block max-h-12 ${imgLight ? "dark:hidden" : ""}`}
+          className={`block max-h-15 ${imgLight ? "dark:hidden" : ""}`}
           src={img.src}
           alt="Logo"
         />

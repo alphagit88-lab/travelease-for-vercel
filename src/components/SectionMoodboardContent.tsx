@@ -48,13 +48,19 @@ const SectionMoodboardContent: FC<SectionMoodboardContentProps> = ({ className =
     <section
       className={`relative overflow-hidden ${className}`}
       style={{
-        height: "640px",
+        aspectRatio: "1331 / 651",
         backgroundImage: "url('/sec-2.png')",
         backgroundSize: "100% auto",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}
     >
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, rgba(8, 26, 47, 0.35) 0%, rgba(8, 26, 47, 0.52) 45%, rgba(8, 26, 47, 0.7) 100%)",
+        }}
+      />
       <div className="relative z-10 mx-auto h-full w-full max-w-6xl px-4 sm:px-6 md:px-8 lg:px-10 py-3 sm:py-4 md:py-5">
         {/* Desktop/tablet collage */}
         <div className="hidden sm:grid grid-cols-12 grid-rows-6 gap-2 md:gap-3 lg:gap-3.5 h-[430px] md:h-[460px] lg:h-[500px] content-start">

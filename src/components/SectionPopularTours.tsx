@@ -72,7 +72,13 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="mx-auto w-full max-w-[1060px] px-6 sm:px-8 lg:px-10 py-12 sm:py-16 lg:py-20">
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, rgba(8, 26, 47, 0.7) 0%, rgba(8, 26, 47, 0.8) 45%, rgba(8, 26, 47, 0.9) 100%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto w-full max-w-[1060px] px-6 sm:px-8 lg:px-10 py-12 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end">
           <div>
             <h2

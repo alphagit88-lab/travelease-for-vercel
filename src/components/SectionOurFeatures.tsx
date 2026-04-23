@@ -16,16 +16,22 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({ className = "" }) => 
       className={`nc-SectionOurFeatures relative overflow-hidden ${className}`}
       data-nc-id="SectionOurFeatures"
       style={{
-        aspectRatio: "1390 / 859",
+        aspectRatio: "1046 / 859",
         backgroundImage: "url('/sec-1.png')",
         backgroundSize: "100% auto",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}
     >
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, rgba(8, 26, 47, 0.2) 0%, rgba(8, 26, 47, 0.27) 45%, rgba(8, 26, 47, 0.35) 100%)",
+        }}
+      />
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-8 md:px-10 lg:px-16 py-6 sm:py-8 md:py-10 lg:py-10">
         <div className="space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16">
-          <div className="max-w-[460px] sm:max-w-[500px] sm:ml-[8%] sm:-translate-y-[4px] md:ml-[12%] md:-translate-y-[8px] lg:ml-[14%] lg:-translate-y-[1.45vw]">
+          <div className="max-w-[460px] sm:max-w-[500px] translate-y-[50px] sm:ml-[8%] sm:translate-y-[50px] md:ml-[12%] md:translate-y-[50px] lg:ml-[14%] lg:translate-y-[50px]">
             <div className="flex items-center gap-3">
               <PinIcon />
               <h3 className="text-white text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] lg:text-[2rem] font-semibold" style={{ fontFamily: "var(--font-playfair), serif" }}>
@@ -44,7 +50,7 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({ className = "" }) => 
             </div>
           </div>
 
-          <div className="max-w-[460px] sm:max-w-[500px] sm:ml-[40%] sm:translate-y-[8px] md:ml-[42%] md:translate-y-[18px] lg:ml-[calc(50%-2.16vw)] lg:translate-y-[2.52vw]">
+          <div className="max-w-[460px] sm:max-w-[500px] translate-y-[170px] sm:ml-[40%] sm:translate-y-[170px] md:ml-[42%] md:translate-y-[170px] lg:ml-[calc(50%-2.16vw)] lg:translate-y-[170px]">
             <div className="flex items-center gap-3">
               <PinIcon />
               <h3 className="text-white text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] lg:text-[2rem] font-semibold" style={{ fontFamily: "var(--font-playfair), serif" }}>
@@ -62,7 +68,7 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({ className = "" }) => 
             </div>
           </div>
 
-          <div className="max-w-[460px] sm:max-w-[500px] sm:ml-[17%] sm:translate-y-[8px] md:ml-[20%] md:translate-y-[14px] lg:ml-[24%] lg:translate-y-[2.23vw]">
+          <div className="max-w-[460px] sm:max-w-[500px] translate-y-[240px] sm:ml-[17%] sm:translate-y-[240px] md:ml-[20%] md:translate-y-[240px] lg:ml-[24%] lg:translate-y-[240px]">
             <div className="flex items-center gap-3">
               <PinIcon />
               <h3 className="text-white text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] lg:text-[2rem] font-semibold" style={{ fontFamily: "var(--font-playfair), serif" }}>
@@ -77,7 +83,7 @@ const SectionOurFeatures: FC<SectionOurFeaturesProps> = ({ className = "" }) => 
             </div>
           </div>
 
-          <div className="max-w-[460px] sm:max-w-[500px] sm:ml-[34%] sm:translate-y-[30px] md:ml-[36%] md:translate-y-[70px] lg:ml-[44%] lg:translate-y-[9.64vw]">
+          <div className="max-w-[460px] sm:max-w-[500px] translate-y-[460px] sm:ml-[34%] sm:translate-y-[460px] md:ml-[36%] md:translate-y-[460px] lg:ml-[44%] lg:translate-y-[460px]">
             <div className="flex items-center gap-3">
               <PinIcon />
               <h3 className="text-white text-[1.55rem] sm:text-[1.65rem] md:text-[1.75rem] lg:text-[2rem] font-semibold" style={{ fontFamily: "var(--font-playfair), serif" }}>

@@ -30,11 +30,11 @@ const contactCards = [
 ];
 
 const quickLinks: { href: Route<string>; label: string }[] = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
+  { href: "/", label: "Services" },
+  { href: "/listing-stay-map", label: "Tours" },
   { href: "/contact", label: "Contact Us" },
-  { href: "/blog", label: "Travel Stories" },
-  { href: "/checkout", label: "Online Payment" },
-  { href: "/login", label: "Log In" },
 ];
 
 const socials = [

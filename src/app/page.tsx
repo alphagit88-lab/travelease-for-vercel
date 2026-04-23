@@ -6,147 +6,103 @@ import SectionSliderNewCategories from "@/components/SectionSliderNewCategories"
 import SectionOurFeatures from "@/components/SectionOurFeatures";
 import SectionMoodboardContent from "@/components/SectionMoodboardContent";
 import SectionPopularTours from "@/components/SectionPopularTours";
-import BackgroundSection from "@/components/BackgroundSection";
-import SectionGridFeaturePlaces from "@/components/SectionGridFeaturePlaces";
-import SectionHowItWork from "@/components/SectionHowItWork";
-import SectionSubscribe2 from "@/components/SectionSubscribeNewsletter";
-import SectionGridAuthorBox from "@/components/SectionGridAuthorBox";
-import SectionGridCategoryBox from "@/components/SectionGridCategoryBox";
-import SectionBecomeAnAuthor from "@/components/SectionBecomeAnAuthor";
-import SectionVideos from "@/components/SectionVideos";
-import SectionClientSay from "@/components/SectionClientSay";
+import SectionGallery from "@/components/SectionGallery";
+import SectionReviews from "@/components/SectionReviews";
+import SectionWhyChooseUs from "@/components/SectionWhyChooseUs";
+import SectionSriLankaMap from "@/components/SectionSriLankaMap";
 
 const LISTING_STAY_MAP_ROUTE = "/listing-stay-map" as Route<string>;
 
-const DEMO_CATS: TaxonomyType[] = [
+const TOUR_TYPES: TaxonomyType[] = [
   {
     id: "1",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "New Yourk",
+    name: "Adventure",
     taxonomy: "category",
-    count: 188288,
+    count: 2400,
     thumbnail:
-      "https://images.pexels.com/photos/64271/queen-of-liberty-statue-of-liberty-new-york-liberty-statue-64271.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/6995583/pexels-photo-6995583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
     id: "2",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Singapore",
+    name: "Beach Relaxation",
     taxonomy: "category",
-    count: 188288,
+    count: 2200,
     thumbnail:
-      "https://images.pexels.com/photos/7740160/pexels-photo-7740160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
     id: "3",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Paris",
+    name: "Culture Heritage",
     taxonomy: "category",
-    count: 188288,
+    count: 1980,
     thumbnail:
-      "https://images.pexels.com/photos/739407/pexels-photo-739407.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/210205/pexels-photo-210205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
     id: "4",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "London",
+    name: "Food Taste",
     taxonomy: "category",
-    count: 188288,
+    count: 1540,
     thumbnail:
-      "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
     id: "5",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Tokyo",
+    name: "Wildlife Nature",
     taxonomy: "category",
-    count: 188288,
+    count: 2600,
     thumbnail:
-      "https://images.pexels.com/photos/4151484/pexels-photo-4151484.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
     id: "6",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Maldives",
+    name: "Young Trendy",
     taxonomy: "category",
-    count: 188288,
+    count: 1780,
     thumbnail:
-      "https://images.pexels.com/photos/3250613/pexels-photo-3250613.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
     id: "7",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Italy",
+    name: "Experience",
     taxonomy: "category",
-    count: 188288,
+    count: 1850,
     thumbnail:
-      "https://images.pexels.com/photos/7740160/pexels-photo-7740160.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  },
-];
-
-const DEMO_CATS_2: TaxonomyType[] = [
-  {
-    id: "1",
-    href: LISTING_STAY_MAP_ROUTE,
-    name: "Enjoy the great cold",
-    taxonomy: "category",
-    count: 188288,
-    thumbnail:
-      "https://images.pexels.com/photos/5764100/pexels-photo-5764100.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
-    id: "2",
+    id: "8",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Sleep in a floating way",
+    name: "Family",
     taxonomy: "category",
-    count: 188288,
+    count: 2020,
     thumbnail:
-      "https://images.pexels.com/photos/2869499/pexels-photo-2869499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/2882566/pexels-photo-2882566.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
-    id: "3",
+    id: "9",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "In the billionaire's house",
+    name: "Honeymoon",
     taxonomy: "category",
-    count: 188288,
+    count: 1940,
     thumbnail:
-      "https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
   {
-    id: "4",
+    id: "10",
     href: LISTING_STAY_MAP_ROUTE,
-    name: "Cool in the deep forest",
+    name: "Pilgrimage",
     taxonomy: "category",
-    count: 188288,
+    count: 1210,
     thumbnail:
-      "https://images.pexels.com/photos/247532/pexels-photo-247532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  },
-  {
-    id: "5",
-    href: LISTING_STAY_MAP_ROUTE,
-    name: "In the billionaire's house",
-    taxonomy: "category",
-    count: 188288,
-    thumbnail:
-      "https://images.pexels.com/photos/7031413/pexels-photo-7031413.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-  },
-  {
-    id: "6",
-    href: LISTING_STAY_MAP_ROUTE,
-    name: "In the billionaire's house",
-    taxonomy: "category",
-    count: 188288,
-    thumbnail:
-      "https://images.pexels.com/photos/9828170/pexels-photo-9828170.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-  },
-  {
-    id: "7",
-    href: LISTING_STAY_MAP_ROUTE,
-    name: "Cool in the deep forest",
-    taxonomy: "category",
-    count: 188288,
-    thumbnail:
-      "https://images.pexels.com/photos/247532/pexels-photo-247532.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+      "https://images.pexels.com/photos/415571/pexels-photo-415571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
   },
 ];
 
@@ -159,53 +115,19 @@ function PageHome() {
       <SectionMoodboardContent />
       <SectionPopularTours />
 
-      {/* ── REST OF PAGE (inside container) ─────── */}
+      {/* ── REQUIRED NEXT SECTIONS ONLY ─────── */}
       <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28 mt-24">
-        <SectionSliderNewCategories categories={DEMO_CATS} />
-
-        <SectionGridFeaturePlaces cardType="card2" />
-
-        <SectionHowItWork />
-
-        <div className="relative py-16">
-          <BackgroundSection className="bg-orange-50 dark:bg-black/20" />
-          <SectionSliderNewCategories
-            categories={DEMO_CATS_2}
-            categoryCardType="card4"
-            itemPerRow={4}
-            heading="Suggestions for discovery"
-            subHeading="Popular places to stay that Chisfis recommends for you"
-            sliderStyle="style2"
-          />
-        </div>
-
-        <SectionSubscribe2 />
-
-        <div className="relative py-16">
-          <BackgroundSection className="bg-orange-50 dark:bg-black dark:bg-opacity-20 " />
-          <SectionGridAuthorBox />
-        </div>
-
-        <SectionGridCategoryBox />
-
-        <div className="relative py-16">
-          <BackgroundSection />
-          <SectionBecomeAnAuthor />
-        </div>
-
+        <SectionGallery />
+        <SectionReviews />
+        <SectionWhyChooseUs />
+        <SectionSriLankaMap />
         <SectionSliderNewCategories
-          heading="Explore by types of stays"
-          subHeading="Explore houses based on 10 types of stays"
+          categories={TOUR_TYPES}
+          heading="Tour Types"
+          subHeading="Adventure, beach relaxation, culture, wildlife and more curated journeys."
           categoryCardType="card5"
           itemPerRow={5}
         />
-
-        <SectionVideos />
-
-        <div className="relative py-16">
-          <BackgroundSection />
-          <SectionClientSay />
-        </div>
       </div>
     </main>
   );

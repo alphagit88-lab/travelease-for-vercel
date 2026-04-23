@@ -1,162 +1,120 @@
 "use client";
 
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC } from "react";
 import Logo from "@/shared/Logo";
-import useOutsideAlerter from "@/hooks/useOutsideAlerter";
-import AvatarDropdown from "./AvatarDropdown";
-import LangDropdown from "./LangDropdown";
-import { SearchTab } from "../(HeroSearchForm)/HeroSearchForm";
-import HeroSearchFormMobile from "../(HeroSearchForm2Mobile)/HeroSearchForm2MobileFactory";
+import logoLightImg from "@/images/logo-light.png";
 import { usePathname } from "next/navigation";
-import HeroSearchFormSmall from "../(HeroSearchFormSmall)/HeroSearchFormSmall";
-import { StaySearchFormFields } from "../type";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 export interface HeaderProps {
   className?: string;
   isHeroTransparent?: boolean;
 }
 
-let WIN_PREV_POSITION = 0;
-if (typeof window !== "undefined") {
-  WIN_PREV_POSITION = (window as any).pageYOffset;
-}
-
-/* ══════════════════════════════════════════════════════════════ */
 const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) => {
-  const headerInnerRef = useRef<HTMLDivElement>(null);
-  const [showHeroSearch, setShowHeroSearch] = useState<StaySearchFormFields | null>();
-  const [currentTab, setCurrentTab] = useState<SearchTab>("Stays");
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const heroNavItems = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Services", href: "/" },
+    { label: "Tours", href: "/listing-stay-map" },
+    { label: "Contact Us", href: "/contact" },
+  ];
 
-  useOutsideAlerter(headerInnerRef, () => {
-    setShowHeroSearch(null);
-    setCurrentTab("Stays");
-  });
-
-  let pathname = usePathname();
-
-  useEffect(() => {
-    setShowHeroSearch(null);
-  }, [pathname]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleEvent);
-    return () => {
-      window.removeEventListener("scroll", handleEvent);
-    };
-  }, []);
-
-  const handleEvent = () => {
-    window.requestAnimationFrame(handleHideSearchForm);
-  };
-
-  const handleHideSearchForm = () => {
-    if (!document.querySelector("#nc-header-anchor")) return;
-    let currentScrollPos = window.pageYOffset;
-    if (
-      WIN_PREV_POSITION - currentScrollPos > 100 ||
-      WIN_PREV_POSITION - currentScrollPos < -100
-    ) {
-      setShowHeroSearch(null);
-    }
-    WIN_PREV_POSITION = currentScrollPos;
-  };
-
-  /* ── TRANSPARENT HERO HEADER (home page, top of page) ─────── */
-  if (isHeroTransparent) {
-    return null;
-  }
-
-  /* ── DEFAULT HEADER (other pages / after scroll) ───────────── */
-  const renderHeroSearch = () => (
-    <div
-      className={`absolute inset-x-0 top-0 transition-all will-change-[transform,opacity] ${
-        showHeroSearch
-          ? "visible"
-          : "-translate-x-0 -translate-y-[90px] scale-x-[0.395] scale-y-[0.6] opacity-0 invisible pointer-events-none"
-      }`}
-    >
-      <div className="w-full max-w-4xl mx-auto pb-6">
-        <HeroSearchFormSmall
-          defaultFieldFocus={showHeroSearch || undefined}
-          onTabChange={setCurrentTab}
-          defaultTab={currentTab}
-        />
+  const renderMainHeaderRow = (highContrast: boolean) => (
+    <div className="relative h-[88px] px-4 sm:px-6 lg:px-10 xl:px-16">
+      <div className="grid h-full w-full grid-cols-[auto,1fr,auto] items-center gap-6">
+        <Logo img={logoLightImg} className="w-28 lg:w-32 flex-shrink-0" />
+        <nav className="hidden lg:flex items-center justify-center gap-8 justify-self-center">
+          {heroNavItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className={`text-[12px] tracking-wide hover:text-[#D5912C] transition-colors ${
+                highContrast ? "text-white font-normal [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-white/80 font-light"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <div className={`hidden md:flex items-center gap-4 justify-self-end ${highContrast ? "text-white" : "text-white/80"}`}>
+          <a href="#" aria-label="Facebook" className="hover:text-[#D5912C] transition-colors">
+            <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram" className="hover:text-[#D5912C] transition-colors">
+            <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Telegram" className="hover:text-[#D5912C] transition-colors">
+            <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21.8 2.2L1.4 10.1c-1.4.6-1.4 1.4-.2 1.8l5.2 1.6 2 6.1c.3.8.6 1.1 1.1.7l2.9-2.6 5.7 4.2c1 .6 1.8.3 2-1l3.3-15.6c.4-1.6-.6-2.3-1.6-2.1z" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   );
 
-  const renderButtonOpenHeroSearch = () => (
-    <div
-      className={`w-full relative flex items-center justify-between border border-neutral-200 dark:border-neutral-6000 rounded-full shadow hover:shadow-md transition-all ${
-        showHeroSearch
-          ? "-translate-x-0 translate-y-20 scale-x-[2.55] scale-y-[1.8] opacity-0 pointer-events-none invisible"
-          : "visible"
-      }`}
-    >
-      <div className="flex items-center font-medium text-sm">
-        <span onClick={() => setShowHeroSearch("location")} className="block pl-5 pr-4 cursor-pointer py-3">
-          Location
-        </span>
-        <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700" />
-        <span onClick={() => setShowHeroSearch("dates")} className="block px-4 cursor-pointer py-3">
-          Check In
-        </span>
-        <span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700" />
-        <span onClick={() => setShowHeroSearch("guests")} className="block px-4 cursor-pointer font-normal py-3">
-          Add guests
-        </span>
-      </div>
-      <div className="flex-shrink-0 ml-auto pr-2 cursor-pointer" onClick={() => setShowHeroSearch("location")}>
-        <span className="w-8 h-8 flex items-center justify-center rounded-full bg-primary-6000 text-white">
-          <MagnifyingGlassIcon className="w-5 h-5" />
-        </span>
-      </div>
-    </div>
-  );
+  if (isHomePage) {
+    const homeHeaderClasses = `fixed top-0 inset-x-0 z-40 transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${
+      isHeroTransparent
+        ? "bg-transparent backdrop-blur-0 shadow-none border-b border-transparent"
+        : "backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.32)] border-b border-white/10"
+    }`;
 
-  return (
-    <>
-      <div
-        className={`nc-Header fixed z-40 top-0 inset-0 bg-black/30 dark:bg-black/50 transition-opacity will-change-[opacity] ${
-          showHeroSearch ? "visible" : "invisible opacity-0 pointer-events-none"
-        }`}
-      />
-      {showHeroSearch && <div id="nc-header-anchor" />}
-      <header ref={headerInnerRef} className={`sticky top-0 z-40 ${className}`}>
+    return (
+      <header
+        className={`${homeHeaderClasses}`}
+        style={
+          isHeroTransparent
+            ? undefined
+            : {
+                backgroundColor: "rgba(11, 46, 78, 0.72)",
+              }
+        }
+      >
         <div
-          className={`bg-white dark:bg-neutral-900 absolute h-full inset-x-0 top-0 transition-transform will-change-[transform,opacity]
-          ${showHeroSearch ? "duration-75" : ""}
-          ${
-            showHeroSearch
-              ? currentTab === "Cars" || currentTab === "Flights"
-                ? "scale-y-[4.4]"
-                : "scale-y-[3.4]"
-              : ""
+          className={`overflow-hidden transition-all duration-300 ease-out ${
+            isHeroTransparent
+              ? "max-h-12 opacity-100 translate-y-0"
+              : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"
           }`}
-        />
-        <div className="relative px-4 lg:container h-[88px] flex">
-          <div className="flex-1 flex justify-between">
-            <div className="relative z-10 hidden md:flex flex-1 items-center">
-              <Logo />
-            </div>
-            <div className="flex flex-[2] lg:flex-none mx-auto">
-              <div className="flex-1 hidden lg:flex self-center">{renderButtonOpenHeroSearch()}</div>
-              <div className="self-center flex-1 lg:hidden w-full max-w-lg mx-auto">
-                <HeroSearchFormMobile />
-              </div>
-              {renderHeroSearch()}
-            </div>
-            <div className="hidden md:flex relative z-10 flex-1 justify-end text-neutral-700 dark:text-neutral-100">
-              <div className="flex space-x-1">
-                <LangDropdown />
-                <AvatarDropdown />
-              </div>
+        >
+          <div className="px-4 sm:px-6 lg:px-10 xl:px-14 pt-2">
+            <div className="flex justify-end gap-1.5 rounded-md bg-white/32 backdrop-blur-sm px-1.5 py-1.5">
+              <a
+                href="/"
+                className="rounded-md bg-[#D5912C]/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white hover:brightness-110 transition-all"
+              >
+                Payments
+              </a>
+              <a
+                href="/blog"
+                className="rounded-md bg-[#1A2E46]/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white hover:brightness-110 transition-all"
+              >
+                Blogs
+              </a>
             </div>
           </div>
         </div>
+        {renderMainHeaderRow(false)}
       </header>
-    </>
+    );
+  }
+
+  return (
+    <header
+      className={`sticky top-0 z-40 border-b border-white/10 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.26)] ${className}`}
+      style={{ backgroundColor: "rgba(11, 46, 78, 0.86)" }}
+    >
+      {renderMainHeaderRow(true)}
+    </header>
   );
 };
 
