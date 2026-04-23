@@ -1,106 +1,174 @@
 "use client";
 
-import Logo from "@/shared/Logo";
-import SocialsList1 from "@/shared/SocialsListDefault";
-import { CustomLink } from "@/data/types";
+import Link from "next/link";
 import React from "react";
-import FooterNav from "./FooterNav";
+import {
+  EnvelopeIcon,
+  MapPinIcon,
+  PaperAirplaneIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/outline";
+import Logo from "@/shared/Logo";
+import { Route } from "@/routers/types";
 
-export interface WidgetFooterMenu {
-  id: string;
-  title: string;
-  menus: CustomLink[];
-}
-
-const widgetMenus: WidgetFooterMenu[] = [
+const contactCards = [
   {
-    id: "5",
-    title: "Getting started",
-    menus: [
-      { href: "#", label: "Installation" },
-      { href: "#", label: "Release Notes" },
-      { href: "#", label: "Upgrade Guide" },
-      { href: "#", label: "Browser Support" },
-      { href: "#", label: "Editor Support" },
-    ],
+    title: "Call us",
+    value: "+94 11 2095454",
+    icon: PhoneIcon,
   },
   {
-    id: "1",
-    title: "Explore",
-    menus: [
-      { href: "#", label: "Design features" },
-      { href: "#", label: "Prototyping" },
-      { href: "#", label: "Design systems" },
-      { href: "#", label: "Pricing" },
-      { href: "#", label: "Security" },
-    ],
+    title: "Write to us",
+    value: "info@tchannel.lk",
+    icon: EnvelopeIcon,
   },
   {
-    id: "2",
-    title: "Resources",
-    menus: [
-      { href: "#", label: "Best practices" },
-      { href: "#", label: "Support" },
-      { href: "#", label: "Developers" },
-      { href: "#", label: "Learn design" },
-      { href: "#", label: "Releases" },
-    ],
-  },
-  {
-    id: "4",
-    title: "Community",
-    menus: [
-      { href: "#", label: "Discussion Forums" },
-      { href: "#", label: "Code of Conduct" },
-      { href: "#", label: "Community Resources" },
-      { href: "#", label: "Contributing" },
-      { href: "#", label: "Concurrent Mode" },
-    ],
+    title: "Address",
+    value: "No: 2/1/1, Maradana Road, Colombo - 00800, Sri Lanka",
+    icon: MapPinIcon,
   },
 ];
 
+const quickLinks: { href: Route<string>; label: string }[] = [
+  { href: "/about", label: "About Us" },
+  { href: "/contact", label: "Contact Us" },
+  { href: "/blog", label: "Travel Stories" },
+  { href: "/checkout", label: "Online Payment" },
+  { href: "/login", label: "Log In" },
+];
+
+const socials = [
+  { label: "Instagram", href: "#", icon: "lab la-instagram" },
+  { label: "Twitter", href: "#", icon: "lab la-twitter" },
+  { label: "Facebook", href: "#", icon: "lab la-facebook-f" },
+  { label: "LinkedIn", href: "#", icon: "lab la-linkedin-in" },
+  { label: "YouTube", href: "#", icon: "lab la-youtube" },
+];
+
 const Footer: React.FC = () => {
-  const renderWidgetMenuItem = (menu: WidgetFooterMenu, index: number) => {
-    return (
-      <div key={index} className="text-sm">
-        <h2 className="font-semibold text-neutral-700 dark:text-neutral-200">
-          {menu.title}
-        </h2>
-        <ul className="mt-5 space-y-4">
-          {menu.menus.map((item, index) => (
-            <li key={index}>
-              <a
-                key={index}
-                className="text-neutral-6000 dark:text-neutral-300 hover:text-black dark:hover:text-white"
-                href={item.href}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
-
   return (
-    <>
-      <FooterNav />
+    <footer className="nc-Footer relative overflow-hidden bg-[#072437] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(21,129,167,0.18),_transparent_34%)]" />
 
-      <div className="nc-Footer relative py-24 lg:py-28 border-t border-neutral-200 dark:border-neutral-700">
-        <div className="container grid grid-cols-2 gap-y-10 gap-x-5 sm:gap-x-8 md:grid-cols-4 lg:grid-cols-5 lg:gap-x-10 ">
-          <div className="grid grid-cols-4 gap-5 col-span-2 md:col-span-4 lg:md:col-span-1 lg:flex lg:flex-col">
-            <div className="col-span-2 md:col-span-1">
-              <Logo />
-            </div>
-            <div className="col-span-2 flex items-center md:col-span-3">
-              <SocialsList1 className="flex items-center space-x-3 lg:space-x-0 lg:flex-col lg:space-y-2.5 lg:items-start" />
+      <div className="container relative py-16 lg:py-20">
+        <div className="grid gap-4 border border-white/10 bg-white/[0.03] p-4 lg:grid-cols-3 lg:gap-0 lg:p-0">
+          {contactCards.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <div
+                key={item.title}
+                className={`flex items-start gap-4 p-4 lg:p-6 ${
+                  index < contactCards.length - 1 ? "lg:border-r lg:border-white/10" : ""
+                }`}
+              >
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-[#0f5d86] text-white">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-6 text-slate-200">{item.value}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.05fr_0.75fr_1.2fr]">
+          <div>
+            <Logo className="w-28" />
+            <h2
+              className="mt-5 text-3xl font-semibold text-white"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
+              TravelEase Holidays
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">
+              Your journey, our expertise. From holiday planning and custom tours to travel support and smooth booking
+              guidance, TravelEase Holidays helps you explore with confidence.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              {socials.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0f3b57] text-lg text-white transition hover:bg-[#1581a7]"
+                >
+                  <i className={social.icon}></i>
+                </a>
+              ))}
             </div>
           </div>
-          {widgetMenus.map(renderWidgetMenuItem)}
+
+          <div>
+            <h3 className="text-2xl font-semibold text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>
+              Quick Links
+            </h3>
+            <div className="mt-6 flex flex-col gap-4 text-sm">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="text-slate-300 transition hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-semibold text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>
+              Tour Inquiries
+            </h3>
+            <p className="mt-5 max-w-lg text-sm leading-7 text-slate-300">
+              Send us your inquiry for other tours, special holiday plans, or customized travel ideas and our team will
+              get back to you.
+            </p>
+
+            <form className="mt-6 space-y-3" action="#" method="post">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                className="block h-12 w-full rounded-none border border-white/15 bg-[#0a2d44] px-4 text-sm text-white placeholder:text-slate-400 focus:border-[#4db9df] focus:outline-none"
+              />
+              <textarea
+                name="inquiry"
+                rows={4}
+                placeholder="Tell us about the tour you need"
+                className="block w-full rounded-none border border-white/15 bg-[#0a2d44] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-[#4db9df] focus:outline-none"
+              />
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-2 bg-[#0f5d86] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1581a7]"
+                >
+                  <PaperAirplaneIcon className="h-4 w-4" />
+                  Send Inquiry
+                </button>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Open Contact Page
+                </Link>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <div className="flex flex-col gap-2 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between">
+            <p>Copyright 2026 TravelEase Holidays. All rights reserved.</p>
+            <p className="font-medium text-slate-100">Brought to you by Travel Channel</p>
+          </div>
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 
