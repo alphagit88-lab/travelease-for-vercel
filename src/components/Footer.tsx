@@ -3,8 +3,8 @@
 import Link from "next/link";
 import React from "react";
 import {
+  ChatBubbleLeftRightIcon,
   EnvelopeIcon,
-  MapPinIcon,
   PaperAirplaneIcon,
   PhoneIcon,
 } from "@heroicons/react/24/outline";
@@ -13,19 +13,19 @@ import { Route } from "@/routers/types";
 
 const contactCards = [
   {
-    title: "Call us",
-    value: "+94 11 2095454",
-    icon: PhoneIcon,
-  },
-  {
-    title: "Write to us",
-    value: "info@tchannel.lk",
+    title: "Email",
+    value: "info@traveleaseholidays.com",
     icon: EnvelopeIcon,
   },
   {
-    title: "Address",
-    value: "No: 2/1/1, Maradana Road, Colombo - 00800, Sri Lanka",
-    icon: MapPinIcon,
+    title: "Contact",
+    value: "+94 11 2695454",
+    icon: PhoneIcon,
+  },
+  {
+    title: "WhatsApp",
+    value: "+94 777347542",
+    icon: ChatBubbleLeftRightIcon,
   },
 ];
 
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(21,129,167,0.18),_transparent_34%)]" />
 
       <div className="container relative py-16 lg:py-20">
-        <div className="grid gap-4 border border-white/10 bg-white/[0.03] p-4 lg:grid-cols-3 lg:gap-0 lg:p-0">
+        <div className="grid gap-4 overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.03] p-4 lg:grid-cols-3 lg:gap-0 lg:p-0">
           {contactCards.map((item, index) => {
             const Icon = item.icon;
 
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                   index < contactCards.length - 1 ? "lg:border-r lg:border-white/10" : ""
                 }`}
               >
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center bg-[#0f5d86] text-white">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[18px] bg-[#0f5d86] text-white">
                   <Icon className="h-6 w-6" />
                 </div>
                 <div>
@@ -133,26 +133,26 @@ const Footer: React.FC = () => {
                 type="email"
                 name="email"
                 placeholder="Email Address"
-                className="block h-12 w-full rounded-none border border-white/15 bg-[#0a2d44] px-4 text-sm text-white placeholder:text-slate-400 focus:border-[#4db9df] focus:outline-none"
+                className="block h-12 w-full rounded-[18px] border border-white/15 bg-[#0a2d44] px-4 text-sm text-white placeholder:text-slate-400 focus:border-[#4db9df] focus:outline-none"
               />
               <textarea
                 name="inquiry"
                 rows={4}
                 placeholder="Tell us about the tour you need"
-                className="block w-full rounded-none border border-white/15 bg-[#0a2d44] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-[#4db9df] focus:outline-none"
+                className="block w-full rounded-[18px] border border-white/15 bg-[#0a2d44] px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-[#4db9df] focus:outline-none"
               />
 
               <div className="flex flex-wrap gap-3">
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 bg-[#0f5d86] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1581a7]"
+                  className="inline-flex items-center justify-center gap-2 rounded-[18px] bg-[#0f5d86] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1581a7]"
                 >
                   <PaperAirplaneIcon className="h-4 w-4" />
                   Send Inquiry
                 </button>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                  className="inline-flex items-center justify-center rounded-[18px] border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   Open Contact Page
                 </Link>
