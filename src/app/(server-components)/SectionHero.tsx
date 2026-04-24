@@ -40,14 +40,22 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       <div className="relative z-10 h-full px-4 sm:px-8 lg:px-[10%] pt-8 sm:pt-10 lg:pt-[7%] pb-6 lg:pb-[6%]">
         <div className="mx-auto w-full h-full rounded-sm px-5 sm:px-8 lg:px-[5%] py-6 sm:py-8 lg:py-[3.2%] flex flex-col">
           <div className="mx-auto max-w-[860px] w-full translate-y-[70px]">
-            <div className="pt-24 sm:pt-28 lg:pt-[17%] text-left">
+            <div className="pt-24 sm:pt-28 lg:pt-[17%] text-left relative">
+
               <h1
-                className="font-extrabold leading-[0.9] tracking-wide uppercase select-none"
+                className="font-extrabold leading-[0.9] tracking-wide uppercase select-none relative"
                 style={{
                   color: "#D5912C",
                   fontSize: "clamp(2rem, 6vw, 5rem)",
                   fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif",
-                  textShadow: "0 4px 30px rgba(0,0,0,0.62)",
+                  textShadow: `
+                    0 0 2px rgba(0,0,0,1), 
+                    0 0 8px rgba(0,0,0,1), 
+                    2px 2px 20px rgba(0,0,0,1), 
+                    0 0 40px rgba(0,0,0,0.8),
+                    0 0 60px rgba(0,0,0,0.6),
+                    0 0 100px rgba(0,0,0,0.4)
+                  `,
                 }}
               >
                 TRAVEL
@@ -55,9 +63,14 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
                 TO SRI LANKA
               </h1>
 
-              <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 text-white text-sm font-light">
+              <div 
+                className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 text-white text-sm font-bold"
+                style={{ 
+                  textShadow: "0 0 3px black, 0 0 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.8)" 
+                }}
+              >
                 {["Sightseeing tours", "Individual tours", "Group tours"].map((tag) => (
-                  <span key={tag} className="flex items-center gap-2">
+                  <span key={tag} className="flex items-center gap-2 drop-shadow-lg">
                     <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-[#D5912C]" />
                     {tag}
                   </span>
