@@ -3,7 +3,6 @@ import SectionHero from "@/app/(server-components)/SectionHero";
 import { TaxonomyType } from "@/data/types";
 import { Route } from "@/routers/types";
 import SectionSliderNewCategories from "@/components/SectionSliderNewCategories";
-import SectionOurFeatures from "@/components/SectionOurFeatures";
 import SectionMoodboardContent from "@/components/SectionMoodboardContent";
 import SectionPopularTours from "@/components/SectionPopularTours";
 import SectionGallery from "@/components/SectionGallery";
@@ -111,7 +110,6 @@ function PageHome() {
     <main className="nc-PageHome relative overflow-hidden">
       {/* ── FULL-WIDTH HERO (outside container) ── */}
       <SectionHero />
-      <SectionOurFeatures />
       <SectionMoodboardContent />
       <SectionPopularTours />
 
