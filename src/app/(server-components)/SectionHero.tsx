@@ -18,7 +18,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       <div className="absolute z-0 left-[calc(4.4%+5px)] top-[10.8%] w-[87.1%] h-[80.5%] overflow-hidden">
         <iframe
           className="absolute left-1/2 top-1/2 h-full w-[177.78%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          src="https://www.youtube-nocookie.com/embed/0UAD7eaJgrQ?start=9&autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&playlist=0UAD7eaJgrQ&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3"
+          src="https://www.youtube-nocookie.com/embed/4ihEqL8Js0o?start=0&autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&playlist=4ihEqL8Js0o&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3"
           title="Travel Ease background video"
           allow="autoplay; encrypted-media"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -63,10 +63,10 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
                 TO SRI LANKA
               </h1>
 
-              <div 
+              <div
                 className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 text-white text-sm font-bold"
-                style={{ 
-                  textShadow: "0 0 3px black, 0 0 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.8)" 
+                style={{
+                  textShadow: "0 0 3px black, 0 0 10px rgba(0,0,0,1), 0 0 20px rgba(0,0,0,1), 0 0 40px rgba(0,0,0,0.8)"
                 }}
               >
                 {["Sightseeing tours", "Individual tours", "Group tours"].map((tag) => (
@@ -79,23 +79,23 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
             </div>
 
             <div className="mt-12 lg:mt-[6.5%]">
-            <div
-              className="p-4"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
-            >
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] items-stretch overflow-hidden">
-                <SearchField label="Type" />
-                <SearchField label="Duration" />
-                <div className="bg-[#d5912c]">
-                  <button
-                    className="w-full md:min-w-[220px] h-full px-7 py-4 text-white text-[18px] font-semibold transition-all hover:brightness-110"
-                  >
-                    Book now
-                  </button>
+              <div
+                className="p-4"
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+              >
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] items-stretch overflow-hidden">
+                  <SearchField label="Type" />
+                  <SearchField label="Duration" />
+                  <div className="bg-[#d5912c]">
+                    <button
+                      className="w-full md:min-w-[220px] h-full px-7 py-4 text-white text-[18px] font-semibold transition-all hover:brightness-110"
+                    >
+                      Book now
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
