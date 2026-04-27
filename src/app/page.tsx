@@ -107,7 +107,7 @@ const TOUR_TYPES: TaxonomyType[] = [
 
 function PageHome() {
   return (
-    <main className="nc-PageHome relative overflow-hidden">
+    <main className="nc-PageHome relative overflow-hidden bg-[#0b2e4e] text-white">
       {/* ── FULL-WIDTH HERO (outside container) ── */}
       <SectionHero />
       <SectionMoodboardContent />

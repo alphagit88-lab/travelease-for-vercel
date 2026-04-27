@@ -171,7 +171,7 @@ const SectionSliderNewCategories: FC<SectionSliderNewCategoriesProps> = ({
 
   return (
     <div className={`nc-SectionSliderNewCategories ${className}`}>
-      <Heading desc={subHeading} isCenter={sliderStyle === "style2"}>
+      <Heading desc={subHeading} isCenter={sliderStyle === "style2"} className="mb-10 text-white">
         {heading}
       </Heading>
       <MotionConfig

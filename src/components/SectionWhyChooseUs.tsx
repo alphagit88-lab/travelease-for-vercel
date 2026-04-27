@@ -16,7 +16,7 @@ const SectionWhyChooseUs = () => {
       <div className="mt-6 grid gap-3">
         {REASONS.map((reason) => (
           <div key={reason} className="flex items-start gap-3">
-            <span className="mt-1.5 h-2 w-2 rounded-full bg-[#D5912C] flex-shrink-0" />
+            <span className="mt-1.5 h-2 w-2 rounded-full bg-[#fa7301] flex-shrink-0" />
             <p className="text-sm text-white/90">{reason}</p>
           </div>
         ))}
@@ -24,7 +24,7 @@ const SectionWhyChooseUs = () => {
 
       <a
         href="/about"
-        className="mt-7 inline-flex items-center rounded-xl bg-[#D5912C] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+        className="mt-7 inline-flex items-center rounded-xl bg-[#fa7301] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
       >
         Learn More About Us
       </a>

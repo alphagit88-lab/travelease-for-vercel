@@ -3,7 +3,7 @@ import { ArrowRightIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import travelHero from "@/images/travelhero2.png";
 import ButtonPrimary from "@/shared/ButtonPrimary";
 
-const HOME_ACCENT = "#D5912C";
+const HOME_ACCENT = "#fa7301";
 
 const contentBlocks = [
   {
@@ -47,7 +47,7 @@ export default function PageAbout() {
             className="text-4xl font-semibold sm:text-5xl lg:text-6xl"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            About <span className="text-[#D5912C]">Us</span>
+            About <span className="text-[#fa7301]">Us</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
             This page now follows the same visual direction as the Contact Us page and is ready for your final company
@@ -60,10 +60,10 @@ export default function PageAbout() {
         <div className="rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.12)] sm:p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="lg:pr-8">
-              <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#D5912C]">Content ready</span>
+              <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#fa7301]">Content ready</span>
               <h2
                 className="mt-4 max-w-lg text-3xl font-semibold leading-tight text-[#1581a7] sm:text-5xl"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
+                style={{ fontFamily: "__Poppins_002541,__Poppins_Fallback_002541" }}
               >
                 We will place your About Us content here
               </h2>
@@ -74,11 +74,11 @@ export default function PageAbout() {
             </div>
 
             <div className="rounded-[30px] bg-[#072437] p-6 text-white shadow-[0_22px_60px_rgba(15,23,42,0.12)] sm:p-8">
-              <div className="text-lg font-semibold text-[#D5912C]">About page notes</div>
+              <div className="text-lg font-semibold text-[#fa7301]">About page notes</div>
               <div className="mt-6 space-y-4">
                 {highlights.map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircleIcon className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#D5912C]" />
+                    <CheckCircleIcon className="mt-0.5 h-6 w-6 flex-shrink-0 text-[#fa7301]" />
                     <p className="text-sm leading-7 text-slate-100">{item}</p>
                   </div>
                 ))}
@@ -119,7 +119,7 @@ export default function PageAbout() {
             <div className="max-w-2xl">
               <h3
                 className="text-2xl font-semibold text-[#1581a7] sm:text-3xl"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
+                style={{ fontFamily: "__Poppins_002541,__Poppins_Fallback_002541" }}
               >
                 Continue to the contact page
               </h3>
@@ -129,12 +129,12 @@ export default function PageAbout() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <ButtonPrimary href="/contact" className="bg-[#D5912C] hover:bg-[#bf8126]">
+              <ButtonPrimary href="/contact" className="bg-[#fa7301] hover:bg-[#0b2e4e]">
                 Contact Us
               </ButtonPrimary>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-[#D5912C]"
+                className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-[#fa7301]"
               >
                 Back to home
                 <ArrowRightIcon className="h-4 w-4" />

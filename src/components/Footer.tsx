@@ -35,6 +35,7 @@ const quickLinks: { href: Route<string>; label: string }[] = [
   { href: "/", label: "Services" },
   { href: "/listing-stay-map", label: "Tours" },
   { href: "/contact", label: "Contact Us" },
+  { href: "/privacy", label: "Privacy Policy" },
 ];
 
 const socials = [
@@ -164,7 +165,7 @@ const Footer: React.FC = () => {
         <div className="mt-12 border-t border-white/10 pt-6">
           <div className="flex flex-col gap-2 text-sm text-slate-300 sm:flex-row sm:items-center sm:justify-between">
             <p>Copyright 2026 TravelEase Holidays. All rights reserved.</p>
-            <p className="font-medium text-slate-100">Brought to you by Travel Channel</p>
+            <a href="https://tchannellk.com/" target="_blank" rel="noopener noreferrer" className="font-medium text-slate-100 hover:text-[#fa7301] transition-colors">Brought to you by Travel Channel Private Limited</a>
           </div>
         </div>
       </div>

@@ -13,8 +13,8 @@ const SectionSriLankaMap = () => {
   return (
     <section>
       <div className="mb-8">
-        <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">Sri Lankan Map with Attractions</h2>
-        <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Discover key destinations and popular experiences across the island.</p>
+        <h2 className="text-3xl md:text-4xl font-semibold text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>Sri Lankan Map with Attractions</h2>
+        <p className="mt-2 text-sm text-slate-300">Discover key destinations and popular experiences across the island.</p>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-700">
@@ -29,7 +29,7 @@ const SectionSriLankaMap = () => {
 
       <div className="mt-4 flex flex-wrap gap-2">
         {ATTRACTIONS.map((item) => (
-          <span key={item} className="rounded-full bg-[#0B2740]/10 px-3 py-1 text-xs font-medium text-[#0B2740] dark:bg-white/10 dark:text-white">
+          <span key={item} className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white hover:bg-[#fa7301] transition-colors cursor-pointer">
             {item}
           </span>
         ))}

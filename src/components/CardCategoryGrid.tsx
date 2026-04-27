@@ -34,12 +34,12 @@ const CardCategory5: FC<CardCategory5Props> = ({
       </div>
       <div className="mt-4 px-3 truncate">
         <h2
-          className={`text-base sm:text-lg text-neutral-900 dark:text-neutral-100 font-medium truncate`}
+          className={`text-base sm:text-lg text-white font-medium truncate`}
         >
           {name}
         </h2>
         <span
-          className={`block mt-2 text-sm text-neutral-6000 dark:text-neutral-400`}
+          className={`block mt-2 text-sm text-slate-300`}
         >
           {convertNumbThousand(count)} properties
         </span>

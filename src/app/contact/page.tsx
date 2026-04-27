@@ -6,7 +6,7 @@ import {
 import Input from "@/shared/Input";
 import Textarea from "@/shared/Textarea";
 
-const HOME_ACCENT = "#D5912C";
+const HOME_ACCENT = "#fa7301";
 
 const contactDetails = [
   {
@@ -44,7 +44,7 @@ export default function PageContact() {
             className="text-4xl font-semibold sm:text-5xl lg:text-6xl"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Contact <span className="text-[#D5912C]">Us</span>
+            Contact <span className="text-[#fa7301]">Us</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
             Reach out for trip enquiries, custom itineraries, booking support, or any question about your next travel
@@ -56,7 +56,7 @@ export default function PageContact() {
       <section className="container relative z-10 -mt-10 pb-20 lg:-mt-16 lg:pb-24">
         <div className="grid gap-8 rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.12)] sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
           <div className="lg:pr-8">
-            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#D5912C]">
+            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#fa7301]">
               Contact details
             </span>
             <h2
@@ -87,10 +87,10 @@ export default function PageContact() {
                       <Icon className="h-6 w-6" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D5912C]">
+                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#fa7301]">
                         {item.title}
                       </h3>
-                      <p className="mt-2 text-base font-medium text-slate-900 transition-colors hover:text-[#D5912C]">
+                      <p className="mt-2 text-base font-medium text-slate-900 transition-colors hover:text-[#fa7301]">
                         {item.value}
                       </p>
                     </div>
@@ -101,7 +101,7 @@ export default function PageContact() {
           </div>
 
           <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-[#f3f6f9] shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
-            <div className="bg-[#072437] px-6 py-5 text-center text-lg font-semibold text-[#D5912C] sm:px-8">
+            <div className="bg-[#072437] px-6 py-5 text-center text-lg font-semibold text-[#fa7301] sm:px-8">
               Get in touch
             </div>
 
@@ -112,7 +112,7 @@ export default function PageContact() {
                 placeholder="Your name"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Input
                 name="email"
@@ -120,7 +120,7 @@ export default function PageContact() {
                 placeholder="Your email"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Input
                 name="phone"
@@ -128,7 +128,7 @@ export default function PageContact() {
                 placeholder="Your number"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Input
                 name="subject"
@@ -136,18 +136,18 @@ export default function PageContact() {
                 placeholder="Subject"
                 rounded="rounded-xl"
                 sizeClass="h-12 px-4"
-                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
+                className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Textarea
                 name="message"
                 placeholder="Message"
                 rows={6}
-                className="rounded-xl border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[#D5912C] focus:ring-[#D5912C]/20"
+                className="rounded-xl border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
 
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#D5912C] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#bf8126]"
+                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#fa7301] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#0b2e4e]"
               >
                 Send Message
               </button>
