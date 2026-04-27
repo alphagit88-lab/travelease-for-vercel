@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRightIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
 import travelHero from "@/images/travelhero2.png";
 import ButtonPrimary from "@/shared/ButtonPrimary";
+import { Route } from "@/routers/types";
 
 const HOME_ACCENT = "#fa7301";
 
@@ -129,11 +130,11 @@ export default function PageAbout() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <ButtonPrimary href="/contact" className="bg-[#fa7301] hover:bg-[#0b2e4e]">
+              <ButtonPrimary href={"/contact" as Route} className="bg-[#fa7301] hover:bg-[#0b2e4e]">
                 Contact Us
               </ButtonPrimary>
               <Link
-                href="/"
+                href={"/" as Route}
                 className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 transition hover:text-[#fa7301]"
               >
                 Back to home

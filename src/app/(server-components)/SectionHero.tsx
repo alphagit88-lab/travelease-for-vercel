@@ -42,7 +42,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       {/* Main card that matches the design composition */}
       <div className="relative z-10 h-full w-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-[10%]">
         <div className="mx-auto w-full max-w-[960px] flex flex-col items-center text-center">
-          
+
           <h1
             className="font-extrabold leading-[1] tracking-wide uppercase select-none drop-shadow-2xl"
             style={{
@@ -72,19 +72,23 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
             ))}
           </div>
 
-          <div className="mt-12 lg:mt-[6.5%] w-full max-w-[800px]">
+          <div className="mt-12 lg:mt-[6.5%] w-full">
             <div
               className="p-4"
-              style={{ backgroundColor: "rgba(255, 255, 255, 0.8)", fontFamily: "__Poppins_002541,__Poppins_Fallback_002541, sans-serif" }}
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", fontFamily: "__Poppins_002541,__Poppins_Fallback_002541, sans-serif" }}
             >
               <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] items-stretch overflow-hidden">
-                <SearchField label="Type" placeholder="Select tour type" />
-                <SearchField label="Duration" placeholder="Any duration" />
-                <div className="bg-[#fa7301]">
+                <div className="bg-white flex items-center px-5 h-[60px] md:h-[70px] border-b md:border-b-0 md:border-r border-neutral-200">
+                  <input type="text" className="w-full bg-transparent border-none outline-none focus:ring-0 text-neutral-900 placeholder-neutral-500 font-medium text-[15px]" placeholder="Type" />
+                </div>
+                <div className="bg-white flex items-center px-5 h-[60px] md:h-[70px] border-b md:border-b-0 md:border-r border-neutral-200">
+                  <input type="text" className="w-full bg-transparent border-none outline-none focus:ring-0 text-neutral-900 placeholder-neutral-500 font-medium text-[15px]" placeholder="Duration" />
+                </div>
+                <div className="bg-[#0b2e4e]">
                   <button
-                    className="w-full md:min-w-[220px] h-full px-7 py-4 text-white text-[18px] font-semibold transition-all hover:bg-[#0b2e4e]"
+                    className="w-full md:min-w-[220px] h-full px-7 py-4 text-white text-[18px] font-bold transition-all hover:brightness-110 flex items-center justify-center gap-2"
                   >
-                    Search
+                    Book now
                   </button>
                 </div>
               </div>
@@ -96,27 +100,5 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
     </div>
   );
 };
-
-interface SearchFieldProps {
-  label: string;
-  placeholder?: string;
-}
-
-const SearchField: FC<SearchFieldProps> = ({ label, placeholder }) => (
-  <button
-    type="button"
-    className="w-full flex-1 bg-transparent px-6 py-4 text-left hover:bg-neutral-50 transition-colors focus:outline-none"
-  >
-    <div className="flex flex-col">
-      <span className="text-[13px] font-semibold text-neutral-500 uppercase tracking-wider">{label}</span>
-      <div className="flex items-center justify-between mt-0.5">
-        <span className="text-[16px] font-medium text-neutral-900">{placeholder || `Any ${label}`}</span>
-        <svg className="w-4 h-4 text-neutral-400 ml-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </div>
-    </div>
-  </button>
-);
 
 export default SectionHero;

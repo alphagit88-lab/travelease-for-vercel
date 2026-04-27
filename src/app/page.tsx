@@ -110,7 +110,7 @@ function PageHome() {
     <main className="nc-PageHome relative overflow-hidden bg-[#0b2e4e] text-white">
       {/* ── FULL-WIDTH HERO (outside container) ── */}
       <SectionHero />
-      <SectionMoodboardContent />
+      {/* <SectionMoodboardContent /> */}
       <SectionPopularTours />
 
       {/* ── REQUIRED NEXT SECTIONS ONLY ─────── */}

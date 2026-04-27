@@ -30,12 +30,12 @@ const contactCards = [
 ];
 
 const quickLinks: { href: Route<string>; label: string }[] = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/", label: "Services" },
-  { href: "/listing-stay-map", label: "Tours" },
-  { href: "/contact", label: "Contact Us" },
-  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/" as Route, label: "Home" },
+  { href: "/about" as Route, label: "About Us" },
+  { href: "/" as Route, label: "Services" },
+  { href: "/listing-stay-map" as Route, label: "Tours" },
+  { href: "/contact" as Route, label: "Contact Us" },
+  { href: "/privacy" as Route, label: "Privacy Policy" },
 ];
 
 const socials = [
@@ -152,7 +152,7 @@ const Footer: React.FC = () => {
                   Send Inquiry
                 </button>
                 <Link
-                  href="/contact"
+                  href={"/contact" as Route}
                   className="inline-flex items-center justify-center rounded-[18px] border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   Open Contact Page

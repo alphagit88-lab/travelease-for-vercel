@@ -382,7 +382,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
         {/* == */}
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
         <div>
-          <ButtonSecondary href="/author">See host profile</ButtonSecondary>
+          <ButtonSecondary href={"/author" as Route}>See host profile</ButtonSecondary>
         </div>
       </div>
     );
@@ -550,7 +550,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
         </div>
 
         {/* SUBMIT */}
-        <ButtonPrimary href={"/checkout"}>Reserve</ButtonPrimary>
+        <ButtonPrimary href={"/checkout" as Route}>Reserve</ButtonPrimary>
       </div>
     );
   };
