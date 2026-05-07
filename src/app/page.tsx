@@ -9,6 +9,7 @@ import SectionGallery from "@/components/SectionGallery";
 import SectionReviews from "@/components/SectionReviews";
 import SectionWhyChooseUs from "@/components/SectionWhyChooseUs";
 import SectionSriLankaMap from "@/components/SectionSriLankaMap";
+import SectionScrollReveal from "@/components/SectionScrollReveal";
 
 const LISTING_STAY_MAP_ROUTE = "/listing-stay-map" as Route<string>;
 
@@ -107,17 +108,22 @@ const TOUR_TYPES: TaxonomyType[] = [
 
 function PageHome() {
   return (
-    <main className="nc-PageHome relative overflow-hidden bg-[#0b2e4e] text-white">
+    <main className="nc-PageHome relative bg-[#0b2e4e] text-white">
       {/* ── FULL-WIDTH HERO (outside container) ── */}
       <SectionHero />
       {/* <SectionMoodboardContent /> */}
       <SectionPopularTours />
 
       {/* ── REQUIRED NEXT SECTIONS ONLY ─────── */}
-      <div className="container relative space-y-24 mb-24 lg:space-y-28 lg:mb-28 mt-24">
+      <div className="container relative space-y-24 pb-24 lg:space-y-28 lg:pb-28 mt-24">
         <SectionGallery />
         <SectionReviews />
         <SectionWhyChooseUs />
+      </div>
+
+      <SectionScrollReveal />
+
+      <div className="container relative space-y-24 pb-24 lg:space-y-28 lg:pb-28 mt-24">
         <SectionSriLankaMap />
         <SectionSliderNewCategories
           categories={TOUR_TYPES}

@@ -5,6 +5,8 @@ import Logo from "@/shared/Logo";
 import logoLightImg from "@/images/logo-light.png";
 import logoImg from "@/images/logo.png";
 import { usePathname } from "next/navigation";
+import LangDropdown from "./LangDropdown";
+import CurrencyDropdown from "./CurrencyDropdown";
 
 export interface HeaderProps {
   className?: string;
@@ -15,13 +17,24 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
-  const SERVICES_ITEMS = [
-    { name: "Tour packages", img: "https://images.pexels.com/photos/210205/pexels-photo-210205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
-    { name: "Hotel", img: "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
-    { name: "Transfers", img: "https://images.pexels.com/photos/6995583/pexels-photo-6995583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
-    { name: "Experience", img: "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
-    { name: "Mice", img: "https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
-    { name: "ETA visa", img: "https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
+  const CORE_SERVICES = [
+    { name: "Tour packages", href: "#" },
+    { name: "Hotel", href: "#" },
+    { name: "Transfers", href: "#" },
+    { name: "Mice", href: "#" },
+    { name: "ETA visa", href: "#" },
+  ];
+
+  const TOUR_TYPES_MENU = [
+    { name: "Adventure", href: "#" },
+    { name: "Beach Relaxation", href: "#" },
+    { name: "Culture Heritage", href: "#" },
+    { name: "Food Taste", href: "#" },
+    { name: "Wildlife Nature", href: "#" },
+    { name: "Young Trendy", href: "#" },
+    { name: "Family", href: "#" },
+    { name: "Honeymoon", href: "#" },
+    { name: "Pilgrimage", href: "#" },
   ];
 
   const TOURS_ITEMS = [
@@ -35,6 +48,12 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
     { name: "Family", img: "https://images.pexels.com/photos/2882566/pexels-photo-2882566.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
     { name: "Honeymoon", img: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
     { name: "Pilgrimage", img: "https://images.pexels.com/photos/415571/pexels-photo-415571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" },
+  ];
+
+  const FEATURED_IMAGES = [
+    { img: "https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&w=600", className: "w-16 h-64" },
+    { img: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=600", className: "w-32 h-64" },
+    { img: "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=600", className: "w-64 h-64" },
   ];
   const heroNavItems = [
     { label: "Home", href: "/" },
@@ -61,18 +80,27 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
               <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
             </a>
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top -translate-y-2 group-hover:translate-y-0 z-50">
-              <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 p-6 w-[90vw] max-w-5xl">
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4 px-2">Our Services</h3>
-                <div className="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
-                  {SERVICES_ITEMS.map((item) => (
-                    <a key={item.name} href="#" className="flex-shrink-0 w-40 group/item snap-start block">
-                      <div className="rounded-xl overflow-hidden h-28 mb-3 relative">
-                        <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-300 group-hover/item:scale-105" />
-                        <div className="absolute inset-0 bg-black/10 group-hover/item:bg-transparent transition-colors"></div>
+              <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 w-[95vw] max-w-4xl">
+                <div className="grid grid-cols-[1fr_auto] gap-8">
+                  {/* CORE SERVICES */}
+                  <div>
+                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6">Our Core Services</h3>
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                      {CORE_SERVICES.map((item) => (
+                        <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors">{item.name}</a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* IMAGES */}
+                  <div className="flex gap-4">
+                    {FEATURED_IMAGES.map((item, idx) => (
+                      <div key={idx} className={`${item.className} rounded-2xl overflow-hidden relative group/img shadow-md`}>
+                        <img src={item.img} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" alt="" />
+                        <div className="absolute inset-0 bg-black/10"></div>
                       </div>
-                      <h4 className="text-[14px] font-medium text-neutral-800 group-hover/item:text-[#fa7301] transition-colors">{item.name}</h4>
-                    </a>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,18 +112,27 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
               <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
             </a>
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top -translate-y-2 group-hover:translate-y-0 z-50">
-              <div className="bg-white rounded-2xl shadow-xl ring-1 ring-black/5 p-6 w-[95vw] max-w-6xl">
-                <h3 className="text-lg font-semibold text-neutral-900 mb-4 px-2">Tour Types</h3>
-                <div className="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
-                  {TOURS_ITEMS.map((item) => (
-                    <a key={item.name} href="#" className="flex-shrink-0 w-36 group/item snap-start block">
-                      <div className="rounded-xl overflow-hidden h-36 mb-3 relative">
-                        <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-300 group-hover/item:scale-105" />
-                        <div className="absolute inset-0 bg-black/10 group-hover/item:bg-transparent transition-colors"></div>
+              <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 w-[95vw] max-w-4xl">
+                <div className="grid grid-cols-[1fr_auto] gap-8">
+                  {/* TOUR TYPES */}
+                  <div>
+                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6">Explore by Tour Type</h3>
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                      {TOUR_TYPES_MENU.map((item) => (
+                        <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors">{item.name}</a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* IMAGES */}
+                  <div className="flex gap-4">
+                    {FEATURED_IMAGES.map((item, idx) => (
+                      <div key={idx} className={`${item.className} rounded-2xl overflow-hidden relative group/img shadow-md`}>
+                        <img src={item.img} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" alt="" />
+                        <div className="absolute inset-0 bg-black/10"></div>
                       </div>
-                      <h4 className="text-[13px] font-medium text-neutral-800 group-hover/item:text-[#fa7301] transition-colors">{item.name}</h4>
-                    </a>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,9 +158,9 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
             Blogs
           </a>
           
-          <div className="flex items-center gap-2 border-l border-current pl-4 ml-1 opacity-90">
-            <span className="text-[13px] font-semibold cursor-pointer hover:text-[#fa7301] transition-colors">EN</span>
-            <span className="text-[13px] font-semibold cursor-pointer hover:text-[#fa7301] transition-colors">USD</span>
+          <div className="flex items-center gap-4 border-l border-current pl-4 ml-1 opacity-90">
+            <LangDropdown />
+            <CurrencyDropdown />
           </div>
 
           <div className="flex items-center gap-3 ml-2">

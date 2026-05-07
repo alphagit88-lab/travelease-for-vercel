@@ -1,70 +1,44 @@
 "use client";
 
 import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import {
-  CurrencyDollarIcon,
-  CurrencyBangladeshiIcon,
-  CurrencyEuroIcon,
-  CurrencyPoundIcon,
-  CurrencyRupeeIcon,
-  BanknotesIcon,
-} from "@heroicons/react/24/outline";
-import { Fragment } from "react";
+import { BanknotesIcon, ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
+import { FC, Fragment, useState, useEffect } from "react";
 
-export const headerCurrency = [
-  {
-    id: "EUR",
-    name: "EUR",
-    href: "##",
-    icon: CurrencyEuroIcon,
-    active: true,
-  },
-  {
-    id: "USD",
-    name: "USD",
-    href: "##",
-    icon: CurrencyDollarIcon,
-  },
-  {
-    id: "GBF",
-    name: "GBF",
-    href: "##",
-    icon: CurrencyBangladeshiIcon,
-  },
-  {
-    id: "SAR",
-    name: "SAR",
-    href: "##",
-    icon: CurrencyPoundIcon,
-  },
-  {
-    id: "QAR",
-    name: "QAR",
-    href: "##",
-    icon: CurrencyRupeeIcon,
-  },
-];
+const rates: Record<string, number> = {
+  USD: 1,
+  EUR: 0.92,
+  GBP: 0.79,
+  LKR: 300,
+  AED: 3.67,
+  SAR: 3.75,
+};
 
-export default function CurrencyDropdown() {
+const CurrencyDropdown: FC = () => {
+  const [amount, setAmount] = useState<number>(100);
+  const [from, setFrom] = useState<string>("USD");
+  const [to, setTo] = useState<string>("LKR");
+  const [result, setResult] = useState<number>(0);
+
+  useEffect(() => {
+    const fromRate = rates[from] || 1;
+    const toRate = rates[to] || 1;
+    setResult((amount / fromRate) * toRate);
+  }, [amount, from, to]);
+
   return (
     <div className="CurrencyDropdown">
       <Popover className="relative">
-        {({ open, close }) => (
+        {({ open }) => (
           <>
             <Popover.Button
               className={`
-                ${open ? "" : "text-opacity-80"}
-                group px-3 py-1.5 border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 rounded-full inline-flex items-center text-sm text-gray-700 dark:text-neutral-300 font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                ${open ? "text-[#fa7301]" : "text-opacity-90"}
+                group self-center h-10 inline-flex items-center text-[13px] font-semibold hover:text-[#fa7301] transition-colors focus:outline-none`}
             >
-              <BanknotesIcon className="w-5 h-5 opacity-80" />
-              <span className="ml-2 select-none">Currency</span>
-              <ChevronDownIcon
-                className={`${open ? "-rotate-180" : "text-opacity-70"}
-                  ml-2 h-4 w-4  group-hover:text-opacity-80 transition ease-in-out duration-150`}
-                aria-hidden="true"
-              />
+              <BanknotesIcon className="w-4 h-4 mr-1" />
+              <span>USD</span>
             </Popover.Button>
+
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -74,24 +48,49 @@ export default function CurrencyDropdown() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-10 w-screen max-w-[140px] px-4 mt-4 right-0 sm:px-0">
-                <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative grid gap-7 bg-white dark:bg-neutral-800 p-7">
-                    {headerCurrency.map((item, index) => (
-                      <a
-                        key={index}
-                        href={item.href}
-                        onClick={() => close()}
-                        className={`flex items-center p-2 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 ${
-                          item.active
-                            ? "bg-gray-100 dark:bg-neutral-700"
-                            : "opacity-80"
-                        }`}
+              <Popover.Panel className="absolute z-50 w-screen max-w-[280px] px-4 mt-3 right-0 sm:px-0">
+                <div className="overflow-hidden rounded-2xl shadow-xl ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 p-5">
+                  <h3 className="text-sm font-bold text-neutral-800 dark:text-neutral-200 mb-4 border-b border-neutral-100 dark:border-neutral-700 pb-2 flex items-center gap-2">
+                    <ArrowsRightLeftIcon className="w-4 h-4 text-[#fa7301]" />
+                    Currency Converter
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    {/* Amount Input */}
+                    <div>
+                      <label className="block text-[11px] uppercase tracking-wider font-bold text-neutral-500 mb-1">Amount</label>
+                      <input 
+                        type="number" 
+                        value={amount}
+                        onChange={(e) => setAmount(Number(e.target.value))}
+                        className="w-full bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl px-3 py-2 text-sm focus:ring-1 focus:ring-[#fa7301] outline-none"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                      <select 
+                        value={from} 
+                        onChange={(e) => setFrom(e.target.value)}
+                        className="bg-transparent text-sm font-semibold outline-none border-b-2 border-transparent focus:border-[#fa7301] py-1"
                       >
-                        <item.icon className="w-[18px] h-[18px] " />
-                        <p className="ml-2 text-sm font-medium ">{item.name}</p>
-                      </a>
-                    ))}
+                        {Object.keys(rates).map(r => <option key={r} value={r}>{r}</option>)}
+                      </select>
+                      <ArrowsRightLeftIcon className="w-4 h-4 text-neutral-400" />
+                      <select 
+                        value={to} 
+                        onChange={(e) => setTo(e.target.value)}
+                        className="bg-transparent text-sm font-semibold outline-none border-b-2 border-transparent focus:border-[#fa7301] py-1"
+                      >
+                        {Object.keys(rates).map(r => <option key={r} value={r}>{r}</option>)}
+                      </select>
+                    </div>
+
+                    <div className="bg-[#fa7301]/10 rounded-xl p-4 text-center mt-2">
+                      <div className="text-[11px] text-neutral-500 font-medium uppercase mb-1">{amount} {from} equals</div>
+                      <div className="text-xl font-bold text-[#fa7301]">
+                        {result.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} {to}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Popover.Panel>
@@ -101,4 +100,6 @@ export default function CurrencyDropdown() {
       </Popover>
     </div>
   );
-}
+};
+
+export default CurrencyDropdown;

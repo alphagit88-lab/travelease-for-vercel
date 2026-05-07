@@ -1,6 +1,7 @@
 import React from "react";
 import logoImg from "@/images/logo.png";
 import logoLightImg from "@/images/logo-light.png";
+import logoAdImg from "@/images/logo-ad.png";
 import LogoSvgLight from "./LogoSvgLight";
 import LogoSvg from "./LogoSvg";
 import Link from "next/link";
@@ -47,4 +48,5 @@ const Logo: React.FC<LogoProps> = ({
   );
 };
 
+export { logoImg, logoLightImg, logoAdImg };
 export default Logo;

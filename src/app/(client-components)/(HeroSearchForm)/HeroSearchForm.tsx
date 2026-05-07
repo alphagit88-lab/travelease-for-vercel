@@ -30,11 +30,10 @@ const HeroSearchForm: FC<HeroSearchFormProps> = ({
           return (
             <li
               onClick={() => setTabActive(tab)}
-              className={`flex-shrink-0 flex items-center cursor-pointer text-sm lg:text-base font-medium ${
-                active
+              className={`flex-shrink-0 flex items-center cursor-pointer text-sm lg:text-base font-medium ${active
                   ? ""
                   : "text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-400"
-              } `}
+                } `}
               key={tab}
             >
               {active && (

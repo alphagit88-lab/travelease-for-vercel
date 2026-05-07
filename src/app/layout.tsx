@@ -1,12 +1,11 @@
 import { Poppins, Playfair_Display } from "next/font/google";
-import SiteHeader from "./(client-components)/(Header)/SiteHeader";
 import ClientCommons from "./ClientCommons";
 import "./globals.css";
 import "@/fonts/line-awesome-1.3.0/css/line-awesome.css";
 import "@/styles/index.scss";
 import "rc-slider/assets/index.css";
-import Footer from "@/components/Footer";
-import FooterNav from "@/components/FooterNav";
+import ConditionalLayout from "./ConditionalLayout";
+import Script from "next/script";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,21 +29,39 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.className} ${playfair.variable}`}>
-      <body className="bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
+      <body className="bg-[#0b2e4e] text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
         <ClientCommons />
-        <SiteHeader />
-        {children}
-        <FooterNav />
-        <Footer />
-        <a
-          href="mailto:info@traveleaseholidays.com"
-          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#fa7301] text-white shadow-[0_4px_20px_rgba(250,115,1,0.4)] transition-transform hover:-translate-y-1 hover:scale-105"
-          aria-label="Email Us"
-        >
-          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </a>
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
+        
+        <div id="google_translate_element" style={{ display: 'none' }}></div>
+        
+        <Script
+          id="google-translate-init"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  autoDisplay: false
+                }, 'google_translate_element');
+              }
+            `,
+          }}
+        />
+        <Script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" strategy="afterInteractive" />
+        
+        <style dangerouslySetInnerHTML={{ __html: `
+          .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
+          body { top: 0px !important; }
+          .goog-te-menu-value { display: none !important; }
+          .goog-tooltip { display: none !important; }
+          .goog-tooltip:hover { display: none !important; }
+          .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+          #google_translate_element { display: none !important; }
+          .skiptranslate { display: none !important; }
+        ` }} />
       </body>
     </html>
   );

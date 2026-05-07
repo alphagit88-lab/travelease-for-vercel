@@ -1,0 +1,61 @@
+'use client';
+
+import React from "react";
+import { usePathname } from "next/navigation";
+import SiteHeader from "./(client-components)/(Header)/SiteHeader";
+import Footer from "@/components/Footer";
+import FooterNav from "@/components/FooterNav";
+
+export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isAdminPage = pathname?.startsWith("/admin");
+
+  if (isAdminPage) {
+    return <>{children}</>;
+  }
+
+  return (
+    <>
+      <SiteHeader />
+      {children}
+      <FooterNav />
+      <Footer />
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        {/* WhatsApp CTA */}
+        <a
+          href="https://wa.me/+94771234567" // Placeholder number
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all hover:-translate-y-1 hover:scale-105"
+          aria-label="Chat on WhatsApp"
+        >
+          <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.147 1.44 4.747 1.441 5.483.002 9.944-4.461 9.947-9.945.002-2.656-1.033-5.152-2.91-7.031-1.878-1.878-4.375-2.911-7.031-2.913-5.485 0-9.944 4.459-9.948 9.944-.001 1.764.486 3.286 1.408 4.757l-.995 3.635 3.729-.988zm10.835-7.79c-.299-.15-1.768-.873-2.042-.973-.275-.1-.475-.15-.675.15-.2.3-.775 1.05-.95 1.25-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.487-.893-.797-1.495-1.782-1.67-2.083-.175-.301-.019-.463.132-.612.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5s.05-.375-.025-.525c-.075-.15-.675-1.625-.925-2.225-.244-.589-.491-.51-.675-.519-.175-.009-.375-.01-.575-.01s-.525.075-.8.375c-.275.3-1.05 1.025-1.05 2.5s1.075 2.9 1.225 3.1c.15.2 2.115 3.23 5.125 4.532.715.311 1.275.496 1.71.635.717.227 1.37.195 1.885.118.574-.086 1.768-.723 2.018-1.423.25-.7.25-1.3 0-1.423-.075-.123-.275-.2-.575-.35z"/>
+          </svg>
+        </a>
+
+        {/* Phone CTA */}
+        <a
+          href="tel:+94771234567" // Placeholder number
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0b2e4e] text-white shadow-lg transition-all hover:-translate-y-1 hover:scale-105"
+          aria-label="Call Us"
+        >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </a>
+
+        {/* Email CTA (Existing) */}
+        <a
+          href="mailto:info@traveleaseholidays.com"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#fa7301] text-white shadow-[0_4px_20px_rgba(250,115,1,0.4)] transition-all hover:-translate-y-1 hover:scale-105"
+          aria-label="Email Us"
+        >
+          <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </a>
+      </div>
+    </>
+  );
+}

@@ -6,22 +6,35 @@ import { useSwipeable } from "react-swipeable";
 import { useWindowSize } from "react-use";
 import PrevBtn from "./PrevBtn";
 import NextBtn from "./NextBtn";
+import { api } from "@/utils/api";
 import { variants } from "@/utils/animationVariants";
 
-const GALLERY_IMAGES = [
-  { src: "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 1" },
-  { src: "https://images.pexels.com/photos/415571/pexels-photo-415571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 2" },
-  { src: "https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 3" },
-  { src: "https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 4" },
-  { src: "https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 5" },
-  { src: "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 6" },
-  { src: "https://images.pexels.com/photos/210205/pexels-photo-210205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Sri Lanka gallery image 7" },
-];
+interface GalleryImage {
+  id: number;
+  title: string;
+  description: string;
+  image_url: string;
+}
 
 const SectionGallery: FC = () => {
+  const [images, setImages] = useState<GalleryImage[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [loading, setLoading] = useState(true);
   const numberOfItems = 1;
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const response = await api.get<{ images: GalleryImage[] }>("/gallery?active=true");
+      if (response.success && response.data && response.data.images.length > 0) {
+        setImages(response.data.images);
+      }
+      setLoading(false);
+    };
+    fetchImages();
+  }, []);
+
+  const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
 
   function changeItemId(newVal: number) {
     if (newVal > currentIndex) {
@@ -34,7 +47,7 @@ const SectionGallery: FC = () => {
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      if (currentIndex < GALLERY_IMAGES.length - 1) {
+      if (currentIndex < images.length - 1) {
         changeItemId(currentIndex + 1);
       }
     },
@@ -45,6 +58,9 @@ const SectionGallery: FC = () => {
     },
     trackMouse: true,
   });
+
+  if (loading) return null;
+  if (images.length === 0) return null;
 
   return (
     <section className="relative">
@@ -68,7 +84,7 @@ const SectionGallery: FC = () => {
               className="relative whitespace-nowrap -mx-2 xl:-mx-4"
             >
               <AnimatePresence initial={false} custom={direction}>
-                {GALLERY_IMAGES.map((image, indx) => (
+                {images.map((image, indx) => (
                   <motion.li
                     className={`relative inline-block px-2 xl:px-4`}
                     custom={direction}
@@ -79,13 +95,17 @@ const SectionGallery: FC = () => {
                       x: `${currentIndex * -100}%`,
                     }}
                     variants={variants(200, 1)}
-                    key={indx}
+                    key={image.id}
                     style={{
                       width: `calc(1/${numberOfItems} * 100%)`,
                     }}
                   >
                     <div className="overflow-hidden rounded-xl h-[50vh] min-h-[300px] max-h-[600px] w-full">
-                      <img src={image.src} alt={image.alt} className="h-full w-full object-cover transition-transform duration-300 hover:scale-105" />
+                      <img 
+                        src={`${imageBaseUrl}${image.image_url}`} 
+                        alt={image.title} 
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105" 
+                      />
                     </div>
                   </motion.li>
                 ))}
@@ -101,7 +121,7 @@ const SectionGallery: FC = () => {
             />
           ) : null}
 
-          {GALLERY_IMAGES.length > currentIndex + numberOfItems ? (
+          {images.length > currentIndex + numberOfItems ? (
             <NextBtn
               style={{ transform: "translate3d(0, 0, 0)" }}
               onClick={() => changeItemId(currentIndex + 1)}
