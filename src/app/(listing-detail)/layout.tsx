@@ -51,7 +51,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
       {/* OTHER SECTION */}
       <div className="container py-24 lg:py-32">
         <div className="relative py-16">
-          <BackgroundSection />
+          <BackgroundSection className="bg-[#0b2e4e]" />
           <SectionSliderNewCategories
             heading="Explore by types of stays"
             subHeading="Explore houses based on 10 types of stays"

@@ -2,55 +2,40 @@
 
 import React, { FC, useMemo, useState } from "react";
 
-type RegionKey = "South" | "Central" | "North" | "West";
+type RegionKey = "Beach" | "Wildlife" | "Experience" | "Honeymoon";
 
 interface TourInfo {
   title: string;
   description: string;
-  price: string;
-  date: string;
-  persons: string;
   image: string;
 }
 
-const REGIONS: RegionKey[] = ["South", "Central", "North", "West"];
+const REGIONS: RegionKey[] = ["Beach", "Wildlife", "Experience", "Honeymoon"];
 
 const TOURS: Record<RegionKey, TourInfo> = {
-  South: {
-    title: "SIGIRIYA",
+  Beach: {
+    title: "BEACH RELAXATION",
     description:
-      "Sigiriya is one of the most valuable historical monuments of Sri Lanka. Referred by locals as the Eighth Wonder of the World, this ancient palace and fortress complex has significant archaeological importance and attracts thousands of tourists every year. It is probably the most visited tourist destination in Sri Lanka.",
-    price: "1 990 $",
-    date: "05.17 - 07.19",
-    persons: "4 persons",
-    image: "/bg-removed.png",
+      "Experience the ultimate coastal escape on Sri Lanka's golden shores. From the calm turquoise waters of Unawatuna to the vibrant surf of Arugam Bay, our beach tours offer the perfect blend of sun-soaked relaxation and tropical luxury.",
+    image: "/images/tours/beach.png",
   },
-  Central: {
-    title: "KANDY",
+  Wildlife: {
+    title: "SAFARI ADVENTURES",
     description:
-      "Kandy offers a blend of history, misty mountains, and sacred heritage. From temple visits to scenic viewpoints, this route is ideal for travelers who enjoy both culture and calm landscapes in one memorable journey.",
-    price: "1 750 $",
-    date: "05.20 - 07.10",
-    persons: "4 persons",
-    image: "/bg-removed.png",
+      "Embark on a thrilling journey through Sri Lanka's untamed wilderness. Witness majestic elephants in Udawalawe and spot the elusive leopard in Yala National Park. Our safaris bring you face-to-face with the island's incredible biodiversity.",
+    image: "/images/tours/wildlife.png",
   },
-  North: {
-    title: "JAFFNA",
+  Experience: {
+    title: "FOOD & CULTURE",
     description:
-      "Jaffna introduces a different rhythm of Sri Lanka with unique traditions, coastal roads, and local flavors. The tour is designed to reveal lesser-known stories and authentic northern experiences in comfort.",
-    price: "1 680 $",
-    date: "06.02 - 07.14",
-    persons: "4 persons",
-    image: "/bg-removed.png",
+      "Dive deep into the rich heritage and culinary wonders of the island. Explore ancient temples, witness traditional Kandyan dance, and savor the complex flavors of authentic Sri Lankan curries in this immersive cultural experience.",
+    image: "/images/tours/experience.png",
   },
-  West: {
-    title: "GALLE",
+  Honeymoon: {
+    title: "ROMANTIC GETAWAYS",
     description:
-      "Galle combines colonial architecture, ocean views, and vibrant street life. This direction is perfect for travelers who want a balanced route with history, seaside atmosphere, and relaxed exploration.",
-    price: "1 820 $",
-    date: "05.25 - 07.12",
-    persons: "4 persons",
-    image: "/bg-removed.png",
+      "Celebrate your love amidst the most romantic landscapes on earth. From private candlelight dinners in the misty hills of Ella to secluded sunset cruises, we craft unforgettable moments for your perfect Sri Lankan honeymoon.",
+    image: "/images/tours/honeymoon.png",
   },
 };
 
@@ -59,7 +44,7 @@ export interface SectionPopularToursProps {
 }
 
 const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) => {
-  const [activeRegion, setActiveRegion] = useState<RegionKey>("South");
+  const [activeRegion, setActiveRegion] = useState<RegionKey>("Beach");
   const activeTour = useMemo(() => TOURS[activeRegion], [activeRegion]);
 
   return (
@@ -92,7 +77,7 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
             <img
               src={activeTour.image}
               alt={activeTour.title}
-              className="mt-8 sm:mt-10 w-full max-w-[530px] object-contain"
+              className="mt-8 sm:mt-10 w-full max-w-[530px] rounded-2xl shadow-2xl object-cover aspect-[4/3]"
             />
           </div>
 
@@ -105,9 +90,8 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
                     <button
                       key={region}
                       onClick={() => setActiveRegion(region)}
-                      className={`relative pb-3 text-sm transition-colors ${
-                        isActive ? "text-[#D89A2D]" : "text-white hover:text-[#D89A2D]"
-                      }`}
+                      className={`relative pb-3 text-sm transition-colors ${isActive ? "text-[#D89A2D]" : "text-white hover:text-[#D89A2D]"
+                        }`}
                     >
                       {region}
                       {isActive && (
@@ -124,12 +108,6 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
             </h3>
 
             <p className="mt-5 text-[#CBD2D9] text-[14px] leading-[1.6] max-w-xl">{activeTour.description}</p>
-
-            <div className="mt-7 grid grid-cols-3 gap-6 max-w-md">
-              <TourMeta label="Price per person:" value={activeTour.price} />
-              <TourMeta label="Date:" value={activeTour.date} />
-              <TourMeta label="Persons:" value={activeTour.persons} />
-            </div>
 
             <div className="mt-7 border-b border-[#D89A2D]/80 pb-3 max-w-md">
               <a
@@ -151,12 +129,5 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
     </section>
   );
 };
-
-const TourMeta: FC<{ label: string; value: string }> = ({ label, value }) => (
-  <div>
-    <p className="text-[11px] text-white/50">{label}</p>
-    <p className="mt-1 text-white text-sm font-medium">{value}</p>
-  </div>
-);
 
 export default SectionPopularTours;

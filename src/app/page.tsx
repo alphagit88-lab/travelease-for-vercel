@@ -10,6 +10,8 @@ import SectionReviews from "@/components/SectionReviews";
 import SectionWhyChooseUs from "@/components/SectionWhyChooseUs";
 import SectionSriLankaMap from "@/components/SectionSriLankaMap";
 import SectionScrollReveal from "@/components/SectionScrollReveal";
+import StayCard2 from "@/components/StayCardAlternate";
+import { DEMO_STAY_LISTINGS } from "@/data/listings";
 
 const LISTING_STAY_MAP_ROUTE = "/listing-stay-map" as Route<string>;
 
@@ -106,6 +108,49 @@ const TOUR_TYPES: TaxonomyType[] = [
   },
 ];
 
+const SERVICES_CATEGORIES: TaxonomyType[] = [
+  {
+    id: "s1",
+    href: LISTING_STAY_MAP_ROUTE,
+    name: "Tour packages",
+    taxonomy: "category",
+    count: 0,
+    thumbnail: "https://images.pexels.com/photos/6995583/pexels-photo-6995583.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+  {
+    id: "s2",
+    href: LISTING_STAY_MAP_ROUTE,
+    name: "Hotel",
+    taxonomy: "category",
+    count: 0,
+    thumbnail: "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+  {
+    id: "s3",
+    href: LISTING_STAY_MAP_ROUTE,
+    name: "Transfers",
+    taxonomy: "category",
+    count: 0,
+    thumbnail: "https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+  {
+    id: "s4",
+    href: LISTING_STAY_MAP_ROUTE,
+    name: "MICE",
+    taxonomy: "category",
+    count: 0,
+    thumbnail: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+  {
+    id: "s5",
+    href: LISTING_STAY_MAP_ROUTE,
+    name: "ETA visa",
+    taxonomy: "category",
+    count: 0,
+    thumbnail: "https://images.pexels.com/photos/592753/pexels-photo-592753.jpeg?auto=compress&cs=tinysrgb&w=600",
+  },
+];
+
 function PageHome() {
   return (
     <main className="nc-PageHome relative bg-[#0b2e4e] text-white">
@@ -114,23 +159,61 @@ function PageHome() {
       {/* <SectionMoodboardContent /> */}
       <SectionPopularTours />
 
-      {/* ── REQUIRED NEXT SECTIONS ONLY ─────── */}
-      <div className="container relative space-y-24 pb-24 lg:space-y-28 lg:pb-28 mt-24">
-        <SectionGallery />
-        <SectionReviews />
-        <SectionWhyChooseUs />
+      <div className="container relative py-24 lg:py-28">
+        <SectionSliderNewCategories
+          categories={SERVICES_CATEGORIES}
+          heading="Our Services"
+          subHeading="From luxury stays to seamless transfers, we handle every detail of your journey."
+          categoryCardType="card5"
+          itemPerRow={5}
+        />
       </div>
 
       <SectionScrollReveal />
 
-      <div className="container relative space-y-24 pb-24 lg:space-y-28 lg:pb-28 mt-24">
+      <div className="container relative space-y-24 pb-12 lg:space-y-28 lg:pb-16 mt-24">
+        {/* NEW TOUR PACKAGES SECTION */}
+        <div className="relative">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-4xl font-semibold">Featured Tour Packages</h2>
+              <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-400">
+                Hand-picked destinations and tailored experiences just for you.
+              </span>
+            </div>
+            <a 
+              href="/listing-stay-map" 
+              className="mt-6 md:mt-0 flex items-center text-[#fa7301] font-semibold hover:underline"
+            >
+              View all packages
+              <svg className="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none">
+                <path d="M14.4301 5.92993L20.5001 11.9999L14.4301 18.0699" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3.5 12H20.33" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 dark">
+            {DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
+              <StayCard2 key={stay.id} data={stay} />
+            ))}
+          </div>
+        </div>
+
+        <SectionReviews />
+        <SectionGallery />
+      </div>
+
+      <div className="container relative space-y-24 pb-24 lg:space-y-28 lg:pb-28 mt-12">
         <SectionSriLankaMap />
-        <SectionSliderNewCategories
-          categories={TOUR_TYPES}
-          heading="Tour Types"
-          subHeading="Adventure, beach relaxation, culture, wildlife and more curated journeys."
-          categoryCardType="card5"
-          itemPerRow={5}
+      </div>
+
+      {/* Full-width banner image */}
+      <div className="w-full overflow-hidden" style={{ maxHeight: "420px" }}>
+        <img
+          src="/banner-fullwidth.png"
+          alt="Discover Sri Lanka"
+          className="w-full h-full object-cover object-center"
+          style={{ maxHeight: "420px" }}
         />
       </div>
     </main>

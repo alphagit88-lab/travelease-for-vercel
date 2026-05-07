@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.className} ${playfair.variable}`}>
-      <body className="bg-[#0b2e4e] text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
+      <body className="bg-white text-base dark:bg-neutral-900 text-neutral-900 dark:text-neutral-200">
         <ClientCommons />
         <ConditionalLayout>
           {children}
