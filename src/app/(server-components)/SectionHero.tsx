@@ -33,7 +33,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       <div
         className="absolute inset-0 z-[4] pointer-events-none"
         style={{
-          backgroundImage: "url('/hero-bgN.png')",
+          backgroundImage: "url('/hero-bgNN.png')",
           backgroundSize: "100% auto",
           backgroundPosition: "center top",
           backgroundRepeat: "no-repeat",
@@ -79,17 +79,17 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
             ))}
           </div>
 
-          <div className="mt-8 lg:mt-[4.5%] w-full">
+          <div className="mt-8 lg:mt-[4.5%] w-full max-w-[720px]">
             <div
               className="p-2.5"
               style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", fontFamily: "__Poppins_002541,__Poppins_Fallback_002541, sans-serif" }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_auto] items-stretch">
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] items-stretch">
                 <div className="bg-white flex items-center px-4 h-[50px] md:h-[55px] border-b md:border-b-0 md:border-r border-neutral-200">
-                  <input 
-                    type="text" 
-                    className="w-full bg-transparent border-none outline-none focus:ring-0 text-neutral-900 placeholder-neutral-500 font-medium text-[14px]" 
-                    placeholder="Tours" 
+                  <input
+                    type="text"
+                    className="w-full bg-transparent border-none outline-none focus:ring-0 text-neutral-900 placeholder-neutral-500 font-medium text-[14px]"
+                    placeholder="Tours"
                   />
                 </div>
                 <div className="bg-white flex items-center px-4 h-[50px] md:h-[55px] border-b md:border-b-0 md:border-r border-neutral-200 relative">

@@ -12,7 +12,13 @@ import "react-datepicker/dist/react-datepicker.css";
 export interface ListingStayDetailPageProps {}
 
 // Tabs: detail-heavy content only
-const TABS = ["Itinerary", "Price", "Inclusions", "Exclusions", "General Inclusions"];
+const TABS = ["Itinerary", "Inclusions", "Exclusions", "General Inclusions"];
+
+const PRICE_DATA = [
+  { type: "Standard", p2: "$1,290", p4: "$990", p6: "$850" },
+  { type: "Superior", p2: "$1,590", p4: "$1,290", p6: "$1,100" },
+  { type: "Luxury", p2: "$2,490", p4: "$1,990", p6: "$1,750" },
+];
 
 const INCLUSIONS = [
   "Accommodation in selected hotels",
@@ -95,39 +101,7 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
             ))}
           </div>
         );
-      case "Price":
-        return (
-          <div className="space-y-4">
-            <p className="text-sm text-neutral-500">Prices are per person, based on twin/double sharing. Subject to availability.</p>
-            <div className="overflow-x-auto rounded-xl border border-neutral-200">
-              <table className="min-w-full text-sm">
-                <thead className="bg-[#0b2e4e] text-white">
-                  <tr>
-                    <th className="px-5 py-3 text-left">Package Type</th>
-                    <th className="px-5 py-3 text-left">2 Pax</th>
-                    <th className="px-5 py-3 text-left">4 Pax</th>
-                    <th className="px-5 py-3 text-left">6+ Pax</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-neutral-100">
-                  {[
-                    { type: "Standard", p2: "$1,290", p4: "$990", p6: "$850" },
-                    { type: "Superior", p2: "$1,590", p4: "$1,290", p6: "$1,100" },
-                    { type: "Luxury", p2: "$2,490", p4: "$1,990", p6: "$1,750" },
-                  ].map((row, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-neutral-50" : "bg-white"}>
-                      <td className="px-5 py-3 font-medium text-neutral-800">{row.type}</td>
-                      <td className="px-5 py-3 text-neutral-600">{row.p2}</td>
-                      <td className="px-5 py-3 text-neutral-600">{row.p4}</td>
-                      <td className="px-5 py-3 text-neutral-600">{row.p6}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-xs text-neutral-400">* Single supplement available on request. Child rates apply for ages 2–11.</p>
-          </div>
-        );
+
       case "Inclusions":
         return (
           <ul className="space-y-3">
@@ -334,6 +308,38 @@ const ListingStayDetailPage: FC<ListingStayDetailPageProps> = ({}) => {
                     <span className="font-medium text-neutral-800 text-sm">{item.value}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* ── TOUR PRICE (always visible) ── */}
+            <div>
+              <h2 className="text-2xl font-semibold text-neutral-800 mb-4">Tour Price</h2>
+              <div className="w-12 h-1 bg-[#fa7301] mb-6 rounded-full" />
+              <div className="space-y-4">
+                <div className="overflow-x-auto rounded-xl border border-neutral-200">
+                  <table className="min-w-full text-sm">
+                    <thead className="bg-[#0b2e4e] text-white">
+                      <tr>
+                        <th className="px-5 py-3 text-left">Package Type</th>
+                        <th className="px-5 py-3 text-left">2 Pax</th>
+                        <th className="px-5 py-3 text-left">4 Pax</th>
+                        <th className="px-5 py-3 text-left">6+ Pax</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-neutral-100">
+                      {PRICE_DATA.map((row, i) => (
+                        <tr key={i} className={i % 2 === 0 ? "bg-neutral-50" : "bg-white"}>
+                          <td className="px-5 py-3 font-medium text-neutral-800">{row.type}</td>
+                          <td className="px-5 py-3 text-neutral-600">{row.p2}</td>
+                          <td className="px-5 py-3 text-neutral-600">{row.p4}</td>
+                          <td className="px-5 py-3 text-neutral-600">{row.p6}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-sm text-neutral-500 italic">Prices are per person, based on twin/double sharing. Subject to availability.</p>
+                <p className="text-xs text-neutral-400">* Single supplement available on request. Child rates apply for ages 2–11.</p>
               </div>
             </div>
 

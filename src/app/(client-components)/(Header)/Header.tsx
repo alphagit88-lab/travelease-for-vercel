@@ -80,12 +80,12 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
               <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
             </a>
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top -translate-y-2 group-hover:translate-y-0 z-50">
-              <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 w-[95vw] max-w-4xl">
+              <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 w-[95vw] max-w-3xl">
                 <div className="grid grid-cols-[1fr_auto] gap-8">
                   {/* CORE SERVICES */}
                   <div>
                     <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6">Our Core Services</h3>
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                    <div className="flex flex-col gap-y-4">
                       {CORE_SERVICES.map((item) => (
                         <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors">{item.name}</a>
                       ))}

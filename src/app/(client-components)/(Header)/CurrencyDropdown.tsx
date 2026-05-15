@@ -4,26 +4,36 @@ import { Popover, Transition } from "@headlessui/react";
 import { BanknotesIcon, ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, useState, useEffect } from "react";
 
-const rates: Record<string, number> = {
-  USD: 1,
-  EUR: 0.92,
-  GBP: 0.79,
-  LKR: 300,
-  AED: 3.67,
-  SAR: 3.75,
-};
-
 const CurrencyDropdown: FC = () => {
+  const [rates, setRates] = useState<Record<string, number>>({
+    USD: 1,
+    EUR: 0.92,
+    GBP: 0.79,
+    LKR: 300,
+    AED: 3.67,
+    SAR: 3.75,
+  });
   const [amount, setAmount] = useState<number>(100);
   const [from, setFrom] = useState<string>("USD");
   const [to, setTo] = useState<string>("LKR");
   const [result, setResult] = useState<number>(0);
 
   useEffect(() => {
+    fetch("https://open.er-api.com/v6/latest/USD")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.rates) {
+          setRates(data.rates);
+        }
+      })
+      .catch((err) => console.error("Error fetching rates:", err));
+  }, []);
+
+  useEffect(() => {
     const fromRate = rates[from] || 1;
     const toRate = rates[to] || 1;
     setResult((amount / fromRate) * toRate);
-  }, [amount, from, to]);
+  }, [amount, from, to, rates]);
 
   return (
     <div className="CurrencyDropdown">
@@ -36,7 +46,7 @@ const CurrencyDropdown: FC = () => {
                 group self-center h-10 inline-flex items-center text-[13px] font-semibold hover:text-[#fa7301] transition-colors focus:outline-none`}
             >
               <BanknotesIcon className="w-4 h-4 mr-1" />
-              <span>USD</span>
+              <span>{from}</span>
             </Popover.Button>
 
             <Transition
@@ -73,7 +83,7 @@ const CurrencyDropdown: FC = () => {
                         onChange={(e) => setFrom(e.target.value)}
                         className="bg-transparent text-sm font-semibold outline-none border-b-2 border-transparent focus:border-[#fa7301] py-1"
                       >
-                        {Object.keys(rates).map(r => <option key={r} value={r}>{r}</option>)}
+                        {Object.keys(rates).sort().map(r => <option key={r} value={r}>{r}</option>)}
                       </select>
                       <ArrowsRightLeftIcon className="w-4 h-4 text-neutral-400" />
                       <select 
@@ -81,7 +91,7 @@ const CurrencyDropdown: FC = () => {
                         onChange={(e) => setTo(e.target.value)}
                         className="bg-transparent text-sm font-semibold outline-none border-b-2 border-transparent focus:border-[#fa7301] py-1"
                       >
-                        {Object.keys(rates).map(r => <option key={r} value={r}>{r}</option>)}
+                        {Object.keys(rates).sort().map(r => <option key={r} value={r}>{r}</option>)}
                       </select>
                     </div>
 

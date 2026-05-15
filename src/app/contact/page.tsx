@@ -35,7 +35,7 @@ export default function PageContact() {
       <section className="relative overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/hero-bgN.png')" }}
+          style={{ backgroundImage: "url('/hero-bgNN.png')" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,40,57,0.45),rgba(6,40,57,0.82))]" />
 
