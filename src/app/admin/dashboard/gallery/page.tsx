@@ -145,7 +145,7 @@ const GalleryPage = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {images.map((image) => {
-              const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5001';
+              const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
               return (
                 <div key={image.id} className="bg-white dark:bg-[#0b2e4e] rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-700 group transition-all hover:shadow-lg">
                   <div className="relative aspect-[16/9] w-full">

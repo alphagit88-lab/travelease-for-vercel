@@ -40,7 +40,7 @@ const HomeSlider = () => {
     <div className="absolute inset-0 z-0 bg-neutral-900" />
   );
 
-  const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5001';
+  const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
 
   return (
     <div className="absolute inset-0 z-0">
