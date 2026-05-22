@@ -10,8 +10,7 @@ import SectionReviews from "@/components/SectionReviews";
 import SectionWhyChooseUs from "@/components/SectionWhyChooseUs";
 import SectionSriLankaMap from "@/components/SectionSriLankaMap";
 import SectionScrollReveal from "@/components/SectionScrollReveal";
-import StayCard2 from "@/components/StayCardAlternate";
-import { DEMO_STAY_LISTINGS } from "@/data/listings";
+import FeaturedToursSection from "@/components/FeaturedToursSection";
 
 const LISTING_STAY_MAP_ROUTE = "/listing-stay-map" as Route<string>;
 
@@ -192,11 +191,7 @@ function PageHome() {
               </svg>
             </a>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 dark">
-            {DEMO_STAY_LISTINGS.filter((_, i) => i < 8).map((stay) => (
-              <StayCard2 key={stay.id} data={stay} />
-            ))}
-          </div>
+          <FeaturedToursSection />
         </div>
 
         <SectionReviews />

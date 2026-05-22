@@ -30,6 +30,7 @@ const AdminDashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const navItems = [
     { name: "Dashboard", href: "/admin/dashboard" as Route<string> },
     { name: "Gallery Slider", href: "/admin/dashboard/gallery" as Route<string> },
+    { name: "Tours", href: "/admin/dashboard/tours" as Route<string> },
   ];
 
   return (
@@ -78,11 +79,17 @@ const AdminDashboardLayout = ({ children }: { children: React.ReactNode }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   )}
+                  {item.name === "Tours" && (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                  )}
                 </span>
                 {item.name}
               </Link>
             ))}
           </nav>
+
 
           <div className="p-4 border-t border-white/10">
             <div className="flex items-center space-x-3 mb-4 px-2">

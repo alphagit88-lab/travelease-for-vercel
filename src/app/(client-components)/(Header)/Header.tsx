@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Logo from "@/shared/Logo";
 import logoLightImg from "@/images/logo-light.png";
 import logoImg from "@/images/logo.png";
@@ -16,6 +16,88 @@ export interface HeaderProps {
 const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+
+  const [hoveredTourKey, setHoveredTourKey] = useState<string>("beachfront-delights");
+
+  const TOUR_MENU_DATA = [
+    { name: "Beachfront Delights", href: "/tours/beachfront-delights", key: "beachfront-delights" },
+    { name: "Hillside Heaven", href: "/tours/hillside-heaven", key: "hillside-heaven" },
+    { name: "Rumble and Roam Adventure Tour", href: "/tours/rumble-and-roam-adventure-tour", key: "rumble-and-roam-adventure-tour" },
+    { name: "Sri Lanka Unveiled", href: "/tours/sri-lanka-unveiled", key: "sri-lanka-unveiled" },
+    {
+      name: "Sri Lankan Splendors  :",
+      key: "sri-lankan-splendors-7-nights-8-days",
+      isParent: true,
+      children: [
+        { name: "Sri Lankan Splendors 8D 7N", href: "/tours/sri-lankan-splendors-7-nights-8-days", key: "sri-lankan-splendors-7-nights-8-days" },
+        { name: "Sri Lankan Splendors 12D 11N", href: "/tours/sri-lankan-splendors-11-nights-12-days", key: "sri-lankan-splendors-11-nights-12-days" },
+      ]
+    },
+    {
+      name: "Sri Lankas UNESCO Gems  :",
+      key: "sri-lankas-unesco-gems-7-nights-8-days",
+      isParent: true,
+      children: [
+        { name: "Sri Lankas UNESCO Gems 7N 8D", href: "/tours/sri-lankas-unesco-gems-7-nights-8-days", key: "sri-lankas-unesco-gems-7-nights-8-days" },
+        { name: "Sri Lankas UNESCO Gems 10N 11D", href: "/tours/sri-lankas-unesco-gems-10-nights-11-days", key: "sri-lankas-unesco-gems-10-nights-11-days" },
+        { name: "Sri Lankas UNESCO Gems 14N 15D", href: "/tours/sri-lankas-unesco-gems-14-nights-15-days", key: "sri-lankas-unesco-gems-14-nights-15-days" },
+      ]
+    },
+    { name: "Trails and Coastal Tails", href: "/tours/trails-and-coastal-tails", key: "trails-and-coastal-tails" }
+  ];
+
+  const TOUR_IMAGES_MAP: Record<string, string[]> = {
+    "beachfront-delights": [
+      "http://localhost:5000/uploads/compressed_beach___bentota.jpg",
+      "http://localhost:5000/uploads/compressed_galle_dutch_fort.jpg",
+      "http://localhost:5000/uploads/compressed_kosgoda_turtle_hatchery.jpg"
+    ],
+    "hillside-heaven": [
+      "http://localhost:5000/uploads/compressed_elephant_orphanage.jpg",
+      "http://localhost:5000/uploads/compressed_kandy_temple_of_tooth.jpg",
+      "http://localhost:5000/uploads/compressed_nuwara_eliya.jpg"
+    ],
+    "rumble-and-roam-adventure-tour": [
+      "http://localhost:5000/uploads/compressed_sigiriya.jpg",
+      "http://localhost:5000/uploads/compressed_kithulgala_adventure_rafting.jpg",
+      "http://localhost:5000/uploads/compressed_knuckles_trekking.jpg"
+    ],
+    "sri-lanka-unveiled": [
+      "http://localhost:5000/uploads/compressed_colombo_city.jpg",
+      "http://localhost:5000/uploads/compressed_jaffna_city.jpg",
+      "http://localhost:5000/uploads/compressed_casuarina_beach.jpg"
+    ],
+    "sri-lankan-splendors-7-nights-8-days": [
+      "http://localhost:5000/uploads/compressed_minneriya_national_park.jpg",
+      "http://localhost:5000/uploads/compressed_nine_arch___ella.jpg",
+      "http://localhost:5000/uploads/compressed_beruwala_beach.jpg"
+    ],
+    "sri-lankan-splendors-11-nights-12-days": [
+      "http://localhost:5000/uploads/compressed_polonnaruwa_ancient_city.jpg",
+      "http://localhost:5000/uploads/compressed_horton_plains___1_.jpg",
+      "http://localhost:5000/uploads/compressed_yala_safari.jpg"
+    ],
+    "sri-lankas-unesco-gems-7-nights-8-days": [
+      "http://localhost:5000/uploads/compressed_colombo_via_tuk_tuk.jpg",
+      "http://localhost:5000/uploads/compressed_anuradhapura_city_on_bicycles__1_.jpg",
+      "http://localhost:5000/uploads/compressed_breakfast_at_pidurangala.png"
+    ],
+    "sri-lankas-unesco-gems-10-nights-11-days": [
+      "http://localhost:5000/uploads/compressed_yala_safari___leapord.jpg",
+      "http://localhost:5000/uploads/compressed_kanneliya_rain_forest_01___3_.jpg",
+      "http://localhost:5000/uploads/compressed_anuradhapura_city_on_bicycles__2_.jpg"
+    ],
+    "sri-lankas-unesco-gems-14-nights-15-days": [
+      "http://localhost:5000/uploads/compressed_wilpattu_national_park_1.jpg",
+      "http://localhost:5000/uploads/compressed_sigiriya_entrance.jpg",
+      "http://localhost:5000/uploads/compressed_galle_fort_exploring.jpg"
+    ],
+    "trails-and-coastal-tails": [
+      "http://localhost:5000/uploads/compressed_trincomalee_beach.jpg",
+      "http://localhost:5000/uploads/compressed_koneswaram_temple_trincomalee.webp",
+      "http://localhost:5000/uploads/compressed_royal_botanical_garden.jpg"
+    ]
+  };
 
   const CORE_SERVICES = [
     { name: "Tour packages", href: "#" },
@@ -107,31 +189,105 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
           </div>
 
           <div className="relative group">
-            <a href="/listing-stay-map" className={`flex items-center gap-1 text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>
+            <a href="/tours" className={`flex items-center gap-1 text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>
               Tours
               <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
             </a>
             <div className="absolute left-1/2 -translate-x-1/2 top-full pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top -translate-y-2 group-hover:translate-y-0 z-50">
               <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 w-[95vw] max-w-4xl">
                 <div className="grid grid-cols-[1fr_auto] gap-8">
-                  {/* TOUR TYPES */}
-                  <div>
-                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6">Explore by Tour Type</h3>
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-                      {TOUR_TYPES_MENU.map((item) => (
-                        <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors">{item.name}</a>
-                      ))}
+                  {/* TOURS LIST */}
+                  <div className="flex flex-col select-none pr-4 h-64 overflow-y-auto tours-menu-scrollbar">
+                    <style dangerouslySetInnerHTML={{__html: `
+                      .tours-menu-scrollbar::-webkit-scrollbar {
+                        width: 4px;
+                      }
+                      .tours-menu-scrollbar::-webkit-scrollbar-track {
+                        background: transparent;
+                      }
+                      .tours-menu-scrollbar::-webkit-scrollbar-thumb {
+                        background: #e5e7eb;
+                        border-radius: 9999px;
+                      }
+                      .tours-menu-scrollbar::-webkit-scrollbar-thumb:hover {
+                        background: #fa7301;
+                      }
+                      .tours-menu-scrollbar {
+                        scrollbar-width: thin;
+                        scrollbar-color: #e5e7eb transparent;
+                      }
+                    `}} />
+                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-4">Our Featured Tours</h3>
+                    <div className="flex flex-col gap-y-1.5">
+                      {TOUR_MENU_DATA.map((item) => {
+                        if (item.isParent) {
+                          return (
+                            <div key={item.key} className="flex flex-col mt-1.5">
+                              <span 
+                                className="text-[15px] font-bold text-neutral-800 py-1.5 tracking-wide cursor-default transition-colors hover:text-[#fa7301]"
+                                onMouseEnter={() => setHoveredTourKey(item.key)}
+                              >
+                                {item.name}
+                              </span>
+                              <div className="flex flex-col pl-4 border-l border-neutral-100 gap-y-1 ml-1.5 mt-0.5">
+                                {item.children?.map((child) => (
+                                  <a
+                                    key={child.key}
+                                    href={child.href}
+                                    className={`text-[14px] py-1 font-semibold transition-colors duration-200 ${
+                                      hoveredTourKey === child.key 
+                                        ? "text-[#fa7301]" 
+                                        : "text-neutral-600 hover:text-[#fa7301]"
+                                    }`}
+                                    onMouseEnter={() => setHoveredTourKey(child.key)}
+                                  >
+                                    {child.name}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <a
+                            key={item.key}
+                            href={item.href}
+                            className={`text-[15px] py-1.5 font-bold transition-colors duration-200 ${
+                              hoveredTourKey === item.key 
+                                ? "text-[#fa7301]" 
+                                : "text-neutral-800 hover:text-[#fa7301]"
+                            }`}
+                            onMouseEnter={() => setHoveredTourKey(item.key)}
+                          >
+                            {item.name}
+                          </a>
+                        );
+                      })}
                     </div>
                   </div>
 
                   {/* IMAGES */}
-                  <div className="flex gap-4">
-                    {FEATURED_IMAGES.map((item, idx) => (
-                      <div key={idx} className={`${item.className} rounded-2xl overflow-hidden relative group/img shadow-md`}>
-                        <img src={item.img} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" alt="" />
-                        <div className="absolute inset-0 bg-black/10"></div>
-                      </div>
-                    ))}
+                  <div className="flex gap-4 items-center">
+                    {FEATURED_IMAGES.map((imgConfig, idx) => {
+                      const tourImages = TOUR_IMAGES_MAP[hoveredTourKey] || [];
+                      const imgSrc = tourImages[idx] || imgConfig.img;
+                      
+                      return (
+                        <div key={idx} className={`${imgConfig.className} rounded-2xl overflow-hidden relative group/img shadow-md`}>
+                          <img 
+                            src={imgSrc} 
+                            onError={(e) => {
+                              // If backend is not active or the image fails to load, fallback to standard static image
+                              (e.target as HTMLImageElement).src = imgConfig.img;
+                            }}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" 
+                            alt="" 
+                          />
+                          <div className="absolute inset-0 bg-black/10"></div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

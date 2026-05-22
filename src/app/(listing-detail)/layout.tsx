@@ -7,16 +7,18 @@ import SectionSubscribe2 from "@/components/SectionSubscribeNewsletter";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { ReactNode } from "react";
 import MobileFooterSticky from "./(components)/MobileFooterSticky";
-import { imageGallery as listingStayImageGallery } from "./listing-stay-detail/constant";
+import { imageGallery as listingStayImageGallery } from "./tours/constant";
 import { imageGallery as listingCarImageGallery } from "./listing-car-detail/constant";
 import { imageGallery as listingExperienceImageGallery } from "./listing-experiences-detail/constant";
 import { Route } from "next";
+import { useListingImages } from "@/hooks/useListingImages";
 
 const DetailtLayout = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const thisPathname = usePathname();
   const searchParams = useSearchParams();
   const modal = searchParams?.get("modal");
+  const [dynamicImages] = useListingImages();
 
   const handleCloseModalImageGallery = () => {
     let params = new URLSearchParams(document.location.search);
@@ -25,8 +27,8 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
   };
 
   const getImageGalleryListing = () => {
-    if (thisPathname?.includes("/listing-stay-detail")) {
-      return listingStayImageGallery;
+    if (thisPathname?.includes("/tours")) {
+      return dynamicImages && dynamicImages.length > 0 ? dynamicImages : listingStayImageGallery;
     }
     if (thisPathname?.includes("/listing-car-detail")) {
       return listingCarImageGallery;

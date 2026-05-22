@@ -6,6 +6,7 @@ import ButtonPrimary from "@/shared/ButtonPrimary";
 import ButtonSecondary from "@/shared/ButtonSecondary";
 import Input from "@/shared/Input";
 import Image from "next/image";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 interface GalleryImage {
   id: number;
@@ -175,9 +176,10 @@ const GalleryPage = () => {
                     <span className="text-xs text-neutral-400">Order: {image.sort_order}</span>
                     <button
                       onClick={() => handleDelete(image.id)}
-                      className="text-red-500 hover:text-red-700 text-sm font-medium transition-colors"
+                      className="inline-flex items-center justify-center w-6 h-6 rounded border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
+                      title="Delete Image"
                     >
-                      Delete
+                      <TrashIcon className="w-3.5 h-3.5" />
                     </button>
                   </div>
                 </div>
