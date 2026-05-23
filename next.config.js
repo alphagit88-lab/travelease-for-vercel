@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   reactStrictMode: false,
   experimental: {
     appDir: true,
     typedRoutes: true,
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",
