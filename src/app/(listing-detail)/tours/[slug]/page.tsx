@@ -8,7 +8,7 @@ import { PHOTOS } from "../constant";
 import { Route } from "next";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { api } from "@/utils/api";
+import { api, getBaseUrl } from "@/utils/api";
 import { useListingImages } from "@/hooks/useListingImages";
 
 export interface ListingStayDetailPageProps {
@@ -64,8 +64,7 @@ const GENERAL_INCLUSIONS = [
 const getImageUrl = (url: string) => {
   if (!url) return "";
   if (url.startsWith("http")) return url;
-  const imageBaseUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '') || 'http://localhost:5000';
-  return `${imageBaseUrl}${url}`;
+  return `${getBaseUrl()}${url}`;
 };
 
 const ListingStayDetailPage = ({ params }: ListingStayDetailPageProps) => {
