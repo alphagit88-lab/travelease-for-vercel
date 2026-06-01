@@ -46,6 +46,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "travelease-8p8h.onrender.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "travelease-backend-weld.vercel.app",
         port: "",
         pathname: "/**",
