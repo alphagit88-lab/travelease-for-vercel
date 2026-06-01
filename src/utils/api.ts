@@ -1,4 +1,5 @@
 const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
+export const getBaseUrl = () => baseUrl;
 const API_URL = baseUrl.endsWith('/api') ? baseUrl : `${baseUrl}/api`;
 
 export interface ApiResponse<T> {

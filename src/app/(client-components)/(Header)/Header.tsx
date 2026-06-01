@@ -7,6 +7,7 @@ import logoImg from "@/images/logo.png";
 import { usePathname } from "next/navigation";
 import LangDropdown from "./LangDropdown";
 import CurrencyDropdown from "./CurrencyDropdown";
+import { getBaseUrl } from "@/utils/api";
 
 export interface HeaderProps {
   className?: string;
@@ -48,54 +49,54 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
 
   const TOUR_IMAGES_MAP: Record<string, string[]> = {
     "beachfront-delights": [
-      "http://localhost:5000/uploads/compressed_beach___bentota.jpg",
-      "http://localhost:5000/uploads/compressed_galle_dutch_fort.jpg",
-      "http://localhost:5000/uploads/compressed_kosgoda_turtle_hatchery.jpg"
+      `${getBaseUrl()}/uploads/compressed_beach___bentota.jpg`,
+      `${getBaseUrl()}/uploads/compressed_galle_dutch_fort.jpg`,
+      `${getBaseUrl()}/uploads/compressed_kosgoda_turtle_hatchery.jpg`
     ],
     "hillside-heaven": [
-      "http://localhost:5000/uploads/compressed_elephant_orphanage.jpg",
-      "http://localhost:5000/uploads/compressed_kandy_temple_of_tooth.jpg",
-      "http://localhost:5000/uploads/compressed_nuwara_eliya.jpg"
+      `${getBaseUrl()}/uploads/compressed_elephant_orphanage.jpg`,
+      `${getBaseUrl()}/uploads/compressed_kandy_temple_of_tooth.jpg`,
+      `${getBaseUrl()}/uploads/compressed_nuwara_eliya.jpg`
     ],
     "rumble-and-roam-adventure-tour": [
-      "http://localhost:5000/uploads/compressed_sigiriya.jpg",
-      "http://localhost:5000/uploads/compressed_kithulgala_adventure_rafting.jpg",
-      "http://localhost:5000/uploads/compressed_knuckles_trekking.jpg"
+      `${getBaseUrl()}/uploads/compressed_sigiriya.jpg`,
+      `${getBaseUrl()}/uploads/compressed_kithulgala_adventure_rafting.jpg`,
+      `${getBaseUrl()}/uploads/compressed_knuckles_trekking.jpg`
     ],
     "sri-lanka-unveiled": [
-      "http://localhost:5000/uploads/compressed_colombo_city.jpg",
-      "http://localhost:5000/uploads/compressed_jaffna_city.jpg",
-      "http://localhost:5000/uploads/compressed_casuarina_beach.jpg"
+      `${getBaseUrl()}/uploads/compressed_colombo_city.jpg`,
+      `${getBaseUrl()}/uploads/compressed_jaffna_city.jpg`,
+      `${getBaseUrl()}/uploads/compressed_casuarina_beach.jpg`
     ],
     "sri-lankan-splendors-7-nights-8-days": [
-      "http://localhost:5000/uploads/compressed_minneriya_national_park.jpg",
-      "http://localhost:5000/uploads/compressed_nine_arch___ella.jpg",
-      "http://localhost:5000/uploads/compressed_beruwala_beach.jpg"
+      `${getBaseUrl()}/uploads/compressed_minneriya_national_park.jpg`,
+      `${getBaseUrl()}/uploads/compressed_nine_arch___ella.jpg`,
+      `${getBaseUrl()}/uploads/compressed_beruwala_beach.jpg`
     ],
     "sri-lankan-splendors-11-nights-12-days": [
-      "http://localhost:5000/uploads/compressed_polonnaruwa_ancient_city.jpg",
-      "http://localhost:5000/uploads/compressed_horton_plains___1_.jpg",
-      "http://localhost:5000/uploads/compressed_yala_safari.jpg"
+      `${getBaseUrl()}/uploads/compressed_polonnaruwa_ancient_city.jpg`,
+      `${getBaseUrl()}/uploads/compressed_horton_plains___1_.jpg`,
+      `${getBaseUrl()}/uploads/compressed_yala_safari.jpg`
     ],
     "sri-lankas-unesco-gems-7-nights-8-days": [
-      "http://localhost:5000/uploads/compressed_colombo_via_tuk_tuk.jpg",
-      "http://localhost:5000/uploads/compressed_anuradhapura_city_on_bicycles__1_.jpg",
-      "http://localhost:5000/uploads/compressed_breakfast_at_pidurangala.png"
+      `${getBaseUrl()}/uploads/compressed_colombo_via_tuk_tuk.jpg`,
+      `${getBaseUrl()}/uploads/compressed_anuradhapura_city_on_bicycles__1_.jpg`,
+      `${getBaseUrl()}/uploads/compressed_breakfast_at_pidurangala.png`
     ],
     "sri-lankas-unesco-gems-10-nights-11-days": [
-      "http://localhost:5000/uploads/compressed_yala_safari___leapord.jpg",
-      "http://localhost:5000/uploads/compressed_kanneliya_rain_forest_01___3_.jpg",
-      "http://localhost:5000/uploads/compressed_anuradhapura_city_on_bicycles__2_.jpg"
+      `${getBaseUrl()}/uploads/compressed_yala_safari___leapord.jpg`,
+      `${getBaseUrl()}/uploads/compressed_kanneliya_rain_forest_01___3_.jpg`,
+      `${getBaseUrl()}/uploads/compressed_anuradhapura_city_on_bicycles__2_.jpg`
     ],
     "sri-lankas-unesco-gems-14-nights-15-days": [
-      "http://localhost:5000/uploads/compressed_wilpattu_national_park_1.jpg",
-      "http://localhost:5000/uploads/compressed_sigiriya_entrance.jpg",
-      "http://localhost:5000/uploads/compressed_galle_fort_exploring.jpg"
+      `${getBaseUrl()}/uploads/compressed_wilpattu_national_park_1.jpg`,
+      `${getBaseUrl()}/uploads/compressed_sigiriya_entrance.jpg`,
+      `${getBaseUrl()}/uploads/compressed_galle_fort_exploring.jpg`
     ],
     "trails-and-coastal-tails": [
-      "http://localhost:5000/uploads/compressed_trincomalee_beach.jpg",
-      "http://localhost:5000/uploads/compressed_koneswaram_temple_trincomalee.webp",
-      "http://localhost:5000/uploads/compressed_royal_botanical_garden.jpg"
+      `${getBaseUrl()}/uploads/compressed_trincomalee_beach.jpg`,
+      `${getBaseUrl()}/uploads/compressed_koneswaram_temple_trincomalee.webp`,
+      `${getBaseUrl()}/uploads/compressed_royal_botanical_garden.jpg`
     ]
   };
 
