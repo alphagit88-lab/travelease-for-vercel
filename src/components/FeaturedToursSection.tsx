@@ -66,7 +66,7 @@ function mapTourToStayData(tour: BackendTour): StayDataType {
     id: tour.id,
     author: DEFAULT_AUTHOR,
     date: new Date().toISOString(),
-    href: `/tours/${tour.slug || tour.id}` as Route<string>,
+    href: `/tour?s=${tour.slug || tour.id}` as Route<string>,
     title: tour.title,
     featuredImage: galleryImgs[0] || "",
     commentCount: 0,

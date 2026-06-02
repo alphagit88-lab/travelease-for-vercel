@@ -21,7 +21,7 @@ export default function ToursPage() {
           const res = await api.get<{ tour: any }>(`/tours/${id}`);
           if (res.success && res.data?.tour) {
             const slug = res.data.tour.slug || id;
-            router.replace(`/tours/${slug}` as any);
+            router.replace(`/tour?s=${slug}` as any);
             return;
           }
         } catch (err) {

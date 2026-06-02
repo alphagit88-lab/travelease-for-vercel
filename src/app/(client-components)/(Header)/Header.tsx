@@ -21,17 +21,17 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
   const [hoveredTourKey, setHoveredTourKey] = useState<string>("beachfront-delights");
 
   const TOUR_MENU_DATA = [
-    { name: "Beachfront Delights", href: "/tours/beachfront-delights", key: "beachfront-delights" },
-    { name: "Hillside Heaven", href: "/tours/hillside-heaven", key: "hillside-heaven" },
-    { name: "Rumble and Roam Adventure Tour", href: "/tours/rumble-and-roam-adventure-tour", key: "rumble-and-roam-adventure-tour" },
-    { name: "Sri Lanka Unveiled", href: "/tours/sri-lanka-unveiled", key: "sri-lanka-unveiled" },
+    { name: "Beachfront Delights", href: "/tour?s=beachfront-delights", key: "beachfront-delights" },
+    { name: "Hillside Heaven", href: "/tour?s=hillside-heaven", key: "hillside-heaven" },
+    { name: "Rumble and Roam Adventure Tour", href: "/tour?s=rumble-and-roam-adventure-tour", key: "rumble-and-roam-adventure-tour" },
+    { name: "Sri Lanka Unveiled", href: "/tour?s=sri-lanka-unveiled", key: "sri-lanka-unveiled" },
     {
       name: "Sri Lankan Splendors  :",
       key: "sri-lankan-splendors-7-nights-8-days",
       isParent: true,
       children: [
-        { name: "Sri Lankan Splendors 8D 7N", href: "/tours/sri-lankan-splendors-7-nights-8-days", key: "sri-lankan-splendors-7-nights-8-days" },
-        { name: "Sri Lankan Splendors 12D 11N", href: "/tours/sri-lankan-splendors-11-nights-12-days", key: "sri-lankan-splendors-11-nights-12-days" },
+        { name: "Sri Lankan Splendors 8D 7N", href: "/tour?s=sri-lankan-splendors-7-nights-8-days", key: "sri-lankan-splendors-7-nights-8-days" },
+        { name: "Sri Lankan Splendors 12D 11N", href: "/tour?s=sri-lankan-splendors-11-nights-12-days", key: "sri-lankan-splendors-11-nights-12-days" },
       ]
     },
     {
@@ -39,12 +39,12 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
       key: "sri-lankas-unesco-gems-7-nights-8-days",
       isParent: true,
       children: [
-        { name: "Sri Lankas UNESCO Gems 7N 8D", href: "/tours/sri-lankas-unesco-gems-7-nights-8-days", key: "sri-lankas-unesco-gems-7-nights-8-days" },
-        { name: "Sri Lankas UNESCO Gems 10N 11D", href: "/tours/sri-lankas-unesco-gems-10-nights-11-days", key: "sri-lankas-unesco-gems-10-nights-11-days" },
-        { name: "Sri Lankas UNESCO Gems 14N 15D", href: "/tours/sri-lankas-unesco-gems-14-nights-15-days", key: "sri-lankas-unesco-gems-14-nights-15-days" },
+        { name: "Sri Lankas UNESCO Gems 7N 8D", href: "/tour?s=sri-lankas-unesco-gems-7-nights-8-days", key: "sri-lankas-unesco-gems-7-nights-8-days" },
+        { name: "Sri Lankas UNESCO Gems 10N 11D", href: "/tour?s=sri-lankas-unesco-gems-10-nights-11-days", key: "sri-lankas-unesco-gems-10-nights-11-days" },
+        { name: "Sri Lankas UNESCO Gems 14N 15D", href: "/tour?s=sri-lankas-unesco-gems-14-nights-15-days", key: "sri-lankas-unesco-gems-14-nights-15-days" },
       ]
     },
-    { name: "Trails and Coastal Tails", href: "/tours/trails-and-coastal-tails", key: "trails-and-coastal-tails" }
+    { name: "Trails and Coastal Tails", href: "/tour?s=trails-and-coastal-tails", key: "trails-and-coastal-tails" }
   ];
 
   const TOUR_IMAGES_MAP: Record<string, string[]> = {

@@ -1,57 +1,18 @@
 "use client";
 
-import React, { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Squares2X2Icon, CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import { PHOTOS } from "../constant";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { PHOTOS } from "../tours/constant";
 import { Route } from "next";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { api, getBaseUrl } from "@/utils/api";
 import { useListingImages } from "@/hooks/useListingImages";
 
-export interface ListingStayDetailPageProps {
-  params: {
-    slug: string;
-  };
-}
-
 // Tabs: detail-heavy content only
 const TABS = ["Itinerary", "Inclusions", "Exclusions", "General Inclusions"];
-
-const PRICE_DATA_DEFAULT = [
-  { type: "Standard", p2: "$1,290", p4: "$990", p6: "$850" },
-  { type: "Superior", p2: "$1,590", p4: "$1,290", p6: "$1,100" },
-  { type: "Luxury", p2: "$2,490", p4: "$1,990", p6: "$1,750" },
-];
-
-const INCLUSIONS_DEFAULT = [
-  "Accommodation in selected hotels",
-  "Daily breakfast and dinner (MAP)",
-  "Air-conditioned private vehicle with driver",
-  "Professional English-speaking guide",
-  "Entrance fees to all listed sites",
-  "Airport transfers (arrival & departure)",
-];
-
-const EXCLUSIONS_DEFAULT = [
-  "International flights",
-  "Travel insurance",
-  "Personal expenses and tips",
-  "Lunch and beverages",
-  "Optional activities not in itinerary",
-  "Visa fees (if applicable)",
-];
-
-const HIGHLIGHTS_DEFAULT = [
-  "Explore UNESCO World Heritage sites",
-  "Safari experience in Yala National Park",
-  "Scenic train ride through tea country",
-  "Sunrise climb at Sigiriya Rock Fortress",
-  "Whale watching off the southern coast",
-  "Traditional cooking class with local family",
-];
 
 const GENERAL_INCLUSIONS = [
   "24/7 customer support during the tour",
@@ -67,7 +28,7 @@ const getImageUrl = (url: string) => {
   return `${getBaseUrl()}${url}`;
 };
 
-const ListingStayDetailPage = ({ params }: ListingStayDetailPageProps) => {
+const ListingStayDetailPage = () => {
   const [tourData, setTourData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [, setListingImages] = useListingImages();
@@ -78,7 +39,8 @@ const ListingStayDetailPage = ({ params }: ListingStayDetailPageProps) => {
 
   const thisPathname = usePathname();
   const router = useRouter();
-  const slug = params.slug;
+  const searchParams = useSearchParams();
+  const slug = searchParams.get("s");
 
   useEffect(() => {
     const fetchTour = async () => {
@@ -112,7 +74,7 @@ const ListingStayDetailPage = ({ params }: ListingStayDetailPageProps) => {
   }, [slug, setListingImages]);
 
   const handleOpenModalImageGallery = () => {
-    router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route);
+    router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE&s=${slug}` as Route);
   };
 
   const [form, setForm] = useState({
