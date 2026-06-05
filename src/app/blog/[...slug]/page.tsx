@@ -13,11 +13,15 @@ import travelhero2Image from "@/images/travelhero2.png";
 import Link from "next/link";
 import { Route } from "@/routers/types";
 
+export async function generateStaticParams() {
+  return [{ slug: ["single"] }];
+}
+
 const Page = ({
   params,
   searchParams,
 }: {
-  params: { stepIndex: string };
+  params: { slug: string[] };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
   const renderHeader = () => {

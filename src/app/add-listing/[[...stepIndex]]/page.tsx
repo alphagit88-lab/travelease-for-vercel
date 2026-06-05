@@ -10,15 +10,31 @@ import PageAddListing7 from "./PageAddListing7";
 import PageAddListing8 from "./PageAddListing8";
 import PageAddListing9 from "./PageAddListing9";
 
+export async function generateStaticParams() {
+  return [
+    { stepIndex: ["1"] },
+    { stepIndex: ["2"] },
+    { stepIndex: ["3"] },
+    { stepIndex: ["4"] },
+    { stepIndex: ["5"] },
+    { stepIndex: ["6"] },
+    { stepIndex: ["7"] },
+    { stepIndex: ["8"] },
+    { stepIndex: ["9"] },
+    { stepIndex: ["10"] },
+  ];
+}
+
 const Page = ({
   params,
   searchParams,
 }: {
-  params: { stepIndex: string };
+  params: { stepIndex: string[] };
   searchParams?: { [key: string]: string | string[] | undefined };
 }) => {
+  const stepIndex = params.stepIndex[0];
   let ContentComponent = PageAddListing1;
-  switch (Number(params.stepIndex)) {
+  switch (Number(stepIndex)) {
     case 1:
       ContentComponent = PageAddListing1;
       break;
