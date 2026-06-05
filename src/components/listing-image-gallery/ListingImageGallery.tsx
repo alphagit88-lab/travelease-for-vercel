@@ -24,7 +24,7 @@ const PHOTOS: string[] = [
 ];
 
 export const DEMO_IMAGE: ListingGalleryImage[] = [...PHOTOS].map(
-  (item, index): ListingGalleryImage => {
+  (item, index): ListingGalleryImage => {console.log('img index: ', index)
     return {
       id: index,
       url: item,

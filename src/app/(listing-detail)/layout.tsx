@@ -27,7 +27,7 @@ const DetailtLayout = ({ children }: { children: ReactNode }) => {
   };
 
   const getImageGalleryListing = () => {
-    if (thisPathname?.includes("/tours")) {
+    if (thisPathname?.includes("/tour")) {
       return dynamicImages && dynamicImages.length > 0 ? dynamicImages : listingStayImageGallery;
     }
     if (thisPathname?.includes("/listing-car-detail")) {
