@@ -21,8 +21,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Adventure",
     taxonomy: "category",
     count: 2400,
-    thumbnail:
-      "https://images.pexels.com/photos/6995583/pexels-photo-6995583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/adventure.jpeg",
   },
   {
     id: "2",
@@ -30,8 +29,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Beach Relaxation",
     taxonomy: "category",
     count: 2200,
-    thumbnail:
-      "https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/beach-relaxation.jpeg",
   },
   {
     id: "3",
@@ -39,8 +37,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Culture Heritage",
     taxonomy: "category",
     count: 1980,
-    thumbnail:
-      "https://images.pexels.com/photos/210205/pexels-photo-210205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/culture-heritage.jpeg",
   },
   {
     id: "4",
@@ -48,8 +45,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Food Taste",
     taxonomy: "category",
     count: 1540,
-    thumbnail:
-      "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/food-taste.jpeg",
   },
   {
     id: "5",
@@ -57,8 +53,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Wildlife Nature",
     taxonomy: "category",
     count: 2600,
-    thumbnail:
-      "https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/wildlife-nature.jpeg",
   },
   {
     id: "6",
@@ -66,8 +61,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Young Trendy",
     taxonomy: "category",
     count: 1780,
-    thumbnail:
-      "https://images.pexels.com/photos/1308885/pexels-photo-1308885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/adventure.jpeg",
   },
   {
     id: "7",
@@ -75,8 +69,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Experience",
     taxonomy: "category",
     count: 1850,
-    thumbnail:
-      "https://images.pexels.com/photos/2265876/pexels-photo-2265876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/culture-heritage.jpeg",
   },
   {
     id: "8",
@@ -84,8 +77,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Family",
     taxonomy: "category",
     count: 2020,
-    thumbnail:
-      "https://images.pexels.com/photos/2882566/pexels-photo-2882566.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/beach-relaxation.jpeg",
   },
   {
     id: "9",
@@ -93,8 +85,7 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Honeymoon",
     taxonomy: "category",
     count: 1940,
-    thumbnail:
-      "https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/beach-relaxation.jpeg",
   },
   {
     id: "10",
@@ -102,51 +93,50 @@ const TOUR_TYPES: TaxonomyType[] = [
     name: "Pilgrimage",
     taxonomy: "category",
     count: 1210,
-    thumbnail:
-      "https://images.pexels.com/photos/415571/pexels-photo-415571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    thumbnail: "/images/tours/culture-heritage.jpeg",
   },
 ];
 
 const SERVICES_CATEGORIES: TaxonomyType[] = [
   {
     id: "s1",
-    href: LISTING_STAY_MAP_ROUTE,
+    href: "/services" as Route<string>,
     name: "Tour packages",
     taxonomy: "category",
     count: 0,
-    thumbnail: "https://images.pexels.com/photos/6995583/pexels-photo-6995583.jpeg?auto=compress&cs=tinysrgb&w=600",
+    thumbnail: "/images/tours/wildlife.png",
   },
   {
     id: "s2",
-    href: LISTING_STAY_MAP_ROUTE,
+    href: "/services" as Route<string>,
     name: "Hotel",
     taxonomy: "category",
     count: 0,
-    thumbnail: "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=600",
+    thumbnail: "/images/services/hotel.jpeg",
   },
   {
     id: "s3",
-    href: LISTING_STAY_MAP_ROUTE,
+    href: "/services" as Route<string>,
     name: "Transfers",
     taxonomy: "category",
     count: 0,
-    thumbnail: "https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=600",
+    thumbnail: "/images/services/transfers.jpeg",
   },
   {
     id: "s4",
-    href: LISTING_STAY_MAP_ROUTE,
+    href: "/services" as Route<string>,
     name: "MICE",
     taxonomy: "category",
     count: 0,
-    thumbnail: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
+    thumbnail: "/images/services/mice.jpeg",
   },
   {
     id: "s5",
-    href: LISTING_STAY_MAP_ROUTE,
+    href: "/services" as Route<string>,
     name: "ETA visa",
     taxonomy: "category",
     count: 0,
-    thumbnail: "https://images.pexels.com/photos/592753/pexels-photo-592753.jpeg?auto=compress&cs=tinysrgb&w=600",
+    thumbnail: "/images/services/eta-visa.jpeg",
   },
 ];
 

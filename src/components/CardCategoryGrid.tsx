@@ -38,11 +38,6 @@ const CardCategory5: FC<CardCategory5Props> = ({
         >
           {name}
         </h2>
-        <span
-          className={`block mt-2 text-sm text-slate-300`}
-        >
-          {convertNumbThousand(count)} properties
-        </span>
       </div>
     </Link>
   );

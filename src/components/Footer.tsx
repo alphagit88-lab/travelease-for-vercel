@@ -32,7 +32,7 @@ const contactCards = [
 const quickLinks: { href: Route<string>; label: string }[] = [
   { href: "/" as Route, label: "Home" },
   { href: "/about" as Route, label: "About Us" },
-  { href: "/" as Route, label: "Services" },
+  { href: "/services" as Route, label: "Services" },
   { href: "/listing-stay-map" as Route, label: "Tours" },
   { href: "/contact" as Route, label: "Contact Us" },
   { href: "/privacy" as Route, label: "Privacy Policy" },

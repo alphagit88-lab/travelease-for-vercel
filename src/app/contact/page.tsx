@@ -44,7 +44,7 @@ export default function PageContact() {
             className="text-4xl font-semibold sm:text-5xl lg:text-6xl"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Contact <span className="text-[#fa7301]">Us</span>
+            Contact <span className="text-[#fa7301]">Travel Ease Holidays</span>
           </h1>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
             Reach out for trip enquiries, custom itineraries, booking support, or any question about your next travel
@@ -63,11 +63,10 @@ export default function PageContact() {
               className="mt-4 max-w-lg text-3xl font-semibold leading-tight text-[#1581a7] sm:text-5xl"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
-              Didn&apos;t find what you are looking for?
+              Your Sri Lankan adventure starts with a conversation.
             </h2>
             <p className="mt-6 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
-              Reach us for personalized travel assistance, custom itineraries, booking support, or quick answers about
-              your next Sri Lanka journey. Email, call, or message us on WhatsApp and our team will get back to you.
+              Have questions or need help planning your trip to Sri Lanka? Our experienced travel specialists are here to provide personalized assistance and seamless travel solutions. Reach out to us today and let Travel Ease Holidays turn your travel dreams into extraordinary experiences.
             </p>
 
             <div className="mt-8 grid gap-5">

@@ -22,7 +22,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       {/* Fallback/Background Video (only visible if no slider images or as base) */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         <iframe
-          className="absolute left-1/2 top-1/2 h-full w-[177.78%] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover opacity-50"
+          className="absolute left-1/2 top-1/2 h-full w-[177.78%] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover opacity-80"
           src="https://www.youtube-nocookie.com/embed/4ihEqL8Js0o?start=0&autoplay=1&mute=1&controls=0&disablekb=1&fs=0&loop=1&playlist=4ihEqL8Js0o&modestbranding=1&rel=0&playsinline=1&iv_load_policy=3"
           title="Travel Ease background video"
           allow="autoplay; encrypted-media"
