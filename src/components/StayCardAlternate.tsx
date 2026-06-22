@@ -60,9 +60,8 @@ const StayCard2: FC<StayCard2Props> = ({
           <div className="flex items-center space-x-2">
             {isAds && <Badge name="ADS" color="green" />}
             <h2
-              className={`font-semibold capitalize text-neutral-900 dark:text-white ${
-                size === "default" ? "text-base" : "text-base"
-              }`}
+              className={`font-semibold capitalize text-neutral-900 dark:text-white ${size === "default" ? "text-base" : "text-base"
+                }`}
             >
               <span className="line-clamp-1">{title}</span>
             </h2>
@@ -97,11 +96,11 @@ const StayCard2: FC<StayCard2Props> = ({
           <span className="text-base font-semibold">
             {price}
             {` `}
-            {size === "default" && (
+            {/*size === "default" && (
               <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
                 /night
               </span>
-            )}
+            )*/}
           </span>
           {!!reviewStart && (
             <StartRating reviewCount={reviewCount} point={reviewStart} />

@@ -19,6 +19,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
   const isHomePage = pathname === "/";
 
   const [hoveredTourKey, setHoveredTourKey] = useState<string>("beachfront-delights");
+  const [expandedParents, setExpandedParents] = useState<Record<string, boolean>>({});
 
   const TOUR_MENU_DATA = [
     { name: "Beachfront Delights", href: "/tour?s=beachfront-delights", key: "beachfront-delights" },
@@ -149,14 +150,14 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
   const renderMainHeaderRow = (isTransparent: boolean) => (
     <div className="relative h-[88px] px-4 sm:px-6 lg:px-10 xl:px-16">
       <div className="grid h-full w-full grid-cols-[auto,1fr,auto] items-center gap-6">
-        <Logo 
-          img={isTransparent ? logoLightImg : logoImg} 
-          className={`${isTransparent ? "w-36 lg:w-48" : "w-28 lg:w-32"} flex-shrink-0 transition-all duration-300`} 
+        <Logo
+          img={isTransparent ? logoLightImg : logoImg}
+          className={`${isTransparent ? "w-36 lg:w-48" : "w-28 lg:w-32"} flex-shrink-0 transition-all duration-300`}
         />
         <nav className="hidden lg:flex items-center justify-center gap-8 justify-self-center">
           <a href="/" className={`text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>Home</a>
           <a href="/about" className={`text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>About Us</a>
-          
+
           <div className="relative group">
             <a href="/services" className={`flex items-center gap-1 text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>
               Services
@@ -199,7 +200,8 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                 <div className="grid grid-cols-[1fr_auto] gap-8">
                   {/* TOURS LIST */}
                   <div className="flex flex-col select-none pr-4 h-64 overflow-y-auto tours-menu-scrollbar">
-                    <style dangerouslySetInnerHTML={{__html: `
+                    <style dangerouslySetInnerHTML={{
+                      __html: `
                       .tours-menu-scrollbar::-webkit-scrollbar {
                         width: 4px;
                       }
@@ -222,32 +224,50 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                     <div className="flex flex-col gap-y-1.5">
                       {TOUR_MENU_DATA.map((item) => {
                         if (item.isParent) {
+                          const isExpanded = !!expandedParents[item.key];
                           return (
                             <div key={item.key} className="flex flex-col mt-1.5">
-                              <span 
-                                className="text-[15px] font-bold text-neutral-800 py-1.5 tracking-wide cursor-default transition-colors hover:text-[#fa7301]"
-                                style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
-                                onMouseEnter={() => setHoveredTourKey(item.key)}
-                              >
-                                {item.name}
-                              </span>
-                              <div className="flex flex-col pl-4 border-l border-neutral-100 gap-y-1 ml-1.5 mt-0.5">
-                                {item.children?.map((child) => (
-                                  <a
-                                    key={child.key}
-                                    href={child.href}
-                                    className={`text-[14px] py-1 font-semibold transition-colors duration-200 ${
-                                      hoveredTourKey === child.key 
-                                        ? "text-[#fa7301]" 
-                                        : "text-neutral-600 hover:text-[#fa7301]"
-                                    }`}
-                                    style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
-                                    onMouseEnter={() => setHoveredTourKey(child.key)}
+                              <div className="flex items-center justify-between">
+                                <span
+                                  className="text-[15px] font-bold text-neutral-800 py-1.5 tracking-wide cursor-default transition-colors hover:text-[#fa7301] flex-1"
+                                  style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
+                                  onMouseEnter={() => setHoveredTourKey(item.key)}
+                                >
+                                  {item.name}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => setExpandedParents((prev) => ({ ...prev, [item.key]: !prev[item.key] }))}
+                                  className="p-1 rounded-md hover:bg-neutral-100 transition-colors flex-shrink-0 ml-2"
+                                  aria-label={isExpanded ? "Collapse" : "Expand"}
+                                >
+                                  <svg
+                                    className={`w-4 h-4 text-neutral-500 transition-transform duration-200 ${isExpanded ? "rotate-90" : ""}`}
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
                                   >
-                                    {child.name}
-                                  </a>
-                                ))}
+                                    <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                                  </svg>
+                                </button>
                               </div>
+                              {isExpanded && (
+                                <div className="flex flex-col pl-4 border-l border-neutral-100 gap-y-1 ml-1.5 mt-0.5">
+                                  {item.children?.map((child) => (
+                                    <a
+                                      key={child.key}
+                                      href={child.href}
+                                      className={`text-[14px] py-1 font-semibold transition-colors duration-200 ${hoveredTourKey === child.key
+                                          ? "text-[#fa7301]"
+                                          : "text-neutral-600 hover:text-[#fa7301]"
+                                        }`}
+                                      style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
+                                      onMouseEnter={() => setHoveredTourKey(child.key)}
+                                    >
+                                      {child.name}
+                                    </a>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           );
                         }
@@ -256,11 +276,10 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                           <a
                             key={item.key}
                             href={item.href}
-                            className={`text-[15px] py-1.5 font-bold transition-colors duration-200 ${
-                              hoveredTourKey === item.key 
-                                ? "text-[#fa7301]" 
+                            className={`text-[15px] py-1.5 font-bold transition-colors duration-200 ${hoveredTourKey === item.key
+                                ? "text-[#fa7301]"
                                 : "text-neutral-800 hover:text-[#fa7301]"
-                            }`}
+                              }`}
                             style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
                             onMouseEnter={() => setHoveredTourKey(item.key)}
                           >
@@ -276,17 +295,17 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                     {FEATURED_IMAGES.map((imgConfig, idx) => {
                       const tourImages = TOUR_IMAGES_MAP[hoveredTourKey] || [];
                       const imgSrc = tourImages[idx] || imgConfig.img;
-                      
+
                       return (
                         <div key={idx} className={`${imgConfig.className} rounded-2xl overflow-hidden relative group/img shadow-md`}>
-                          <img 
-                            src={imgSrc} 
+                          <img
+                            src={imgSrc}
                             onError={(e) => {
                               // If backend is not active or the image fails to load, fallback to standard static image
                               (e.target as HTMLImageElement).src = imgConfig.img;
                             }}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" 
-                            alt="" 
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110"
+                            alt=""
                           />
                           <div className="absolute inset-0 bg-black/10"></div>
                         </div>
@@ -303,21 +322,19 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
         <div className={`hidden md:flex items-center gap-4 justify-self-end ${isTransparent ? "text-white" : "text-neutral-800"}`}>
           <a
             href="/"
-            className={`rounded-md px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${
-              isTransparent ? "bg-[#fa7301]/90 text-white hover:bg-[#fa7301]" : "bg-[#fa7301] text-white hover:bg-[#0b2e4e]"
-            }`}
+            className={`rounded-md px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#fa7301]/90 text-white hover:bg-[#fa7301]" : "bg-[#fa7301] text-white hover:bg-[#0b2e4e]"
+              }`}
           >
             Payments
           </a>
           <a
             href="/blog"
-            className={`rounded-md px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${
-              isTransparent ? "bg-[#0b2e4e]/90 text-white hover:bg-[#0b2e4e]" : "bg-[#0b2e4e] text-white hover:bg-[#08223a]"
-            }`}
+            className={`rounded-md px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#0b2e4e]/90 text-white hover:bg-[#0b2e4e]" : "bg-[#0b2e4e] text-white hover:bg-[#08223a]"
+              }`}
           >
             Blogs
           </a>
-          
+
           <div className="flex items-center gap-4 border-l border-current pl-4 ml-1 opacity-90">
             <LangDropdown />
             <CurrencyDropdown />
@@ -348,11 +365,10 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
   );
 
   if (isHomePage) {
-    const homeHeaderClasses = `fixed top-0 inset-x-0 z-40 transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${
-      isHeroTransparent
+    const homeHeaderClasses = `fixed top-0 inset-x-0 z-40 transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${isHeroTransparent
         ? "bg-transparent backdrop-blur-0 shadow-none border-b border-transparent"
         : "bg-white backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] border-b border-neutral-200"
-    }`;
+      }`;
 
     return (
       <header className={`${homeHeaderClasses}`}>

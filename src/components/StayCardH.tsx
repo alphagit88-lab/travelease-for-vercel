@@ -122,9 +122,9 @@ const StayCardH: FC<StayCardHProps> = ({
           <span className="text-base font-semibold text-secondary-500">
             {price}
             {` `}
-            <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
+            {/* <span className="text-sm text-neutral-500 dark:text-neutral-400 font-normal">
               /night
-            </span>
+            </span> */}
           </span>
         </div>
       </div>

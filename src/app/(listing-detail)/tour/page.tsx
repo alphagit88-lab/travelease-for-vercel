@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Squares2X2Icon, CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { Squares2X2Icon, CheckCircleIcon, XCircleIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { PHOTOS } from "../tours/constant";
@@ -104,8 +104,8 @@ const ListingStayDetailPage = () => {
           <p className="text-neutral-500 mb-6">
             We are unable to load the tour details at this time. Please make sure the backend server is running and the tour exists.
           </p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="bg-[#fa7301] hover:bg-[#e66a01] text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-md hover:shadow-lg"
           >
             Retry
@@ -226,12 +226,23 @@ const ListingStayDetailPage = () => {
         ))}
         <div className="grid grid-cols-3 gap-2">
           {[
-            { label: "Adults", key: "adults" },
-            { label: "Children", key: "children" },
-            { label: "Infants", key: "infants" },
-          ].map(({ label, key }) => (
+            { label: "Adults", key: "adults", tooltip: null },
+            { label: "Children", key: "children", tooltip: "Age below 11.99 years" },
+            { label: "Infants", key: "infants", tooltip: "Age below 1.99 years" },
+          ].map(({ label, key, tooltip }) => (
             <div key={key}>
-              <label className="block text-xs font-semibold text-neutral-500 mb-1 uppercase tracking-wide">{label}</label>
+              <div className="flex items-center gap-1 mb-1">
+                <label className="block text-xs font-semibold text-neutral-500 uppercase tracking-wide">{label}</label>
+                {tooltip && (
+                  <div className="relative group">
+                    <QuestionMarkCircleIcon className="w-3.5 h-3.5 text-neutral-400 cursor-help flex-shrink-0" />
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-40 bg-[#0b2e4e] text-white text-xs rounded-lg px-2.5 py-1.5 shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50 text-center">
+                      {tooltip}
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b2e4e]" />
+                    </div>
+                  </div>
+                )}
+              </div>
               <input type="number" min="0" className="w-full border border-neutral-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b2e4e]" value={(form as any)[key]} onChange={(e) => setForm({ ...form, [key]: e.target.value })} />
             </div>
           ))}
@@ -299,7 +310,7 @@ const ListingStayDetailPage = () => {
         <div className="mt-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-neutral-900">{tour.title}</h1>
           <p className="mt-2 text-neutral-500 flex items-center gap-2 text-sm">
-            <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
             {tour.address || "Sri Lanka"} · {tour.duration}
           </p>
         </div>
@@ -319,7 +330,7 @@ const ListingStayDetailPage = () => {
                   {para}
                 </p>
               ))}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
+              {/* <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
                 {[
                   { label: "Duration", value: tour.duration },
                   { label: "Destination", value: tour.address?.split(",")[0]?.trim() || "Sri Lanka" },
@@ -333,7 +344,7 @@ const ListingStayDetailPage = () => {
                     <p className="font-semibold mt-1 text-neutral-800 text-sm">{item.value}</p>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
 
             {/* ── HIGHLIGHTS (always visible) ── */}
@@ -354,14 +365,14 @@ const ListingStayDetailPage = () => {
             <div>
               <h2 className="text-2xl font-semibold text-neutral-800 mb-4">Tour Duration</h2>
               <div className="w-12 h-1 bg-[#fa7301] mb-6 rounded-full" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-3 max-w-[400px]">
                 {[
                   { label: "Total Duration", value: tour.duration },
                   { label: "Travel Days", value: `${itinerary.length} Days` },
-                  { label: "Leisure Days", value: "1 Day" },
-                  { label: "Estimated km", value: "~1,200 km" },
-                  { label: "First Day Activity", value: itinerary[0]?.title || "Arrival" },
-                  { label: "Last Day Activity", value: itinerary[itinerary.length - 1]?.title || "Departure" },
+                  // { label: "Leisure Days", value: "1 Day" },
+                  // { label: "Estimated km", value: "~1,200 km" },
+                  // { label: "First Day Activity", value: itinerary[0]?.title || "Arrival" },
+                  // { label: "Last Day Activity", value: itinerary[itinerary.length - 1]?.title || "Departure" },
                 ].map((item) => (
                   <div key={item.label} className="flex justify-between border-b border-neutral-100 pb-3">
                     <span className="text-neutral-500 text-sm">{item.label}</span>
@@ -432,11 +443,10 @@ const ListingStayDetailPage = () => {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`pb-3 px-3 text-sm font-medium transition-colors border-b-2 -mb-px ${
-                      activeTab === tab
-                        ? "border-[#fa7301] text-[#fa7301]"
-                        : "border-transparent text-neutral-500 hover:text-neutral-800"
-                    }`}
+                    className={`pb-3 px-3 text-sm font-medium transition-colors border-b-2 -mb-px ${activeTab === tab
+                      ? "border-[#fa7301] text-[#fa7301]"
+                      : "border-transparent text-neutral-500 hover:text-neutral-800"
+                      }`}
                   >
                     {tab}
                   </button>
