@@ -22,7 +22,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       {/* Fallback/Background Video (only visible if no slider images or as base) */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         <video
-          className="absolute left-1/2 top-1/2 h-full w-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover opacity-80"
+          className="absolute left-1/2 top-1/2 h-full w-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover opacity-90"
           src="/hero-bg.mp4"
           autoPlay
           loop
@@ -43,7 +43,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       />
 
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 z-[5] bg-black/40 pointer-events-none" />
+      <div className="absolute inset-0 z-[5] bg-black/10 pointer-events-none" />
 
       {/* Main card that matches the design composition */}
       <div className="relative z-10 h-full w-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-[10%]">

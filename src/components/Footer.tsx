@@ -15,16 +15,19 @@ const contactCards = [
   {
     title: "Email",
     value: "info@traveleaseholidays.com",
+    href: "mailto:info@traveleaseholidays.com",
     icon: EnvelopeIcon,
   },
   {
     title: "Contact",
     value: "+94 11 2695454",
+    href: "tel:+94112695454",
     icon: PhoneIcon,
   },
   {
     title: "WhatsApp",
     value: "+94 777347542",
+    href: "https://wa.me/94777347542",
     icon: ChatBubbleLeftRightIcon,
   },
 ];
@@ -57,9 +60,12 @@ const Footer: React.FC = () => {
             const Icon = item.icon;
 
             return (
-              <div
+              <a
                 key={item.title}
-                className={`flex items-start gap-4 p-4 lg:p-6 ${
+                href={item.href}
+                target={item.title === "WhatsApp" ? "_blank" : undefined}
+                rel={item.title === "WhatsApp" ? "noopener noreferrer" : undefined}
+                className={`flex items-start gap-4 p-4 lg:p-6 transition-colors hover:bg-white/5 rounded-[20px] ${
                   index < contactCards.length - 1 ? "lg:border-r lg:border-white/10" : ""
                 }`}
               >
@@ -70,7 +76,7 @@ const Footer: React.FC = () => {
                   <h3 className="text-sm font-semibold text-white">{item.title}</h3>
                   <p className="mt-1 text-sm leading-6 text-slate-200">{item.value}</p>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>

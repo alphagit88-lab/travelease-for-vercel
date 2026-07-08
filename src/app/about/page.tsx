@@ -17,9 +17,9 @@ export default function PageAbout() {
           <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-playfair), serif" }}>
             About <span className="text-[#fa7301]">Us</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
+          {/* <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
             This page follows the same visual direction of the Contact Us page and now displays the full company story.
-          </p>
+          </p> */}
         </div>
       </section>
 
@@ -65,9 +65,9 @@ export default function PageAbout() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               {/* Left column - Image */}
               <div>
-                <img 
-                  src="/images/sec-sd5.png" 
-                  alt="Traveler on train" 
+                <img
+                  src="/images/sec-sd5.png"
+                  alt="Traveler on train"
                   className="w-full rounded-3xl object-cover h-auto"
                   style={{ minHeight: "400px" }}
                 />
@@ -138,9 +138,9 @@ export default function PageAbout() {
               <h3 className="text-2xl font-semibold text-[#1581a7] sm:text-3xl" style={{ fontFamily: "__Poppins_002541,__Poppins_Fallback_002541" }}>
                 Continue to the contact page
               </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
+              {/* <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
                 When your visitors finish reading about the brand, they can move directly to the enquiry page.
-              </p>
+              </p> */}
             </div>
             <div className="flex flex-wrap items-center gap-4">
               <ButtonPrimary href="/contact" className="bg-[#fa7301] hover:bg-[#0b2e4e]">

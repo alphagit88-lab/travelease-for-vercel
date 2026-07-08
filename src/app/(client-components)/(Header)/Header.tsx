@@ -149,17 +149,17 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
 
   const renderMainHeaderRow = (isTransparent: boolean) => (
     <div className="relative h-[88px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      <div className="grid h-full w-full grid-cols-[auto,1fr,auto] items-center gap-6">
+      <div className="font-poppins grid h-full w-full grid-cols-[auto,1fr,auto] items-center gap-6">
         <Logo
           img={isTransparent ? logoLightImg : logoImg}
           className={`${isTransparent ? "w-36 lg:w-48" : "w-28 lg:w-32"} flex-shrink-0 transition-all duration-300`}
         />
         <nav className="hidden lg:flex items-center justify-center gap-8 justify-self-center">
-          <a href="/" className={`text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>Home</a>
-          <a href="/about" className={`text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>About Us</a>
+          <a href="/" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>Home</a>
+          <a href="/about" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>About Us</a>
 
           <div className="relative group">
-            <a href="/services" className={`flex items-center gap-1 text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>
+            <a href="/services" className={`flex items-center gap-1 text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>
               Services
               <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
             </a>
@@ -168,10 +168,10 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                 <div className="grid grid-cols-[1fr_auto] gap-8">
                   {/* CORE SERVICES */}
                   <div>
-                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6" style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>Our Core Services</h3>
+                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6">Our Core Services</h3>
                     <div className="flex flex-col gap-y-4">
                       {CORE_SERVICES.map((item) => (
-                        <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors" style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>{item.name}</a>
+                        <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors">{item.name}</a>
                       ))}
                     </div>
                   </div>
@@ -191,7 +191,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
           </div>
 
           <div className="relative group">
-            <a href="/tours" className={`flex items-center gap-1 text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>
+            <a href="/tours" className={`flex items-center gap-1 text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>
               Tours
               <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
             </a>
@@ -220,7 +220,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                         scrollbar-color: #e5e7eb transparent;
                       }
                     `}} />
-                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-4" style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>Our Featured Tours</h3>
+                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-4">Our Featured Tours</h3>
                     <div className="flex flex-col gap-y-1.5">
                       {TOUR_MENU_DATA.map((item) => {
                         if (item.isParent) {
@@ -230,7 +230,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                               <div className="flex items-center justify-between">
                                 <span
                                   className="text-[15px] font-bold text-neutral-800 py-1.5 tracking-wide cursor-default transition-colors hover:text-[#fa7301] flex-1"
-                                  style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
+
                                   onMouseEnter={() => setHoveredTourKey(item.key)}
                                 >
                                   {item.name}
@@ -257,10 +257,10 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                                       key={child.key}
                                       href={child.href}
                                       className={`text-[14px] py-1 font-semibold transition-colors duration-200 ${hoveredTourKey === child.key
-                                          ? "text-[#fa7301]"
-                                          : "text-neutral-600 hover:text-[#fa7301]"
+                                        ? "text-[#fa7301]"
+                                        : "text-neutral-600 hover:text-[#fa7301]"
                                         }`}
-                                      style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
+
                                       onMouseEnter={() => setHoveredTourKey(child.key)}
                                     >
                                       {child.name}
@@ -277,10 +277,10 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
                             key={item.key}
                             href={item.href}
                             className={`text-[15px] py-1.5 font-bold transition-colors duration-200 ${hoveredTourKey === item.key
-                                ? "text-[#fa7301]"
-                                : "text-neutral-800 hover:text-[#fa7301]"
+                              ? "text-[#fa7301]"
+                              : "text-neutral-800 hover:text-[#fa7301]"
                               }`}
-                            style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}
+
                             onMouseEnter={() => setHoveredTourKey(item.key)}
                           >
                             {item.name}
@@ -317,7 +317,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
             </div>
           </div>
 
-          <a href="/contact" className={`text-[15px] font-semibold tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`} style={{ fontFamily: "__Poppins_002541, __Poppins_Fallback_002541, sans-serif" }}>Contact Us</a>
+          <a href="/contact" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>Contact Us</a>
         </nav>
         <div className={`hidden md:flex items-center gap-4 justify-self-end ${isTransparent ? "text-white" : "text-neutral-800"}`}>
           <a
@@ -366,8 +366,8 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
 
   if (isHomePage) {
     const homeHeaderClasses = `fixed top-0 inset-x-0 z-40 transition-[background-color,backdrop-filter,box-shadow] duration-300 ease-out ${isHeroTransparent
-        ? "bg-transparent backdrop-blur-0 shadow-none border-b border-transparent"
-        : "bg-white backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] border-b border-neutral-200"
+      ? "bg-transparent backdrop-blur-0 shadow-none border-b border-transparent"
+      : "bg-white backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] border-b border-neutral-200"
       }`;
 
     return (

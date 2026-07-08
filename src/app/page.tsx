@@ -148,42 +148,48 @@ function PageHome() {
       {/* <SectionMoodboardContent /> */}
       <SectionPopularTours />
 
-      <div className="container relative py-24 lg:py-28">
-        <SectionSliderNewCategories
-          categories={SERVICES_CATEGORIES}
-          heading="Our Services"
-          subHeading="From luxury stays to seamless transfers, we handle every detail of your journey."
-          categoryCardType="card5"
-          itemPerRow={5}
-        />
+      <div className="w-full bg-white text-[#0b2e4e] [&_.text-white]:!text-[#0b2e4e]">
+        <div className="container relative py-24 lg:py-28">
+          <SectionSliderNewCategories
+            categories={SERVICES_CATEGORIES}
+            heading="Our Services"
+            subHeading="From luxury stays to seamless transfers, we handle every detail of your journey."
+            categoryCardType="card5"
+            itemPerRow={5}
+          />
+        </div>
       </div>
 
       <SectionScrollReveal />
 
-      <div className="container relative space-y-24 pb-12 lg:space-y-28 lg:pb-16 mt-24">
-        {/* NEW TOUR PACKAGES SECTION */}
-        <div className="relative">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-semibold">Featured Tour Packages</h2>
-              <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-400">
-                Hand-picked destinations and tailored experiences just for you.
-              </span>
+      <div className="w-full bg-white text-[#0b2e4e] [&_.text-white]:!text-[#0b2e4e]">
+        <div className="container relative py-24 lg:py-28">
+          {/* NEW TOUR PACKAGES SECTION */}
+          <div className="relative">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16">
+              <div className="max-w-2xl">
+                <h2 className="text-3xl md:text-4xl font-semibold">Featured Tour Packages</h2>
+                <span className="mt-2 md:mt-3 font-normal block text-base sm:text-xl text-neutral-400">
+                  Hand-picked destinations and tailored experiences just for you.
+                </span>
+              </div>
+              <a
+                href="/listing-stay-map"
+                className="mt-6 md:mt-0 flex items-center text-[#fa7301] font-semibold hover:underline"
+              >
+                View all packages
+                <svg className="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none">
+                  <path d="M14.4301 5.92993L20.5001 11.9999L14.4301 18.0699" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M3.5 12H20.33" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
             </div>
-            <a 
-              href="/listing-stay-map" 
-              className="mt-6 md:mt-0 flex items-center text-[#fa7301] font-semibold hover:underline"
-            >
-              View all packages
-              <svg className="ml-2 w-5 h-5" viewBox="0 0 24 24" fill="none">
-                <path d="M14.4301 5.92993L20.5001 11.9999L14.4301 18.0699" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M3.5 12H20.33" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
+            <FeaturedToursSection />
           </div>
-          <FeaturedToursSection />
         </div>
+      </div>
 
+      <div className="container relative space-y-24 pb-12 pt-24 lg:space-y-28 lg:pb-16 lg:pt-28">
         <SectionReviews />
         <SectionGallery />
       </div>
@@ -193,12 +199,12 @@ function PageHome() {
       </div>
 
       {/* Full-width banner image */}
-      <div className="w-full overflow-hidden" style={{ maxHeight: "420px" }}>
+      <div className="w-full overflow-hidden" style={{ maxHeight: "520px" }}>
         <img
-          src="/banner-fullwidth.png"
+          src="/banner-fullwidth2.png"
           alt="Discover Sri Lanka"
           className="w-full h-full object-cover object-center"
-          style={{ maxHeight: "420px" }}
+          style={{ maxHeight: "520px" }}
         />
       </div>
     </main>

@@ -47,7 +47,7 @@ const SectionScrollReveal = () => {
             className="absolute inset-0 z-10"
           >
             <img
-              src="/chance-revealN.gif"
+              src="/collection1.gif"
               alt="Sri Lanka Experience"
               className="w-full h-full object-cover"
             />
@@ -63,7 +63,7 @@ const SectionScrollReveal = () => {
             <span className="text-[#fa7301] font-bold tracking-[0.3em] uppercase mb-4 text-sm sm:text-base">
               The Journey Begins Here
             </span>
-            <h2 className="text-4xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.1]" style={{ fontFamily: "var(--font-playfair), serif" }}>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-[1.1]" style={{ fontFamily: "var(--font-playfair), serif" }}>
               UNFORGETTABLE <br /> <span className="text-white/80 italic font-serif">EXPERIENCES</span>
             </h2>
             <div className="w-24 h-1 bg-[#fa7301] mb-8" />

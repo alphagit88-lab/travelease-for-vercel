@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import SiteHeader from "./(client-components)/(Header)/SiteHeader";
 import Footer from "@/components/Footer";
 import FooterNav from "@/components/FooterNav";
+import UnderConstructionGuard from "@/components/UnderConstructionGuard";
 
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <>
+    <UnderConstructionGuard>
       <SiteHeader />
       {children}
       <FooterNav />
@@ -81,6 +82,6 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
           )}
         </button>
       </div>
-    </>
+    </UnderConstructionGuard>
   );
 }

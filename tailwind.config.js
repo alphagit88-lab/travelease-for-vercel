@@ -27,6 +27,9 @@ module.exports = {
     },
 
     extend: {
+      fontFamily: {
+        poppins: ["var(--font-poppins)", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         primary: {
           50: customColors("--c-primary-50"),

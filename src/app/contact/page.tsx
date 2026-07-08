@@ -46,10 +46,10 @@ export default function PageContact() {
           >
             Contact <span className="text-[#fa7301]">Travel Ease Holidays</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
+          {/* <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
             Reach out for trip enquiries, custom itineraries, booking support, or any question about your next travel
             experience with TravelEase.
-          </p>
+          </p> */}
         </div>
       </section>
 

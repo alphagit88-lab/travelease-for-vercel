@@ -315,6 +315,16 @@ const ListingStayDetailPage = () => {
           </p>
         </div>
 
+        {/* ── PRICING NOTE ── */}
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#fa7301]/30 bg-[#fa7301]/5 px-4 py-1.5">
+          <svg className="w-3.5 h-3.5 flex-shrink-0 text-[#fa7301]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span className="text-xs font-semibold text-[#fa7301] tracking-wide uppercase">Price per person</span>
+          <span className="text-neutral-300 text-xs">·</span>
+          <span className="text-xs text-neutral-500 font-medium">Based on twin / double sharing</span>
+        </div>
+
         {/* ── MAIN LAYOUT ── */}
         <div className="mt-10 flex flex-col lg:flex-row gap-10 xl:gap-16">
 
@@ -347,20 +357,6 @@ const ListingStayDetailPage = () => {
               </div> */}
             </div>
 
-            {/* ── HIGHLIGHTS (always visible) ── */}
-            <div>
-              <h2 className="text-2xl font-semibold text-neutral-800 mb-4">Tour Highlights</h2>
-              <div className="w-12 h-1 bg-[#fa7301] mb-6 rounded-full" />
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {highlights.map((item: string, i: number) => (
-                  <li key={i} className="flex items-start gap-3 text-neutral-700">
-                    <span className="w-2 h-2 rounded-full bg-[#fa7301] flex-shrink-0 mt-2" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* ── DURATION (always visible) ── */}
             <div>
               <h2 className="text-2xl font-semibold text-neutral-800 mb-4">Tour Duration</h2>
@@ -382,8 +378,22 @@ const ListingStayDetailPage = () => {
               </div>
             </div>
 
-            {/* ── TOUR PRICE ── */}
+            {/* ── HIGHLIGHTS (always visible) ── */}
             <div>
+              <h2 className="text-2xl font-semibold text-neutral-800 mb-4">Tour Highlights</h2>
+              <div className="w-12 h-1 bg-[#fa7301] mb-6 rounded-full" />
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {highlights.map((item: string, i: number) => (
+                  <li key={i} className="flex items-start gap-3 text-neutral-700">
+                    <span className="w-2 h-2 rounded-full bg-[#fa7301] flex-shrink-0 mt-2" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* ── TOUR PRICE ── */}
+            {/* <div>
               <h2 className="text-2xl font-semibold text-neutral-800 mb-4">Tour Price</h2>
               <div className="w-12 h-1 bg-[#fa7301] mb-6 rounded-full" />
               {hasDetailedPricing ? (
@@ -433,7 +443,7 @@ const ListingStayDetailPage = () => {
                   </ul>
                 </div>
               )}
-            </div>
+            </div> */}
 
             {/* ── TABBED SECTIONS (detail-heavy) ── */}
             <div>

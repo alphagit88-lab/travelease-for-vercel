@@ -56,14 +56,14 @@ const SectionGallery: FC = () => {
   if (images.length === 0) return null;
 
   return (
-    <section 
-      className="relative w-[100vw] ml-[calc(50%-50vw)] py-16 overflow-hidden bg-fixed bg-center bg-cover"
+    <section
+      className="relative w-[calc(100vw-10px)] ml-[calc(50%-50vw)] py-16 overflow-hidden bg-fixed bg-center bg-cover"
       style={{
         backgroundImage: "url('/banner-fullwidth.png')"
       }}
     >
       <div className="absolute inset-0 bg-[#0b2e4e]/80 z-0"></div>
-      
+
       <style>{`
         .gallery-carousel {
           --slide-width: 95vw;
@@ -141,7 +141,7 @@ const SectionGallery: FC = () => {
         </AnimatePresence>
 
         {/* Navigation Arrows inside the main image's boundaries */}
-        <div 
+        <div
           className="absolute inset-y-0 z-20 pointer-events-none flex items-center justify-start pl-4 md:pl-8"
           style={{ left: "calc(50% - (var(--slide-width) / 2))" }}
         >
@@ -153,8 +153,8 @@ const SectionGallery: FC = () => {
             <ChevronLeftIcon className="w-5 h-5 md:w-8 md:h-8" />
           </button>
         </div>
-        
-        <div 
+
+        <div
           className="absolute inset-y-0 z-20 pointer-events-none flex items-center justify-end pr-4 md:pr-8"
           style={{ right: "calc(50% - (var(--slide-width) / 2))" }}
         >
