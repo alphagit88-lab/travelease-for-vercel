@@ -158,37 +158,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
           <a href="/" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>Home</a>
           <a href="/about" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>About Us</a>
 
-          <div className="relative group">
-            <a href="/services" className={`flex items-center gap-1 text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>
-              Services
-              <svg className="w-3.5 h-3.5 opacity-70" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" /></svg>
-            </a>
-            <div className="absolute left-1/2 -translate-x-1/2 top-full pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top -translate-y-2 group-hover:translate-y-0 z-50">
-              <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 w-[95vw] max-w-3xl">
-                <div className="grid grid-cols-[1fr_auto] gap-8">
-                  {/* CORE SERVICES */}
-                  <div>
-                    <h3 className="text-[12px] font-bold text-neutral-400 uppercase tracking-widest mb-6">Our Core Services</h3>
-                    <div className="flex flex-col gap-y-4">
-                      {CORE_SERVICES.map((item) => (
-                        <a key={item.name} href={item.href} className="text-[15px] font-bold text-neutral-800 hover:text-[#fa7301] transition-colors">{item.name}</a>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* IMAGES */}
-                  <div className="flex gap-4">
-                    {FEATURED_IMAGES.map((item, idx) => (
-                      <div key={idx} className={`${item.className} rounded-2xl overflow-hidden relative group/img shadow-md`}>
-                        <img src={item.img} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-110" alt="" />
-                        <div className="absolute inset-0 bg-black/10"></div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="/services" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>Services</a>
 
           <div className="relative group">
             <a href="/tours" className={`flex items-center gap-1 text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>

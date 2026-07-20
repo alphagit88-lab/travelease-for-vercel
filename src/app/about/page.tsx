@@ -25,7 +25,7 @@ export default function PageAbout() {
 
       {/* Content section */}
       <section className="container mx-auto px-4 relative z-10 -mt-10 pb-20 lg:-mt-16 lg:pb-24">
-        <div className="rounded-[34px] bg-white/70 backdrop-blur-md p-6 shadow-[0_30px_90px_rgba(15,23,42,0.12)] sm:p-8 lg:p-10">
+        <div className="rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.12)] sm:p-8 lg:p-10">
           <h2 className="text-3xl font-semibold text-[#1581a7] mb-4" style={{ fontFamily: "__Poppins_002541,__Poppins_Fallback_002541" }}>
             Welcome to Travel Ease Holidays
           </h2>

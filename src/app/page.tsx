@@ -194,8 +194,10 @@ function PageHome() {
         <SectionGallery />
       </div>
 
-      <div className="container relative space-y-24 pb-24 lg:space-y-28 lg:pb-28 mt-12">
-        <SectionSriLankaMap />
+      <div className="w-full bg-white text-[#0b2e4e] [&_.text-white]:!text-[#0b2e4e]">
+        <div className="container relative py-24 lg:py-28">
+          <SectionSriLankaMap />
+        </div>
       </div>
 
       {/* Full-width banner image */}

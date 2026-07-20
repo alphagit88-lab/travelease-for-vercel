@@ -14,7 +14,7 @@ const SectionSriLankaMap = () => {
     <section>
       <div className="mb-8">
         <h2 className="text-3xl md:text-4xl font-semibold text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>Sri Lankan Map with Attractions</h2>
-        <p className="mt-2 text-sm text-slate-300">Discover key destinations and popular experiences across the island.</p>
+        <p className="mt-2 text-sm text-slate-500">Discover key destinations and popular experiences across the island.</p>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-700">
