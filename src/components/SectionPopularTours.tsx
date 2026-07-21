@@ -52,8 +52,8 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
       className={`relative overflow-hidden ${className}`}
       style={{
         backgroundImage: "url('/sec-3.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -64,7 +64,7 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
         }}
       />
       <div className="relative z-10 mx-auto w-full max-w-[1060px] px-6 sm:px-8 lg:px-10 py-12 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-16 items-end">
           <div>
             <h2
               className="uppercase text-white leading-[0.9] font-medium text-[2.6rem] sm:text-[3.2rem]"
@@ -74,16 +74,40 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
               <br />
               TOURS
             </h2>
+
+            {/* Tabs for mobile (before image) */}
+            <div className="block lg:hidden mt-6 border-b border-white/20 pb-3">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                {REGIONS.map((region) => {
+                  const isActive = region === activeRegion;
+                  return (
+                    <button
+                      key={region}
+                      onClick={() => setActiveRegion(region)}
+                      className={`relative pb-1 text-sm font-medium transition-colors ${isActive ? "text-[#D89A2D]" : "text-white hover:text-[#D89A2D]"
+                        }`}
+                    >
+                      {region}
+                      {isActive && (
+                        <span className="absolute left-0 right-0 -bottom-[13px] h-[2px] bg-[#D89A2D]" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <img
               src={activeTour.image}
               alt={activeTour.title}
-              className="mt-8 sm:mt-10 w-full max-w-[530px] rounded-2xl shadow-2xl object-cover aspect-[4/3]"
+              className="mt-6 lg:mt-10 w-full max-w-[530px] rounded-2xl shadow-2xl object-cover aspect-[4/3]"
             />
           </div>
 
           <div className="pb-2">
-            <div className="border-b border-white/20">
-              <div className="flex items-center gap-8 sm:gap-12">
+            {/* Tabs for desktop */}
+            <div className="hidden lg:block border-b border-white/20">
+              <div className="flex flex-wrap items-center gap-8 sm:gap-12">
                 {REGIONS.map((region) => {
                   const isActive = region === activeRegion;
                   return (
@@ -103,7 +127,7 @@ const SectionPopularTours: FC<SectionPopularToursProps> = ({ className = "" }) =
               </div>
             </div>
 
-            <h3 className="mt-8 text-white text-[33px] leading-none font-medium" style={{ fontFamily: "var(--font-playfair), serif" }}>
+            <h3 className="mt-3 lg:mt-8 text-white text-[26px] sm:text-[33px] leading-none font-medium" style={{ fontFamily: "var(--font-playfair), serif" }}>
               {activeTour.title}
             </h3>
 

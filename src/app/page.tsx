@@ -189,10 +189,11 @@ function PageHome() {
         </div>
       </div>
 
-      <div className="container relative space-y-24 pb-12 pt-24 lg:space-y-28 lg:pb-16 lg:pt-28">
+      <div className="container relative pb-12 pt-24 lg:pb-16 lg:pt-28">
         <SectionReviews />
-        <SectionGallery />
       </div>
+
+      <SectionGallery />
 
       <div className="w-full bg-white text-[#0b2e4e] [&_.text-white]:!text-[#0b2e4e]">
         <div className="container relative py-24 lg:py-28">

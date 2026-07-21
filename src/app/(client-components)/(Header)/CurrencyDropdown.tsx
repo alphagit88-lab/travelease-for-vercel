@@ -4,7 +4,15 @@ import { Popover, Transition } from "@headlessui/react";
 import { BanknotesIcon, ArrowsRightLeftIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, useState, useEffect } from "react";
 
-const CurrencyDropdown: FC = () => {
+interface CurrencyDropdownProps {
+  className?: string;
+  panelClassName?: string;
+}
+
+const CurrencyDropdown: FC<CurrencyDropdownProps> = ({
+  className = "",
+  panelClassName = "absolute top-full z-50 w-screen max-w-[280px] px-4 mt-3 right-0 sm:px-0"
+}) => {
   const [rates, setRates] = useState<Record<string, number>>({
     USD: 1,
     EUR: 0.92,
@@ -36,8 +44,8 @@ const CurrencyDropdown: FC = () => {
   }, [amount, from, to, rates]);
 
   return (
-    <div className="CurrencyDropdown">
-      <Popover className="relative">
+    <div className={`CurrencyDropdown ${className}`}>
+      <Popover className="relative w-full flex flex-col items-center">
         {({ open }) => (
           <>
             <Popover.Button
@@ -58,7 +66,7 @@ const CurrencyDropdown: FC = () => {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute z-50 w-screen max-w-[280px] px-4 mt-3 right-0 sm:px-0">
+              <Popover.Panel className={panelClassName}>
                 <div className="overflow-hidden rounded-2xl shadow-xl ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 p-5">
                   <h3 className="text-sm font-bold text-neutral-800 dark:text-neutral-200 mb-4 border-b border-neutral-100 dark:border-neutral-700 pb-2 flex items-center gap-2">
                     <ArrowsRightLeftIcon className="w-4 h-4 text-[#fa7301]" />

@@ -56,12 +56,12 @@ export default function ToursPage() {
 
         <div className="container relative flex min-h-[320px] flex-col justify-center py-20 text-white lg:min-h-[360px]">
           <h1
-            className="text-4xl font-semibold sm:text-5xl lg:text-6xl"
+            className="text-4xl font-semibold sm:text-5xl lg:text-6xl text-center sm:text-left"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Our <span className="text-[#fa7301]">Tours</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base text-center sm:text-left mx-auto sm:mx-0">
             Explore our wide range of tailored tours, experiences, and holiday packages across Sri Lanka.
           </p>
         </div>

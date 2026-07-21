@@ -236,9 +236,13 @@ const ListingStayDetailPage = () => {
                 {tooltip && (
                   <div className="relative group">
                     <QuestionMarkCircleIcon className="w-3.5 h-3.5 text-neutral-400 cursor-help flex-shrink-0" />
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-40 bg-[#0b2e4e] text-white text-xs rounded-lg px-2.5 py-1.5 shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50 text-center">
+                    <div className={`absolute bottom-full mb-2 w-36 sm:w-40 bg-[#0b2e4e] text-white text-xs rounded-lg px-2.5 py-1.5 shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50 text-center ${
+                      key === "infants" ? "right-0 translate-x-0 sm:left-1/2 sm:right-auto sm:-translate-x-1/2" : "left-1/2 -translate-x-1/2"
+                    }`}>
                       {tooltip}
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[#0b2e4e]" />
+                      <div className={`absolute top-full border-4 border-transparent border-t-[#0b2e4e] ${
+                        key === "infants" ? "right-3 translate-x-0 sm:left-1/2 sm:right-auto sm:-translate-x-1/2" : "left-1/2 -translate-x-1/2"
+                      }`} />
                     </div>
                   </div>
                 )}

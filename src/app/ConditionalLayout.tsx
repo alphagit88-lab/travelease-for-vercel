@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import SiteHeader from "./(client-components)/(Header)/SiteHeader";
 import Footer from "@/components/Footer";
-import FooterNav from "@/components/FooterNav";
 import UnderConstructionGuard from "@/components/UnderConstructionGuard";
 
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
@@ -20,13 +19,12 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
     <UnderConstructionGuard>
       <SiteHeader />
       {children}
-      <FooterNav />
       <Footer />
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4 pointer-events-none">
         {/* Collapsible Icons */}
         <div
           className={`flex flex-col items-end gap-4 transition-all duration-300 overflow-visible ${
-            isOpen ? "opacity-100 mb-2" : "opacity-0 mb-0 pointer-events-none"
+            isOpen ? "opacity-100 mb-2 pointer-events-auto" : "opacity-0 mb-0 pointer-events-none"
           }`}
         >
           {/* WhatsApp CTA */}
@@ -68,7 +66,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
         {/* Toggle Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#fa7301] text-white shadow-[0_4px_20px_rgba(250,115,1,0.4)] transition-all hover:-translate-y-1 hover:scale-105"
+          className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#fa7301] text-white shadow-[0_4px_20px_rgba(250,115,1,0.4)] transition-all hover:-translate-y-1 hover:scale-105"
           aria-label={isOpen ? "Close contact options" : "Open contact options"}
         >
           {isOpen ? (

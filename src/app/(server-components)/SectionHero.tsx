@@ -14,10 +14,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
   const [endDate, setEndDate] = useState<Date | null>(null);
   return (
     <div
-      className={`nc-SectionHero relative w-full flex flex-col overflow-hidden ${className}`}
-      style={{
-        aspectRatio: "901 / 518",
-      }}
+      className={`nc-SectionHero relative w-full flex flex-col justify-center min-h-[520px] md:min-h-0 md:aspect-[901/518] overflow-hidden py-12 md:py-0 ${className}`}
     >
       {/* Fallback/Background Video (only visible if no slider images or as base) */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
@@ -33,7 +30,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
 
       {/* Frame and decorative hero background placed above the video */}
       <div
-        className="absolute inset-0 z-[4] pointer-events-none"
+        className="absolute inset-0 z-[4] pointer-events-none hidden md:block"
         style={{
           backgroundImage: "url('/hero-bgNN.png')",
           backgroundSize: "100% auto",
@@ -43,7 +40,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       />
 
       {/* Dark overlay to make text readable */}
-      <div className="absolute inset-0 z-[5] bg-black/10 pointer-events-none" />
+      <div className="absolute inset-0 z-[5] bg-black/30 md:bg-black/10 pointer-events-none" />
 
       {/* Main card that matches the design composition */}
       <div className="relative z-10 h-full w-full flex flex-col justify-center items-center px-4 sm:px-8 lg:px-[10%]">
@@ -53,10 +50,10 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-extrabold leading-[1] tracking-wide uppercase select-none drop-shadow-2xl"
+            className="font-extrabold leading-[1.1] md:leading-[1] tracking-wide uppercase select-none drop-shadow-2xl"
             style={{
               color: "#fa7301",
-              fontSize: "clamp(2rem, 4.5vw, 4.5rem)",
+              fontSize: "clamp(2.2rem, 5vw, 4.5rem)",
               fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif",
               textShadow: "0 4px 20px rgba(0,0,0,0.6)"
             }}
@@ -67,7 +64,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
           </motion.h1>
 
           <div
-            className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white text-sm font-medium tracking-wide"
+            className="mt-6 md:mt-12 flex flex-wrap items-center justify-center gap-x-4 md:gap-x-6 gap-y-2 text-white text-xs md:text-sm font-medium tracking-wide"
             style={{
               fontFamily: "__Poppins_002541,__Poppins_Fallback_002541, sans-serif",
               textShadow: "0 2px 10px rgba(0,0,0,0.8)"
@@ -81,20 +78,20 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
             ))}
           </div>
 
-          <div className="mt-8 lg:mt-[4.5%] w-full max-w-[720px]">
+          <div className="mt-6 md:mt-8 lg:mt-[4.5%] w-full max-w-[720px]">
             <div
-              className="p-2.5"
+              className="p-2 md:p-2.5 rounded-xl md:rounded-none"
               style={{ backgroundColor: "rgba(255, 255, 255, 0.2)", fontFamily: "__Poppins_002541,__Poppins_Fallback_002541, sans-serif" }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] items-stretch">
-                <div className="bg-white flex items-center px-4 h-[50px] md:h-[55px] border-b md:border-b-0 md:border-r border-neutral-200">
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] items-stretch gap-2 md:gap-0">
+                <div className="bg-white flex items-center px-4 h-[46px] md:h-[55px] border-b md:border-b-0 md:border-r border-neutral-200 rounded-lg md:rounded-none">
                   <input
                     type="text"
                     className="w-full bg-transparent border-none outline-none focus:ring-0 text-neutral-900 placeholder-neutral-500 font-medium text-[14px]"
                     placeholder="Tours"
                   />
                 </div>
-                <div className="bg-white flex items-center px-4 h-[50px] md:h-[55px] border-b md:border-b-0 md:border-r border-neutral-200 relative">
+                <div className="bg-white flex items-center px-4 h-[46px] md:h-[55px] border-b md:border-b-0 md:border-r border-neutral-200 relative rounded-lg md:rounded-none">
                   <DatePicker
                     selected={startDate}
                     onChange={(update) => {
@@ -110,9 +107,9 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
                     className="w-full bg-transparent border-none outline-none focus:ring-0 text-neutral-900 placeholder-neutral-500 font-medium text-[14px] cursor-pointer"
                   />
                 </div>
-                <div className="bg-[#0b2e4e]">
+                <div className="bg-[#0b2e4e] rounded-lg md:rounded-none overflow-hidden">
                   <button
-                    className="w-full md:min-w-[160px] h-full px-5 py-3 text-white text-[16px] font-bold transition-all hover:brightness-110 flex items-center justify-center gap-2"
+                    className="w-full md:min-w-[160px] h-[46px] md:h-full px-5 py-2.5 text-white text-[15px] md:text-[16px] font-bold transition-all hover:brightness-110 flex items-center justify-center gap-2"
                   >
                     Book now
                   </button>

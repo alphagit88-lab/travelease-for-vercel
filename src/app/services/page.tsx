@@ -61,10 +61,10 @@ export default function PageServices() {
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,40,57,0.35),rgba(6,40,57,0.8))]" />
         <div className="container relative flex min-h-[320px] flex-col justify-center py-20 text-white lg:min-h-[360px]">
-          <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl" style={{ fontFamily: "var(--font-playfair), serif" }}>
+          <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl text-center sm:text-left" style={{ fontFamily: "var(--font-playfair), serif" }}>
             Services
           </h1>
-          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base text-center sm:text-left mx-auto sm:mx-0">
             From tailor-made tours to seamless transfers, we handle every detail of your Sri Lankan adventure.
           </p>
         </div>

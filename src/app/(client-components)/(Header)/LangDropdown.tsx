@@ -24,7 +24,7 @@ interface LangDropdownProps {
 
 const LangDropdown: FC<LangDropdownProps> = ({
   className = "",
-  panelClassName = "z-50 w-screen max-w-[200px] px-4 mt-3 right-0 sm:px-0",
+  panelClassName = "absolute top-full z-50 w-screen max-w-[200px] px-4 mt-3 right-0 sm:px-0",
 }) => {
   const [activeLang, setActiveLang] = useState(languages[0]);
   
@@ -46,7 +46,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
       {/* Hidden Google Translate element needed for the API to work */}
       <div id="google_translate_element" className="hidden"></div>
       
-      <Popover className="relative">
+      <Popover className="relative w-full flex flex-col items-center">
         {({ open, close }) => (
           <>
             <Popover.Button
@@ -67,7 +67,7 @@ const LangDropdown: FC<LangDropdownProps> = ({
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className={`absolute ${panelClassName}`}>
+              <Popover.Panel className={panelClassName}>
                 <div className="overflow-hidden rounded-2xl shadow-xl ring-1 ring-black ring-opacity-5 bg-white dark:bg-neutral-800">
                   <div className="relative grid gap-1 p-3 max-h-[300px] overflow-y-auto custom-scrollbar">
                     {languages.map((item) => (

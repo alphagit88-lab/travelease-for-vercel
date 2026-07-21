@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import Logo from "@/shared/Logo";
 import logoLightImg from "@/images/logo-light.png";
 import logoImg from "@/images/logo.png";
@@ -20,6 +20,24 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
 
   const [hoveredTourKey, setHoveredTourKey] = useState<string>("beachfront-delights");
   const [expandedParents, setExpandedParents] = useState<Record<string, boolean>>({});
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Close mobile menu on route change
+  useEffect(() => { setIsMobileMenuOpen(false); }, [pathname]);
+
+  // Prevent body scroll when menu open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileMenuOpen]);
+
+  const mobileNavLinks = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Tours", href: "/listing-stay-map" },
+    { label: "Contact Us", href: "/contact" },
+  ];
 
   const TOUR_MENU_DATA = [
     { name: "Beachfront Delights", href: "/tour?s=beachfront-delights", key: "beachfront-delights" },
@@ -148,13 +166,13 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
   ];
 
   const renderMainHeaderRow = (isTransparent: boolean) => (
-    <div className="relative h-[88px] px-4 sm:px-6 lg:px-10 xl:px-16">
-      <div className="font-poppins grid h-full w-full grid-cols-[auto,1fr,auto] items-center gap-6">
+    <div className="relative h-[64px] lg:h-[88px] px-4 sm:px-6 lg:px-10 xl:px-16">
+      <div className="font-poppins grid h-full w-full grid-cols-2 lg:grid-cols-[auto,1fr,auto] items-center lg:gap-6">
         <Logo
           img={isTransparent ? logoLightImg : logoImg}
-          className={`${isTransparent ? "w-36 lg:w-48" : "w-28 lg:w-32"} flex-shrink-0 transition-all duration-300`}
+          className={`${isTransparent ? "w-24 sm:w-28 lg:w-36 xl:w-48" : "w-20 sm:w-24 lg:w-28 xl:w-32"} flex-shrink-0 transition-all duration-300`}
         />
-        <nav className="hidden lg:flex items-center justify-center gap-8 justify-self-center">
+        <nav className="hidden lg:flex items-center justify-center gap-4 xl:gap-8 justify-self-center">
           <a href="/" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>Home</a>
           <a href="/about" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>About Us</a>
 
@@ -289,51 +307,130 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
 
           <a href="/contact" className={`text-[15px] font-medium tracking-wide hover:text-[#fa7301] transition-colors ${isTransparent ? "text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.35)]" : "text-neutral-800"}`}>Contact Us</a>
         </nav>
-        <div className={`hidden md:flex items-center gap-4 justify-self-end ${isTransparent ? "text-white" : "text-neutral-800"}`}>
-          <a
-            href="/"
-            className={`rounded-md px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#fa7301]/90 text-white hover:bg-[#fa7301]" : "bg-[#fa7301] text-white hover:bg-[#0b2e4e]"
-              }`}
+        <div className={`flex items-center gap-4 justify-self-end ${isTransparent ? "text-white" : "text-neutral-800"}`}>
+          {/* Mobile hamburger — only on < lg */}
+          <button
+            className="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-md focus:outline-none"
+            aria-label="Toggle menu"
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
           >
+            <span className={`block h-0.5 w-5 rounded-full transition-all duration-300 ${isTransparent ? "bg-white" : "bg-neutral-800"} ${isMobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-0.5 w-5 rounded-full transition-all duration-300 ${isTransparent ? "bg-white" : "bg-neutral-800"} ${isMobileMenuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-5 rounded-full transition-all duration-300 ${isTransparent ? "bg-white" : "bg-neutral-800"} ${isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
+          <div className="hidden lg:flex items-center gap-2 xl:gap-4">
+            <a
+              href="/"
+              className={`rounded-md px-2 xl:px-3 py-1.5 text-[11px] xl:text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#fa7301]/90 text-white hover:bg-[#fa7301]" : "bg-[#fa7301] text-white hover:bg-[#0b2e4e]"
+                }`}
+            >
+              Payments
+            </a>
+            <a
+              href="/blog"
+              className={`rounded-md px-2 xl:px-3 py-1.5 text-[11px] xl:text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#0b2e4e]/90 text-white hover:bg-[#0b2e4e]" : "bg-[#0b2e4e] text-white hover:bg-[#08223a]"
+                }`}
+            >
+              Blogs
+            </a>
+
+            <div className="flex items-center gap-2 xl:gap-4 border-l border-current pl-2 xl:pl-4 ml-1 opacity-90">
+              <LangDropdown />
+              <CurrencyDropdown />
+            </div>
+
+            <div className="flex items-center gap-2 xl:gap-3 ml-1 xl:ml-2">
+              <a href="https://www.facebook.com/traveleaseholidays/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#fa7301] transition-colors">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/traveleaseholidays/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#fa7301] transition-colors">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a href="https://twitter.com/TEHolidays" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="hover:text-[#fa7301] transition-colors">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/travel-ease-holidays-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#fa7301] transition-colors">
+                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderMobileDrawer = () => (
+    <div
+      className={`lg:hidden fixed inset-0 z-[9999] transition-all duration-300 ${isMobileMenuOpen ? "visible" : "invisible"}`}
+    >
+      {/* Backdrop */}
+      <div
+        className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+      {/* Slide-in panel */}
+      <div
+        className={`absolute top-0 left-0 h-full w-72 max-w-[85vw] bg-white shadow-2xl flex flex-col transition-transform duration-300 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
+      >
+        {/* Panel header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-neutral-100">
+          <Logo img={logoImg} className="w-20" />
+          <button onClick={() => setIsMobileMenuOpen(false)} className="p-1 rounded-full hover:bg-neutral-100 transition-colors" aria-label="Close menu">
+            <svg className="h-5 w-5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+        {/* Nav links */}
+        <nav className="flex flex-col px-5 py-6 gap-1 flex-1 overflow-y-auto">
+          {mobileNavLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className={`text-[16px] font-medium text-neutral-800 hover:text-[#fa7301] px-3 py-3 rounded-xl hover:bg-neutral-50 transition-colors ${pathname === link.href ? "text-[#fa7301] bg-[#fa7301]/10" : ""
+                }`}
+            >
+              {link.label}
+            </a>
+          ))}
+
+          <div className="my-2 border-t border-neutral-100" />
+
+          <a href="/" className="text-[16px] font-medium text-neutral-800 hover:text-[#fa7301] px-3 py-3 rounded-xl hover:bg-neutral-50 transition-colors">
             Payments
           </a>
-          <a
-            href="/blog"
-            className={`rounded-md px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#0b2e4e]/90 text-white hover:bg-[#0b2e4e]" : "bg-[#0b2e4e] text-white hover:bg-[#08223a]"
-              }`}
-          >
+          <a href="/blog" className={`text-[16px] font-medium text-neutral-800 hover:text-[#fa7301] px-3 py-3 rounded-xl hover:bg-neutral-50 transition-colors ${pathname === "/blog" ? "text-[#fa7301] bg-[#fa7301]/10" : ""
+            }`}>
             Blogs
           </a>
 
-          <div className="flex items-center gap-4 border-l border-current pl-4 ml-1 opacity-90">
-            <LangDropdown />
-            <CurrencyDropdown />
+          <div className="flex flex-col items-center gap-2 py-4 mt-2 border-t border-neutral-100">
+            <LangDropdown className="w-full" panelClassName="w-full mt-2 mb-4 z-50" />
+            <CurrencyDropdown className="w-full" panelClassName="w-full mt-2 mb-4 z-50" />
           </div>
-
-          <div className="flex items-center gap-3 ml-2">
-            <a href="https://www.facebook.com/traveleaseholidays/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#fa7301] transition-colors">
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/traveleaseholidays/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#fa7301] transition-colors">
-              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            <a href="https://twitter.com/TEHolidays" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="hover:text-[#fa7301] transition-colors">
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/company/travel-ease-holidays-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#fa7301] transition-colors">
-              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-          </div>
+        </nav>
+        {/* Bottom social links */}
+        <div className="px-5 py-5 border-t border-neutral-100 flex justify-center gap-3">
+          <a href="https://www.facebook.com/traveleaseholidays/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-neutral-500 hover:text-[#fa7301] transition-colors">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
+          </a>
+          <a href="https://www.instagram.com/traveleaseholidays/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-neutral-500 hover:text-[#fa7301] transition-colors">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" /></svg>
+          </a>
+          <a href="https://twitter.com/TEHolidays" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-neutral-500 hover:text-[#fa7301] transition-colors">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/travel-ease-holidays-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-neutral-500 hover:text-[#fa7301] transition-colors">
+            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" /></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -346,16 +443,22 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
       }`;
 
     return (
-      <header className={`${homeHeaderClasses}`}>
-        {renderMainHeaderRow(isHeroTransparent)}
-      </header>
+      <>
+        <header className={`${homeHeaderClasses}`}>
+          {renderMainHeaderRow(isHeroTransparent)}
+        </header>
+        {renderMobileDrawer()}
+      </>
     );
   }
 
   return (
-    <header className={`sticky top-0 z-40 border-b border-neutral-200 bg-white backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] ${className}`}>
-      {renderMainHeaderRow(false)}
-    </header>
+    <>
+      <header className={`sticky top-0 z-40 border-b border-neutral-200 bg-white backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] ${className}`}>
+        {renderMainHeaderRow(false)}
+      </header>
+      {renderMobileDrawer()}
+    </>
   );
 };
 

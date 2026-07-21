@@ -57,7 +57,7 @@ const SectionGallery: FC = () => {
 
   return (
     <section
-      className="relative w-[calc(100vw-10px)] ml-[calc(50%-50vw)] py-16 overflow-hidden bg-fixed bg-center bg-cover"
+      className="relative w-full py-16 overflow-hidden bg-cover bg-center md:bg-fixed"
       style={{
         backgroundImage: "url('/banner-fullwidth.png')"
       }}

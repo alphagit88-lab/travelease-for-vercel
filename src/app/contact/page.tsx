@@ -17,8 +17,8 @@ const contactDetails = [
   },
   {
     title: "Contact",
-    value: "+94 11 2695454",
-    href: "tel:+94112695454",
+    value: "+94 77 734 7542",
+    href: "tel:+94777347542",
     icon: PhoneIcon,
   },
   {
@@ -41,35 +41,31 @@ export default function PageContact() {
 
         <div className="container relative flex min-h-[320px] flex-col justify-center py-20 text-white lg:min-h-[360px]">
           <h1
-            className="text-4xl font-semibold sm:text-5xl lg:text-6xl"
+            className="text-4xl font-semibold sm:text-5xl lg:text-6xl text-center sm:text-left"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Contact <span className="text-[#fa7301]">Travel Ease Holidays</span>
           </h1>
-          {/* <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-100 sm:text-base">
-            Reach out for trip enquiries, custom itineraries, booking support, or any question about your next travel
-            experience with TravelEase.
-          </p> */}
         </div>
       </section>
 
-      <section className="container relative z-10 -mt-10 pb-20 lg:-mt-16 lg:pb-24">
-        <div className="grid gap-8 rounded-[34px] bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.12)] sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+      <section className="container relative z-10 -mt-10 pb-16 sm:pb-20 lg:-mt-16 lg:pb-24">
+        <div className="grid gap-8 rounded-3xl sm:rounded-[34px] bg-white p-5 sm:p-8 lg:grid-cols-[1.05fr_0.95fr] lg:p-10 shadow-[0_30px_90px_rgba(15,23,42,0.12)]">
           <div className="lg:pr-8">
-            <span className="text-sm font-semibold uppercase tracking-[0.28em] text-[#fa7301]">
+            <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.28em] text-[#fa7301]">
               Contact details
             </span>
             <h2
-              className="mt-4 max-w-lg text-3xl font-semibold leading-tight text-[#1581a7] sm:text-5xl"
+              className="mt-3 sm:mt-4 max-w-lg text-2xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-[#1581a7]"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               Your Sri Lankan adventure starts with a conversation.
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
+            <p className="mt-4 sm:mt-6 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
               Have questions or need help planning your trip to Sri Lanka? Our experienced travel specialists are here to provide personalized assistance and seamless travel solutions. Reach out to us today and let Travel Ease Holidays turn your travel dreams into extraordinary experiences.
             </p>
 
-            <div className="mt-8 grid gap-5">
+            <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-5">
               {contactDetails.map((item) => {
                 const Icon = item.icon;
 
@@ -77,19 +73,19 @@ export default function PageContact() {
                   <a
                     key={item.title}
                     href={item.href}
-                    className="flex items-start gap-4 rounded-[24px] border border-slate-200 bg-slate-50 px-5 py-4"
+                    className="flex items-center gap-3 sm:gap-4 rounded-2xl sm:rounded-[24px] border border-slate-200 bg-slate-50 px-4 sm:px-5 py-3.5 sm:py-4 transition-all hover:border-[#fa7301]/40"
                   >
                     <div
-                      className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full"
+                      className="flex h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0 items-center justify-center rounded-full"
                       style={{ backgroundColor: "rgba(213, 145, 44, 0.12)", color: HOME_ACCENT }}
                     >
-                      <Icon className="h-6 w-6" />
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                     </div>
-                    <div>
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#fa7301]">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#fa7301]">
                         {item.title}
                       </h3>
-                      <p className="mt-2 text-base font-medium text-slate-900 transition-colors hover:text-[#fa7301]">
+                      <p className="mt-1 text-sm sm:text-base font-medium text-slate-900 transition-colors hover:text-[#fa7301] break-all sm:break-normal">
                         {item.value}
                       </p>
                     </div>
@@ -99,18 +95,18 @@ export default function PageContact() {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[30px] border border-slate-200 bg-[#f3f6f9] shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
-            <div className="bg-[#072437] px-6 py-5 text-center text-lg font-semibold text-[#fa7301] sm:px-8">
+          <div className="overflow-hidden rounded-2xl sm:rounded-[30px] border border-slate-200 bg-[#f3f6f9] shadow-[0_22px_60px_rgba(15,23,42,0.08)]">
+            <div className="bg-[#072437] px-5 py-4 sm:px-8 sm:py-5 text-center text-base sm:text-lg font-semibold text-[#fa7301]">
               Get in touch
             </div>
 
-            <form className="space-y-4 px-6 py-6 sm:px-8 sm:py-8" action="#" method="post">
+            <form className="space-y-4 px-5 py-5 sm:px-8 sm:py-8" action="#" method="post">
               <Input
                 name="name"
                 type="text"
                 placeholder="Your name"
                 rounded="rounded-xl"
-                sizeClass="h-12 px-4"
+                sizeClass="h-11 sm:h-12 px-4"
                 className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Input
@@ -118,7 +114,7 @@ export default function PageContact() {
                 type="email"
                 placeholder="Your email"
                 rounded="rounded-xl"
-                sizeClass="h-12 px-4"
+                sizeClass="h-11 sm:h-12 px-4"
                 className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Input
@@ -126,7 +122,7 @@ export default function PageContact() {
                 type="tel"
                 placeholder="Your number"
                 rounded="rounded-xl"
-                sizeClass="h-12 px-4"
+                sizeClass="h-11 sm:h-12 px-4"
                 className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Input
@@ -134,19 +130,19 @@ export default function PageContact() {
                 type="text"
                 placeholder="Subject"
                 rounded="rounded-xl"
-                sizeClass="h-12 px-4"
+                sizeClass="h-11 sm:h-12 px-4"
                 className="border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
               <Textarea
                 name="message"
                 placeholder="Message"
-                rows={6}
+                rows={5}
                 className="rounded-xl border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
 
               <button
                 type="submit"
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-[#fa7301] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#0b2e4e]"
+                className="w-full sm:w-auto inline-flex h-12 items-center justify-center rounded-xl bg-[#fa7301] px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#0b2e4e]"
               >
                 Send Message
               </button>
