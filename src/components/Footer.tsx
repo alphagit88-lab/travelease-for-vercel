@@ -42,11 +42,10 @@ const quickLinks: { href: Route<string>; label: string }[] = [
 ];
 
 const socials = [
-  { label: "Instagram", href: "#", icon: "lab la-instagram" },
-  { label: "Twitter", href: "#", icon: "lab la-twitter" },
-  { label: "Facebook", href: "#", icon: "lab la-facebook-f" },
-  { label: "LinkedIn", href: "#", icon: "lab la-linkedin-in" },
-  { label: "YouTube", href: "#", icon: "lab la-youtube" },
+  { label: "Facebook", href: "https://www.facebook.com/traveleaseholidays/", icon: "lab la-facebook-f" },
+  { label: "Instagram", href: "https://www.instagram.com/traveleaseholidays/?hl=en", icon: "lab la-instagram" },
+  { label: "Twitter", href: "https://twitter.com/TEHolidays", icon: "lab la-twitter" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/travel-ease-holidays-private-limited", icon: "lab la-linkedin-in" },
 ];
 
 const Footer: React.FC = () => {

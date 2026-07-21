@@ -311,21 +311,26 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
           </div>
 
           <div className="flex items-center gap-3 ml-2">
-            <a href="#" aria-label="Facebook" className="hover:text-[#fa7301] transition-colors">
+            <a href="https://www.facebook.com/traveleaseholidays/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-[#fa7301] transition-colors">
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-[#fa7301] transition-colors">
+            <a href="https://www.instagram.com/traveleaseholidays/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-[#fa7301] transition-colors">
               <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                 <circle cx="12" cy="12" r="4" />
                 <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
               </svg>
             </a>
-            <a href="#" aria-label="Telegram" className="hover:text-[#fa7301] transition-colors">
+            <a href="https://twitter.com/TEHolidays" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="hover:text-[#fa7301] transition-colors">
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M21.8 2.2L1.4 10.1c-1.4.6-1.4 1.4-.2 1.8l5.2 1.6 2 6.1c.3.8.6 1.1 1.1.7l2.9-2.6 5.7 4.2c1 .6 1.8.3 2-1l3.3-15.6c.4-1.6-.6-2.3-1.6-2.1z" />
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/travel-ease-holidays-private-limited" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-[#fa7301] transition-colors">
+              <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" />
               </svg>
             </a>
           </div>

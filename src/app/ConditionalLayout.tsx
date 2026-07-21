@@ -31,7 +31,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
         >
           {/* WhatsApp CTA */}
           <a
-            href="https://wa.me/+94771234567" // Placeholder number
+            href="https://wa.me/94777347542"
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all hover:-translate-y-1 hover:scale-105"
@@ -44,7 +44,7 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
 
           {/* Phone CTA */}
           <a
-            href="tel:+94771234567" // Placeholder number
+            href="tel:+94777347542"
             className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0b2e4e] text-white shadow-lg transition-all hover:-translate-y-1 hover:scale-105"
             aria-label="Call Us"
           >
