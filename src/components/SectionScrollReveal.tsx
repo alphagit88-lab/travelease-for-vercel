@@ -47,7 +47,7 @@ const SectionScrollReveal = () => {
             className="absolute inset-0 z-10"
           >
             <img
-              src="/collection1.gif"
+              src="/collection2.gif"
               alt="Sri Lanka Experience"
               className="w-full h-full object-cover"
             />
