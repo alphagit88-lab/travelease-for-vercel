@@ -19,12 +19,11 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
   const { date, author } = meta;
   return (
     <div
-      className={`nc-PostCardMeta inline-flex items-center fledx-wrap text-neutral-800 dark:text-neutral-200 ${
-        size === "normal" ? "text-sm" : "text-base"
-      } ${className}`}
+      className={`nc-PostCardMeta inline-flex items-center fledx-wrap text-neutral-800 dark:text-neutral-200 ${size === "normal" ? "text-sm" : "text-base"
+        } ${className}`}
       data-nc-id="PostCardMeta"
     >
-      <Link
+      {/* <Link
         href={author.href}
         className="flex-shrink-0 relative flex items-center space-x-2"
       >
@@ -41,11 +40,11 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
         <span className="block text-neutral-6000 hover:text-black dark:text-neutral-300 dark:hover:text-white font-medium">
           {author.displayName}
         </span>
-      </Link>
+      </Link> */}
       <>
-        <span className="text-neutral-500 dark:text-neutral-400 mx-[6px] font-medium">
+        {/* <span className="text-neutral-500 dark:text-neutral-400 mx-[6px] font-medium">
           ·
-        </span>
+        </span> */}
         <span className="text-neutral-500 dark:text-neutral-400 font-normal line-clamp-1">
           {date}
         </span>
