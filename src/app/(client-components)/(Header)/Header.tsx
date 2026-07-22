@@ -320,7 +320,9 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
           </button>
           <div className="hidden lg:flex items-center gap-2 xl:gap-4">
             <a
-              href="/"
+              href="https://tchannellk.com/payment.php"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`rounded-md px-2 xl:px-3 py-1.5 text-[11px] xl:text-[12px] font-bold uppercase tracking-[0.08em] transition-all ${isTransparent ? "bg-[#fa7301]/90 text-white hover:bg-[#fa7301]" : "bg-[#fa7301] text-white hover:bg-[#0b2e4e]"
                 }`}
             >
@@ -404,7 +406,7 @@ const Header: FC<HeaderProps> = ({ className = "", isHeroTransparent = false }) 
 
           <div className="my-2 border-t border-neutral-100" />
 
-          <a href="/" className="text-[16px] font-medium text-neutral-800 hover:text-[#fa7301] px-3 py-3 rounded-xl hover:bg-neutral-50 transition-colors">
+          <a href="https://tchannellk.com/payment.php" target="_blank" rel="noopener noreferrer" className="text-[16px] font-medium text-neutral-800 hover:text-[#fa7301] px-3 py-3 rounded-xl hover:bg-neutral-50 transition-colors">
             Payments
           </a>
           <a href="/blog" className={`text-[16px] font-medium text-neutral-800 hover:text-[#fa7301] px-3 py-3 rounded-xl hover:bg-neutral-50 transition-colors ${pathname === "/blog" ? "text-[#fa7301] bg-[#fa7301]/10" : ""

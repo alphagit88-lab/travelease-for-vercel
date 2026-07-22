@@ -64,9 +64,8 @@ const Footer: React.FC = () => {
                 href={item.href}
                 target={item.title === "WhatsApp" ? "_blank" : undefined}
                 rel={item.title === "WhatsApp" ? "noopener noreferrer" : undefined}
-                className={`flex items-start gap-4 p-4 lg:p-6 transition-colors hover:bg-white/5 rounded-[20px] ${
-                  index < contactCards.length - 1 ? "lg:border-r lg:border-white/10" : ""
-                }`}
+                className={`flex items-start gap-4 p-4 lg:p-6 transition-colors hover:bg-white/5 rounded-[20px] ${index < contactCards.length - 1 ? "lg:border-r lg:border-white/10" : ""
+                  }`}
               >
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[18px] bg-[#0f5d86] text-white">
                   <Icon className="h-6 w-6" />
@@ -92,6 +91,9 @@ const Footer: React.FC = () => {
             <p className="mt-5 max-w-md text-sm leading-7 text-slate-300">
               Your journey, our expertise. From holiday planning and custom tours to travel support and smooth booking
               guidance, TravelEase Holidays helps you explore with confidence.
+            </p>
+            <p className="mt-3 max-w-md text-sm leading-7 text-slate-300">
+              Travel Ease Holidays Private Limited is the inbound travel company of Travel Channel Private Limited.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
