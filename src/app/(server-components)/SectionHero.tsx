@@ -20,7 +20,7 @@ const SectionHero: FC<SectionHeroProps> = ({ className = "" }) => {
       <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         <video
           className="absolute left-1/2 top-1/2 h-full w-full min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none object-cover opacity-90"
-          src="/hero-bg.mp4"
+          src="/hero-bg1.mp4"
           autoPlay
           loop
           muted
