@@ -2,6 +2,7 @@ import {
   ChatBubbleLeftRightIcon,
   EnvelopeIcon,
   PhoneIcon,
+  MapPinIcon,
 } from "@heroicons/react/24/outline";
 import Input from "@/shared/Input";
 import Textarea from "@/shared/Textarea";
@@ -9,6 +10,18 @@ import Textarea from "@/shared/Textarea";
 const HOME_ACCENT = "#fa7301";
 
 const contactDetails = [
+  {
+    title: "Address",
+    value: (
+      <>
+        Travel Ease Holidays (Private) Limited
+        <br />
+        No. 21, 1 Maradana Rd, Colombo 00800
+      </>
+    ),
+    href: "https://maps.app.goo.gl/L5vnsBfXWKneGqkc9",
+    icon: MapPinIcon,
+  },
   {
     title: "Email",
     value: "info@traveleaseholidays.com",
@@ -136,7 +149,7 @@ export default function PageContact() {
               <Textarea
                 name="message"
                 placeholder="Message"
-                rows={5}
+                rows={10}
                 className="rounded-xl border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-[#fa7301] focus:ring-[#fa7301]/20"
               />
 
