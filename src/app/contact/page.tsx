@@ -16,7 +16,7 @@ const contactDetails = [
       <>
         Travel Ease Holidays (Private) Limited
         <br />
-        No. 21, 1 Maradana Rd, Colombo 00800
+        No. 2 1, 1 Maradana Rd, Colombo 00800
       </>
     ),
     href: "https://maps.app.goo.gl/L5vnsBfXWKneGqkc9",
